@@ -1,0 +1,30 @@
+{
+    "name": "oracle-cpq-bml-snippets",
+    "displayName": "oracle-cpq-bml-snippets",
+    "description": "Oracle CPQ BML Code Snippets",
+    "version": "0.0.2",
+    "publisher": "YashwanthKumar",
+    "icon": "logo.png",
+    "engines": {
+        "vscode": "^1.103.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "plaintext",
+                "path": "./snippets/snippets.code-snippets"
+            },
+            {
+                "language": "c",
+                "path": "./snippets/snippets.code-snippets"
+            },
+            {
+                "language": "java",
+                "path": "./snippets/snippets.code-snippets"
+            }
+        ]
+    }
+}

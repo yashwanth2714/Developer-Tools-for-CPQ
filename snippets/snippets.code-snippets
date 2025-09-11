@@ -1,0 +1,237 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+    "BML: json (create object)": {
+        "prefix": "bml-json",
+        "body": [
+        "// Create from JSON string",
+        "${1:jsonObj} = json(\"${2:{\\\"key\\\":\\\"value\\\"}}\");",
+        "// Create an empty json object",
+        "${3:jsonObj} = json();"
+        ],
+        "description": "Create a JSON object from a JSON formatted string (or empty if omitted)."
+    },
+
+    "BML: isjsonnull": {
+        "prefix": "bml-isjsonnull",
+        "body": [
+        "// Check if a JSON key is null",
+        "${1:isNull} = isjsonnull(${2:jsonObj}, \"${3:key}\");",
+        "// Check if an array index is null",
+        "${4:isNull} = isjsonnull(${5:jsonArr}, ${6:0});"
+        ],
+        "description": "Checks for null values in a JSON object or JSON array. Returns boolean."
+    },
+
+    "BML: jsonget": {
+        "prefix": "bml-jsonget",
+        "body": [
+        "// Get value with default",
+        "${1:val} = jsonget(${2:jsonObj}, \"${3:key}\", \"${4:string}\", ${5:\"defaultValue\"});"
+        ],
+        "description": "Retrieve a value from a JSON object for the given key. Optional valueType and defaultValue."
+    },
+
+    "BML: jsonput": {
+        "prefix": "bml-jsonput",
+        "body": [
+        "// Put or update a key in a JSON object",
+        "jsonput(${1:jsonObj}, \"${2:key}\", ${3:value});",
+        ],
+        "description": "Adds or updates a key-value entry in a JSON object. Returns the inserted/updated value."
+    },
+
+    "BML: jsonremove": {
+        "prefix": "bml-jsonremove",
+        "body": [
+        "// Remove first-level key from JSON object",
+        "${1:isRemoved} = jsonremove(${2:jsonObj}, \"${3:key}\");",
+        ],
+        "description": "Removes a first-level key-value entry from a JSON object. Returns boolean."
+    },
+
+    "BML: jsoncopy": {
+        "prefix": "bml-jsoncopy",
+        "body": [
+        "// Copy a JSON object",
+        "${1:copyObj} = jsoncopy(${2:jsonObj});",
+        ],
+        "description": "Creates a copy of a JSON object. Changes to the original will not affect the copy."
+    },
+
+    "BML: jsontostr": {
+        "prefix": "bml-jsontostr",
+        "body": [
+        "// Convert JSON object to JSON-formatted string",
+        "${1:jsonStr} = jsontostr(${2:jsonObj});",
+        ],
+        "description": "Converts a JSON object into a JSON formatted string."
+    },
+
+    "BML: jsonkeys": {
+        "prefix": "bml-jsonkeys",
+        "body": [
+        "// Get keys",
+        "${1:keys} = jsonkeys(${2:jsonObj});",
+        ],
+        "description": "Retrieves all first-level keys from a JSON object and returns an array of strings. If the optional parameter (ignoreNullValues) is set to true, null value keys are ignored."
+    },
+
+    "BML: jsonnull": {
+        "prefix": "bml-jsonnull",
+        "body": [
+        "// Create a JSON null value",
+        "${1:jnull} = jsonnull();",
+        ],
+        "description": "Creates an instance of a JSON null object."
+    },
+
+    "BML: jsonarray (create array)": {
+        "prefix": "bml-jsonarray",
+        "body": [
+        "// Create JSON array from string",
+        "${1:jsonArr} = jsonarray(\"${2:[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]}\");",
+        "// Create an empty json array",
+        "${3:jsonArr} = jsonarray();"
+        ],
+        "description": "Create a JSON array from a JSON-formatted array string, or an empty array if omitted."
+    },
+
+    "BML: jsonarrayappend": {
+        "prefix": "bml-jsonarrayappend",
+        "body": [
+        "// Append a value to end of JSON array",
+        "jsonarrayappend(${1:jsonArr}, ${2:\"value\"});",
+        ],
+        "description": "Appends a value to the end of a JSON array and returns the appended value."
+    },
+
+    "BML: jsonarrayget": {
+        "prefix": "bml-jsonarrayget",
+        "body": [
+        "// Get an element from a JSON array",
+        "${1:val} = jsonarrayget(${2:jsonArr}, ${3:0}, \"${4:string}\");"
+        ],
+        "description": "Returns the value from a JSON array at a given index. Optional valueType."
+    },
+
+    "BML: jsonarraysize": {
+        "prefix": "bml-jsonarraysize",
+        "body": [
+        "// Get size of JSON array",
+        "${1:size} = jsonarraysize(${2:jsonArr});"
+        ],
+        "description": "Returns the size (number of elements) of a JSON array."
+    },
+
+    "BML: jsonarrayremove": {
+        "prefix": "bml-jsonarrayremove",
+        "body": [
+        "// Remove an element from array by index",
+        "jsonarrayremove(${1:jsonArr}, ${2:0});",
+        ],
+        "description": "Removes an element from a JSON array. The size of the array object after the object is removed is returned. An error is thrown if the given index is not available."
+    },
+
+    "BML: jsonarraycopy": {
+        "prefix": "bml-jsonarraycopy",
+        "body": [
+        "// Make a copy of a JSON array",
+        "${1:copyJsonArr} = jsonarraycopy(${2:jsonArr});"
+        ],
+        "description": "Creates a copy of a JSON array."
+    },
+
+    "BML: jsonarraytostr": {
+        "prefix": "bml-jsonarraytostr",
+        "body": [
+        "// Convert JSON array to string",
+        "${1:jsonArrStr} = jsonarraytostr(${2:jsonArr});",
+        ],
+        "description": "Converts a JSON array into a JSON formatted string."
+    },
+
+    "BML: jsonarrayrefid": {
+        "prefix": "bml-jsonarrayrefid",
+        "body": [
+        "// Get a unique reference id for JSON array",
+        "${1:refId} = jsonarrayrefid(${2:jsonArr});",
+        ],
+        "description": "Returns a unique reference ID that represents the input JSON array. Can only be invoked by Commerce advanced modify, auto update or advanced default functions. This function provides a more efficient method to pass a JSON array to the BML output to update an array set."
+    },
+
+    "BML: jsonpathgetmultiple": {
+        "prefix": "bml-jsonpathgetmultiple",
+        "body": [
+        "// Get multiple values matching jsonPath",
+        "${1:arr} = jsonpathgetmultiple(${2:jsonObj}, \"${3:$.path}\");",
+        "// Example:",
+        "// str = \"{\\\"key1\\\":90,\\\"key2\\\":[{\\\"key1\\\":900}],\\\"key3\\\":{\\\"key1\\\":9000}}\";",
+        "// jsonObj = json(str);",
+        "// arrayVals = jsonpathgetmultiple(jsonObj,\"$..key1\");",
+        "// print arrayVals; //Output: [90,900,9000]",
+        ],
+        "description": "Retrieve multiple values or nodes for a JSONPath expression. asPath=false returns values, true returns nodes.",
+    },
+
+    "BML: jsonpathgetsingle": {
+        "prefix": "bml-jsonpathgetsingle",
+        "body": [
+        "// Get single value for jsonPath",
+        "${1:val} = jsonpathgetsingle(${2:jsonObj}, \"${3:$.path}\");",
+        "// Example:",
+        "// str = \"{\\\"store\\\":{\\\"book\\\":[{\\\"category\\\":\\\"reference\\\",\\\"author\\\":\\\"Nigel Rees\\\"},{\\\"category\\\":\\\"fiction\\\",\\\"author\\\":\\\"Evelyn Waugh\\\"}]},\\\"expensive\\\":10}\";",
+        "// jsonObj = json(str);",
+        "// ",
+        "// catArray = jsonpathgetsingle(jsonObj,\"$.store.book[0]\");",
+        "// print catArray; // Output: {\"category\":\"reference\",\"author\":\"Nigel Rees\"}",
+        "// ",
+        "// expenseInt = jsonpathgetsingle(jsonObj,\"$.expensive\",\"integer\");",
+        "// print expenseInt; // Output: 10",
+        ],
+        "description": "Retrieves the first node or value corresponding to a JSONPath expression. The valueType and defaultValue parameters are optional."
+    },
+
+    "BML: jsonpathset": {
+        "prefix": "bml-jsonpathset",
+        "body": [
+        "// Set/update all nodes matching jsonPath to a new value",
+        "jsonpathset(${1:jsonObj}, \"${2:$.path}\", ${3:newValue});",
+        ],
+        "description": "Updates all nodes matched by a JSONPath expression and returns the nodes updated."
+    },
+
+    "BML: jsonpathcheck": {
+        "prefix": "bml-jsonpathcheck",
+        "body": [
+        "// Check whether a JSONPath exists in the JSON object",
+        "${1:found} = jsonpathcheck(${2:jsonObj}, \"${3:$.path}\");",
+        ],
+        "description": "Checks if a JSONPath exists in a JSON object; returns boolean."
+    },
+
+    "BML: jsonpathremove": {
+        "prefix": "bml-jsonpathremove",
+        "body": [
+        "// Remove nodes matching jsonPath",
+        "${1:removed} = jsonpathremove(${2:jsonObj}, \"${3:$.path}\");",
+        ],
+        "description": "Removes nodes matching a JSONPath expression from the JSON object; returns boolean."
+    }
+
+}

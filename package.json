@@ -4,6 +4,10 @@
     "description": "Oracle CPQ BML Code Snippets",
     "version": "0.0.2",
     "publisher": "YashwanthKumar",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yashwanth2714/Oracle-CPQ-BML-Snippets"
+    },
     "icon": "logo.png",
     "engines": {
         "vscode": "^1.103.0"

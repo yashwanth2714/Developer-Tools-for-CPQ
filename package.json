@@ -1,9 +1,10 @@
 {
     "name": "oracle-cpq-bml-snippets",
-    "displayName": "oracle-cpq-bml-snippets",
-    "description": "Oracle CPQ BML Code Snippets",
-    "version": "0.0.2",
+    "displayName": "Developer Tools for CPQ",
+    "description": "A collection of **developer tools and code snippets** to speed up coding in Oracle CPQ.",
+    "version": "0.0.6",
     "publisher": "YashwanthKumar",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/yashwanth2714/Oracle-CPQ-BML-Snippets"
@@ -19,16 +20,57 @@
         "snippets": [
             {
                 "language": "plaintext",
-                "path": "./snippets/snippets.code-snippets"
+                "path": "snippets/snippets.code-snippets"
             },
             {
                 "language": "c",
-                "path": "./snippets/snippets.code-snippets"
+                "path": "snippets/snippets.code-snippets"
             },
             {
                 "language": "java",
-                "path": "./snippets/snippets.code-snippets"
+                "path": "snippets/snippets.code-snippets"
             }
         ]
-    }
+    },
+    "galleryBanner": {
+        "color": "rgb(31 71 97)",
+        "theme": "dark"
+    },
+    "keywords": [
+        "developer tools for cpq",
+        "bml coding tools",
+        "oracle cpq coding snippets",
+        "bml coding snippets",
+        "oracle cpq bml snippets",
+        "bml snippets",
+        "cpq",
+        "developer tools",
+        "coding",
+        "snippets",
+        "configurator",
+        "quote",
+        "commerce",
+        "oracle",
+        "oracle cloud",
+        "oracle cpq",
+        "oracle extension",
+        "bml",
+        "bmql",
+        "bigMachines",
+        "bml extension",
+        "bml language support",
+        "bml tools",
+        "bml tools for oracle bigmachines",
+        "bml tools for oracle cloud cpq",
+        "bml tools for oracle commerce",
+        "bml tools for oracle configurator",
+        "bml tools for oracle quote",
+        "bml json",
+        "cpq snippets",
+        "cpq coding",
+        "cpq development",
+        "intellisense",
+        "syntax highlighting",
+        "hover documentation"
+    ]
 }

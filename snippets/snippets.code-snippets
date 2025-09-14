@@ -1,237 +1,489 @@
 {
-	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"scope": "javascript,typescript",
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
+    // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+    // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+    // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+    // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+    // Placeholders with the same ids are connected.
+    // Example:
+    // "Print to console": {
+    // 	"scope": "javascript,typescript",
+    // 	"prefix": "log",
+    // 	"body": [
+    // 		"console.log('$1');",
+    // 		"$2"
+    // 	],
+    // 	"description": "Log output to console"
+    // }
 
+    // JSON FUNCTIONS
     "BML: json (create object)": {
         "prefix": "bml-json",
         "body": [
-        "// Create from JSON string",
-        "${1:jsonObj} = json(\"${2:{\\\"key\\\":\\\"value\\\"}}\");",
-        "// Create an empty json object",
-        "${3:jsonObj} = json();"
+            "// Create from JSON string",
+            "${1:jsonObj} = json(\"${2:{\\\"key\\\":\\\"value\\\"}}\");",
+            "// Create an empty json object",
+            "${3:jsonObj} = json();"
         ],
         "description": "Create a JSON object from a JSON formatted string (or empty if omitted)."
     },
-
     "BML: isjsonnull": {
         "prefix": "bml-isjsonnull",
         "body": [
-        "// Check if a JSON key is null",
-        "${1:isNull} = isjsonnull(${2:jsonObj}, \"${3:key}\");",
-        "// Check if an array index is null",
-        "${4:isNull} = isjsonnull(${5:jsonArr}, ${6:0});"
+            "// Check if a JSON key is null",
+            "${1:isNull} = isjsonnull(${2:jsonObj}, \"${3:key}\");",
+            "// Check if an array index is null",
+            "${4:isNull} = isjsonnull(${5:jsonArr}, ${6:0});"
         ],
         "description": "Checks for null values in a JSON object or JSON array. Returns boolean."
     },
-
     "BML: jsonget": {
         "prefix": "bml-jsonget",
         "body": [
-        "// Get value with default",
-        "${1:val} = jsonget(${2:jsonObj}, \"${3:key}\", \"${4:string}\", ${5:\"defaultValue\"});"
+            "// Get value with default",
+            "${1:val} = jsonget(${2:jsonObj}, \"${3:key}\", \"${4:string}\", ${5:\"defaultValue\"});"
         ],
         "description": "Retrieve a value from a JSON object for the given key. Optional valueType and defaultValue."
     },
-
     "BML: jsonput": {
         "prefix": "bml-jsonput",
         "body": [
-        "// Put or update a key in a JSON object",
-        "jsonput(${1:jsonObj}, \"${2:key}\", ${3:value});",
+            "// Put or update a key in a JSON object",
+            "jsonput(${1:jsonObj}, \"${2:key}\", ${3:value});",
         ],
         "description": "Adds or updates a key-value entry in a JSON object. Returns the inserted/updated value."
     },
-
     "BML: jsonremove": {
         "prefix": "bml-jsonremove",
         "body": [
-        "// Remove first-level key from JSON object",
-        "${1:isRemoved} = jsonremove(${2:jsonObj}, \"${3:key}\");",
+            "// Remove first-level key from JSON object",
+            "${1:isRemoved} = jsonremove(${2:jsonObj}, \"${3:key}\");",
         ],
         "description": "Removes a first-level key-value entry from a JSON object. Returns boolean."
     },
-
     "BML: jsoncopy": {
         "prefix": "bml-jsoncopy",
         "body": [
-        "// Copy a JSON object",
-        "${1:copyObj} = jsoncopy(${2:jsonObj});",
+            "// Copy a JSON object",
+            "${1:copyObj} = jsoncopy(${2:jsonObj});",
         ],
         "description": "Creates a copy of a JSON object. Changes to the original will not affect the copy."
     },
-
     "BML: jsontostr": {
         "prefix": "bml-jsontostr",
         "body": [
-        "// Convert JSON object to JSON-formatted string",
-        "${1:jsonStr} = jsontostr(${2:jsonObj});",
+            "// Convert JSON object to JSON-formatted string",
+            "${1:jsonStr} = jsontostr(${2:jsonObj});",
         ],
         "description": "Converts a JSON object into a JSON formatted string."
     },
-
     "BML: jsonkeys": {
         "prefix": "bml-jsonkeys",
         "body": [
-        "// Get keys",
-        "${1:keys} = jsonkeys(${2:jsonObj});",
+            "// Get keys",
+            "${1:keys} = jsonkeys(${2:jsonObj});",
         ],
         "description": "Retrieves all first-level keys from a JSON object and returns an array of strings. If the optional parameter (ignoreNullValues) is set to true, null value keys are ignored."
     },
-
     "BML: jsonnull": {
         "prefix": "bml-jsonnull",
         "body": [
-        "// Create a JSON null value",
-        "${1:jnull} = jsonnull();",
+            "// Create a JSON null value",
+            "${1:jnull} = jsonnull();",
         ],
         "description": "Creates an instance of a JSON null object."
     },
-
     "BML: jsonarray (create array)": {
         "prefix": "bml-jsonarray",
         "body": [
-        "// Create JSON array from string",
-        "${1:jsonArr} = jsonarray(\"${2:[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]}\");",
-        "// Create an empty json array",
-        "${3:jsonArr} = jsonarray();"
+            "// Create JSON array from string",
+            "${1:jsonArr} = jsonarray(\"${2:[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]}\");",
+            "// Create an empty json array",
+            "${3:jsonArr} = jsonarray();"
         ],
         "description": "Create a JSON array from a JSON-formatted array string, or an empty array if omitted."
     },
-
     "BML: jsonarrayappend": {
         "prefix": "bml-jsonarrayappend",
         "body": [
-        "// Append a value to end of JSON array",
-        "jsonarrayappend(${1:jsonArr}, ${2:\"value\"});",
+            "// Append a value to end of JSON array",
+            "jsonarrayappend(${1:jsonArr}, ${2:\"value\"});",
         ],
         "description": "Appends a value to the end of a JSON array and returns the appended value."
     },
-
     "BML: jsonarrayget": {
         "prefix": "bml-jsonarrayget",
         "body": [
-        "// Get an element from a JSON array",
-        "${1:val} = jsonarrayget(${2:jsonArr}, ${3:0}, \"${4:string}\");"
+            "// Get an element from a JSON array",
+            "${1:val} = jsonarrayget(${2:jsonArr}, ${3:0}, \"${4:string}\");"
         ],
         "description": "Returns the value from a JSON array at a given index. Optional valueType."
     },
-
     "BML: jsonarraysize": {
         "prefix": "bml-jsonarraysize",
         "body": [
-        "// Get size of JSON array",
-        "${1:size} = jsonarraysize(${2:jsonArr});"
+            "// Get size of JSON array",
+            "${1:size} = jsonarraysize(${2:jsonArr});"
         ],
         "description": "Returns the size (number of elements) of a JSON array."
     },
-
     "BML: jsonarrayremove": {
         "prefix": "bml-jsonarrayremove",
         "body": [
-        "// Remove an element from array by index",
-        "jsonarrayremove(${1:jsonArr}, ${2:0});",
+            "// Remove an element from array by index",
+            "jsonarrayremove(${1:jsonArr}, ${2:0});",
         ],
         "description": "Removes an element from a JSON array. The size of the array object after the object is removed is returned. An error is thrown if the given index is not available."
     },
-
     "BML: jsonarraycopy": {
         "prefix": "bml-jsonarraycopy",
         "body": [
-        "// Make a copy of a JSON array",
-        "${1:copyJsonArr} = jsonarraycopy(${2:jsonArr});"
+            "// Make a copy of a JSON array",
+            "${1:copyJsonArr} = jsonarraycopy(${2:jsonArr});"
         ],
         "description": "Creates a copy of a JSON array."
     },
-
     "BML: jsonarraytostr": {
         "prefix": "bml-jsonarraytostr",
         "body": [
-        "// Convert JSON array to string",
-        "${1:jsonArrStr} = jsonarraytostr(${2:jsonArr});",
+            "// Convert JSON array to string",
+            "${1:jsonArrStr} = jsonarraytostr(${2:jsonArr});",
         ],
         "description": "Converts a JSON array into a JSON formatted string."
     },
-
     "BML: jsonarrayrefid": {
         "prefix": "bml-jsonarrayrefid",
         "body": [
-        "// Get a unique reference id for JSON array",
-        "${1:refId} = jsonarrayrefid(${2:jsonArr});",
+            "// Get a unique reference id for JSON array",
+            "${1:refId} = jsonarrayrefid(${2:jsonArr});",
         ],
         "description": "Returns a unique reference ID that represents the input JSON array. Can only be invoked by Commerce advanced modify, auto update or advanced default functions. This function provides a more efficient method to pass a JSON array to the BML output to update an array set."
     },
-
     "BML: jsonpathgetmultiple": {
         "prefix": "bml-jsonpathgetmultiple",
         "body": [
-        "// Get multiple values matching jsonPath",
-        "${1:arr} = jsonpathgetmultiple(${2:jsonObj}, \"${3:$.path}\");",
-        "// Example:",
-        "// str = \"{\\\"key1\\\":90,\\\"key2\\\":[{\\\"key1\\\":900}],\\\"key3\\\":{\\\"key1\\\":9000}}\";",
-        "// jsonObj = json(str);",
-        "// arrayVals = jsonpathgetmultiple(jsonObj,\"$..key1\");",
-        "// print arrayVals; //Output: [90,900,9000]",
+            "// Get multiple values matching jsonPath",
+            "${1:arr} = jsonpathgetmultiple(${2:jsonObj}, \"${3:$.path}\");",
+            "// Example:",
+            "// str = \"{\\\"key1\\\":90,\\\"key2\\\":[{\\\"key1\\\":900}],\\\"key3\\\":{\\\"key1\\\":9000}}\";",
+            "// jsonObj = json(str);",
+            "// arrayVals = jsonpathgetmultiple(jsonObj,\"$..key1\");",
+            "// print arrayVals; //Output: [90,900,9000]",
         ],
         "description": "Retrieve multiple values or nodes for a JSONPath expression. asPath=false returns values, true returns nodes.",
     },
-
     "BML: jsonpathgetsingle": {
         "prefix": "bml-jsonpathgetsingle",
         "body": [
-        "// Get single value for jsonPath",
-        "${1:val} = jsonpathgetsingle(${2:jsonObj}, \"${3:$.path}\");",
-        "// Example:",
-        "// str = \"{\\\"store\\\":{\\\"book\\\":[{\\\"category\\\":\\\"reference\\\",\\\"author\\\":\\\"Nigel Rees\\\"},{\\\"category\\\":\\\"fiction\\\",\\\"author\\\":\\\"Evelyn Waugh\\\"}]},\\\"expensive\\\":10}\";",
-        "// jsonObj = json(str);",
-        "// ",
-        "// catArray = jsonpathgetsingle(jsonObj,\"$.store.book[0]\");",
-        "// print catArray; // Output: {\"category\":\"reference\",\"author\":\"Nigel Rees\"}",
-        "// ",
-        "// expenseInt = jsonpathgetsingle(jsonObj,\"$.expensive\",\"integer\");",
-        "// print expenseInt; // Output: 10",
+            "// Get single value for jsonPath",
+            "${1:val} = jsonpathgetsingle(${2:jsonObj}, \"${3:$.path}\");",
+            "// Example:",
+            "// str = \"{\\\"store\\\":{\\\"book\\\":[{\\\"category\\\":\\\"reference\\\",\\\"author\\\":\\\"Nigel Rees\\\"},{\\\"category\\\":\\\"fiction\\\",\\\"author\\\":\\\"Evelyn Waugh\\\"}]},\\\"expensive\\\":10}\";",
+            "// jsonObj = json(str);",
+            "// ",
+            "// catArray = jsonpathgetsingle(jsonObj,\"$.store.book[0]\");",
+            "// print catArray; // Output: {\"category\":\"reference\",\"author\":\"Nigel Rees\"}",
+            "// ",
+            "// expenseInt = jsonpathgetsingle(jsonObj,\"$.expensive\",\"integer\");",
+            "// print expenseInt; // Output: 10",
         ],
         "description": "Retrieves the first node or value corresponding to a JSONPath expression. The valueType and defaultValue parameters are optional."
     },
-
     "BML: jsonpathset": {
         "prefix": "bml-jsonpathset",
         "body": [
-        "// Set/update all nodes matching jsonPath to a new value",
-        "jsonpathset(${1:jsonObj}, \"${2:$.path}\", ${3:newValue});",
+            "// Set/update all nodes matching jsonPath to a new value",
+            "jsonpathset(${1:jsonObj}, \"${2:$.path}\", ${3:newValue});",
         ],
         "description": "Updates all nodes matched by a JSONPath expression and returns the nodes updated."
     },
-
     "BML: jsonpathcheck": {
         "prefix": "bml-jsonpathcheck",
         "body": [
-        "// Check whether a JSONPath exists in the JSON object",
-        "${1:found} = jsonpathcheck(${2:jsonObj}, \"${3:$.path}\");",
+            "// Check whether a JSONPath exists in the JSON object",
+            "${1:found} = jsonpathcheck(${2:jsonObj}, \"${3:$.path}\");",
         ],
         "description": "Checks if a JSONPath exists in a JSON object; returns boolean."
     },
-
     "BML: jsonpathremove": {
         "prefix": "bml-jsonpathremove",
         "body": [
-        "// Remove nodes matching jsonPath",
-        "${1:removed} = jsonpathremove(${2:jsonObj}, \"${3:$.path}\");",
+            "// Remove nodes matching jsonPath",
+            "${1:removed} = jsonpathremove(${2:jsonObj}, \"${3:$.path}\");",
         ],
         "description": "Removes nodes matching a JSONPath expression from the JSON object; returns boolean."
-    }
-
+    },
+    // STRING FUNTIONS
+    "BML: len": {
+        "prefix": "bml-len",
+        "body": [
+            "// Get length of a string",
+            "${1:strLength} = len(${2:myString});",
+        ],
+        "description": "Returns the number of characters in the string."
+    },
+    "BML: string": {
+        "prefix": "bml-string",
+        "body": [
+            "${1:str} = string(${2:variable});",
+        ],
+        "description": "Converts a float, integer or boolean value into text."
+    },
+    "BML: substring": {
+        "prefix": "bml-substring",
+        "body": [
+            "${1:subStr} = substring(${2:myString}, ${3:start}, ${4:end});",
+        ],
+        "description": "Extracts a substring from the given string."
+    },
+    "BML: startswith": {
+        "prefix": "bml-startswith",
+        "body": [
+            "${1:starts} = startswith(${2:myString}, \"${3:subString}\");",
+        ],
+        "description": "Checks whether a string starts with a particular substring."
+    },
+    "BML: endswith": {
+        "prefix": "bml-endswith",
+        "body": [
+            "${4:ends} = endswith(${2:myString}, \"${5:subString}\");"
+        ],
+        "description": "Checks whether a string ends with a particular substring."
+    },
+    "BML: lower": {
+        "prefix": "bml-lower",
+        "body": [
+            "${1:lowerStr} = lower(${2:myString});",
+        ],
+        "description": "converts all characters in the text into all lowercase letters."
+    },
+    "BML: upper": {
+        "prefix": "bml-upper",
+        "body": [
+            "${3:upperStr} = upper(${2:myString});"
+        ],
+        "description": "converts all characters in the text into all uppercase letters."
+    },
+    "BML: trim": {
+        "prefix": "bml-trim",
+        "body": [
+            "${1:trimmed} = trim(${2:myString});",
+        ],
+        "description": "Remove whitespace from strings."
+    },
+    "BML: replace": {
+        "prefix": "bml-replace",
+        "body": [
+            "${1:result} = replace(${2:myString}, \"${3:old}\", \"${4:new}\");",
+        ],
+        "description": "Replace substrings inside a string."
+    },
+    "BML: split": {
+        "prefix": "bml-split",
+        "body": [
+            "${1:arr} = split(${2:myString}, \"${3:,}\");",
+        ],
+        "description": "Split a string into an array by delimiter."
+    },
+    "BML: join": {
+        "prefix": "bml-join",
+        "body": [
+            "${1:out} = join(${2:myArray}, \"${3:,}\");",
+        ],
+        "description": "Join an array of strings into a single string."
+    },
+    "BML: formatascurrency": {
+        "prefix": "bml-formatascurrency",
+        "body": [
+            "${1:formatted} = formatascurrency(${2:value}, ${3:\"currencyCode\"});"
+        ],
+        "description": "Takes a number and returns it as a formatted currency string."
+    },
+    "BML: atoi": {
+        "prefix": "bml-atoi",
+        "body": [
+            "${1:result} = atoi(${2:myString});",
+        ],
+        "description": "Converts text that represents a number into an integer value."
+    },
+    "BML: atof": {
+        "prefix": "bml-atof",
+        "body": [
+            "${1:result} = atof(${2:myString});",
+        ],
+        "description": "Converts text that represents a number into a float value."
+    },
+    "BML: isnumber": {
+        "prefix": "bml-isnumber",
+        "body": [
+            "isnumber(${2:myString})",
+        ],
+        "description": "Returns true when the string is a number and false if it contains other characters."
+    },
+    "BML: find": {
+        "prefix": "bml-find",
+        "body": [
+            "find(${2:myString},${3:\"substring\"})",
+        ],
+        "description": "Returns the position of a substring within a string."
+    },
+    "BML: decodebase64": {
+        "prefix": "bml-decodebase64",
+        "body": [
+            "${1:result} = decodebase64(${2:myString});",
+        ],
+        "description": "Takes an encoded Base64 string and returns it as a plain text string."
+    },
+    "BML: encodebase64": {
+        "prefix": "bml-encodebase64",
+        "body": [
+            "${1:userName} = \"\";",
+            "${2:password} = \"\";",
+            "${3:result} = encodebase64(${4:userName} + \":\" + ${5:password});",
+        ],
+        "description": "Parses the string parameter and converts it into its Base64 equivalent, as an encoded string."
+    },
+    "BML: getcurrencyvalue": {
+        "prefix": "bml-getcurrencyvalue",
+        "body": [
+            "${1:result} = getcurrencyvalue(${2:value}, ${3:\"currencyCode\"});",
+        ],
+        "description": "Takes a formatted currency string and returns the string's numeric value."
+    },
+    "BML: html": {
+        "prefix": "bml-html",
+        "body": [
+            "${1:result} = html(${2:myString});",
+        ],
+        "description": "A method for HTML escaping (output encoding) of a string as safe plain text."
+    },
+    // DICTIONARY FUNCTIONS
+	"BML: containskey (dictionary)": {
+		"prefix": "bml-dict-containskey",
+		"body": [
+			"containskey(${1:myDictionary}, \"${2:key}\");",
+		],
+		"description": "Returns true if the specified key exists in the dictionary."
+	},
+	"BML: dict (create dictionary)": {
+		"prefix": "bml-dict",
+		"body": [
+			"// Create a dictionary",
+			"${1:myDictionary} = dict(\"${2:string}\");",
+		],
+		"description": "Create a dictionary for the specified data type."
+	},
+	"BML: get (dictionary)": {
+		"prefix": "bml-dict-get",
+		"body": [
+			"${1:value} = get(${2:myDictionary}, \"${3:key}\");",
+		],
+		"description": "Get the value stored in the dictionary for the given key."
+	},
+	"BML: keys (dictionary)": {
+		"prefix": "bml-dict-keys",
+		"body": [
+			"${1:keysArr} = keys(${2:myDictionary});",
+		],
+		"description": "Retrieve an unordered string array of all keys in a dictionary."
+	},
+	"BML: put (dictionary)": {
+		"prefix": "bml-dict-put",
+		"body": [
+			"put(${1:myDictionary}, \"${2:key}\", ${3:value});",
+		],
+		"description": "Insert or update a value in the dictionary under the given key."
+	},
+	"BML: values (dictionary)": {
+		"prefix": "bml-dict-values",
+		"body": [
+			"${1:vals} = values(${2:myDictionary});",
+		],
+		"description": "Get an array of all values stored in the dictionary."
+	},
+    // DATE FUNCTIONS
+	"BML: adddays": {
+		"prefix": "bml-date-adddays",
+		"body": [
+			"${1:newDate} = adddays(${2:date}, ${3:noOfDays});",
+		],
+		"description": "Adds days to a date."
+	},
+	"BML: addmonths": {
+		"prefix": "bml-date-addmonths",
+		"body": [
+			"${1:newDate} = addmonths(${2:date}, ${3:noOfMonths});"
+		],
+		"description": "Adds months to a date."
+	},
+	"BML: comparedates": {
+		"prefix": "bml-date-comparedates",
+		"body": [
+			"${1:result} = comparedates(${2:date1}, ${3:date2});",
+		],
+		"description": "Compare two dates based on date and time."
+	},
+	"BML: datetostr": {
+		"prefix": "bml-date-datetostr",
+		"body": [
+			"${1:result} = datetostr(${2:date}, ${3:dateFormat});",
+		],
+		"description": "Converts a date to a string."
+	},
+	"BML: getcurrenttimeinmillis": {
+		"prefix": "bml-date-getcurrenttimeinmillis",
+		"body": [
+			"${1:result} = getcurrenttimeinmillis();",
+		],
+		"description": "Returns the current time in milliseconds."
+	},
+	"BML: getdate": {
+		"prefix": "bml-date-getdate",
+		"body": [
+			"${1:currentDate} = getdate();",
+		],
+		"description": "Returns the current date."
+	},
+	"BML: getdiffindays": {
+		"prefix": "bml-date-getdiffindays",
+		"body": [
+			"${1:result} = getdiffindays(${2:date1}, ${3:date2});",
+		],
+		"description": "Calculates the number of days between two different dates."
+	},
+	"BML: getstrdate": {
+		"prefix": "bml-date-getstrdate",
+		"body": [
+			"${1:result} = getstrdate();",
+		],
+		"description": "Returns the string representation of current date."
+	},
+	"BML: isleap": {
+		"prefix": "bml-date-isleap",
+		"body": [
+			"${1:result} = isleap(${2:Year});",
+		],
+		"description": "Returns true if the year provided is a leap year."
+	},
+	"BML: isweekend": {
+		"prefix": "bml-date-isweekend",
+		"body": [
+			"${1:result} = isweekend(${2:date});",
+		],
+		"description": "Returns true if the date provided is a Saturday or Sunday."
+	},
+    "BML: minusdays": {
+		"prefix": "bml-date-minusdays",
+		"body": [
+			"${1:newDate} = minusdays(${2:date}, ${3:noOfDays});",
+		],
+		"description": "Subtracts days to a date."
+	},
+	"BML: strtojavadate": {
+		"prefix": "bml-date-strtojavadate",
+		"body": [
+			"${1:result} = strtojavadate(${2:dateString}, ${3:dateFormat});",
+		],
+		"description": "Converts a string to a date."
+	},
 }

@@ -9,10 +9,7 @@ Includes ready-to-use snippets for **BML functions, JSON handling, BMQL patterns
 - 🚀 Snippets for **BML JSON functions** (`jsonput`, `jsonget`, `jsonpathgetsingle`, etc.)
 - ⚡ Quick code patterns for **BML control structures** (loops, conditions, try/catch)
 - 📦 Snippets reusable in `.bml`, `.txt`, `.c`, `.java` files
-- 🔍 Optimized for Oracle CPQ developers who work daily with BML and BMQL
-
----
-
+- 🔍 Optimized for Oracle CPQ developers who work daily with BML
 ## 🛠️ Usage
 1. Install the extension.
 2. Open a file (e.g., `.bml`, `.txt`, `.c`, `.java`).

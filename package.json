@@ -13,9 +13,11 @@
     "engines": {
         "vscode": "^1.103.0"
     },
+    "main": "./extension.js",
     "categories": [
         "Snippets",
-        "Programming Languages"
+        "Programming Languages",
+        "Formatters"
     ],
     "contributes": {
         "languages": [
@@ -96,6 +98,16 @@
         "cpq development",
         "intellisense",
         "syntax highlighting",
-        "hover documentation"
-    ]
+        "hover documentation",
+        "bml syntax highlighting",
+        "bml syntax highlight",
+        "cpq syntax highlighting",
+        "formatters bml",
+        "bml formatters",
+        "cpq formatters",
+        "cpq development kit"
+    ],
+    "dependencies": {
+        "js-beautify": "^1.15.4"
+    }
 }

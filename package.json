@@ -2,7 +2,7 @@
     "name": "oracle-cpq-bml-snippets",
     "displayName": "Developer Tools for CPQ",
     "description": "A collection of developer tools and code snippets to speed up coding in Oracle CPQ.",
-    "version": "0.0.12",
+    "version": "0.0.14",
     "publisher": "YashwanthKumar",
     "license": "MIT",
     "repository": {
@@ -67,7 +67,12 @@
                 "language": "java",
                 "path": "snippets/snippets.code-snippets"
             }
-        ]
+        ],
+        "configurationDefaults": {
+            "[bml]": {
+                "editor.defaultFormatter": "YashwanthKumar.oracle-cpq-bml-snippets"
+            }
+        }
     },
     "galleryBanner": {
         "color": "#1F4761",

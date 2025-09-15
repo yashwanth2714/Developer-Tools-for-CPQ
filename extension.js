@@ -6,8 +6,11 @@ function activate(context) {
         provideDocumentFormattingEdits(document) {
             const text = document.getText();
 
-            // Replace AND/OR with JS equivalents
-            let bmlCode = text.replace(/\bAND\b/g, "&&").replace(/\bOR\b/g, "||");
+            // Preprocess BML operators/keywords
+            let bmlCode = text
+                .replace(/\bAND\b/g, "&&")
+                .replace(/\bOR\b/g, "||")
+                .replace(/\belif\s*\(/g, "else if(");  // ✅ convert elif to else if
 
             const options = {
                 indent_size: 4,
@@ -20,8 +23,11 @@ function activate(context) {
 
             let formatted = beautify(bmlCode, options);
 
-            // Revert AND/OR
-            formatted = formatted.replace(/\&\&/g, "AND").replace(/\|\|/g, "OR");
+            // Restore original BML operators/keywords
+            formatted = formatted
+                .replace(/\&\&/g, "AND")
+                .replace(/\|\|/g, "OR")
+                .replace(/\belse if\s*\(/g, "elif (");
 
             // Fix not-equal operator
             formatted = formatted.replace(/<\s*>/g, "<>");

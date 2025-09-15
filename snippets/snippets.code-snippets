@@ -486,4 +486,90 @@
 		],
 		"description": "Converts a string to a date."
 	},
+    "BML makeurlparam": {
+		"prefix": "bml-makeurlparam",
+		"body": [
+			"params = makeurlparam({",
+			"    'param1' : \"value\",",
+			"});",
+		],
+		"description": "Converts a series of name-value pairs into a query string, which can be appended to a URL."
+	},
+	"BML urldata (GET)": {
+		"prefix": "bml-urldata-get",
+		"body": [
+			"headerDict = dict(\"string\");",
+			"put(headerDict, \"Accept\", \"application/json\");",
+			"put(headerDict, \"Content-Type\", \"application/json\");",
+			"put(headerDict, \"Authorization\", credentials);",
+			"response = urldata(${1:url}, \"GET\", headerDict);",
+		],
+		"description": "Retrieves data using GET method"
+	},
+	"BML urldata (POST)": {
+		"prefix": "bml-urldata-post",
+		"body": [
+			"headerDict = dict(\"string\");",
+			"put(headerDict, \"Accept\", \"application/json\");",
+			"put(headerDict, \"Content-Type\", \"application/json\");",
+			"put(headerDict, \"Authorization\", credentials);",
+			"response = urldata(${1:url}, \"POST\", headerDict, requestPayload);",
+		],
+		"description": "Retrieves data using POST method"
+	},
+	"BML urldatabypost": {
+		"prefix": "bml-urldatabypost",
+		"body": [
+			"headerDict = dict(\"string\");",
+			"put(headerDict, \"Accept\", \"application/json\");",
+			"put(headerDict, \"Content-Type\", \"application/json\");",
+			"put(headerDict, \"Authorization\", credentials);",
+			"response = urldatabypost(${1:url}, requestPayload, \"ERROR\", headerDict);",
+		],
+		"description": "Retrieves data using POST method"
+	},
+	"BML urldatabyget": {
+		"prefix": "bml-urldatabyget",
+		"body": [
+			"response = urldatabyget(${1:url}, params, \"ERROR\");",
+		],
+		"description": "Retrieves data using GET method"
+	},
+	"BML urldatabypostasync": {
+		"prefix": "bml-urldatabypostasync",
+		"body": [
+			"headerDict = dict(\"string\");",
+			"response = urldatabypostasync(${1:url}, params, \"ERROR\", \"callbackActionVarName\", headerDict);",
+		],
+		"description": "Retrieves data asynchronously using POST method"
+	},
+	"BML applytemplate": {
+		"prefix": "bml-applytemplate",
+		"body": [
+			"payload = dict(\"string\");",
+			"applytemplate(${1:templateFileLocation}, payload);",
+		],
+		"description": "This function applies a set of token key-value pairs to the template file."
+	},
+	"BML readxmlmultiple": {
+		"prefix": "bml-readxmlmultiple",
+		"body": [
+			"result = readxmlmultiple(${1:xmlPayload}, xpaths);",
+		],
+		"description": "This function reads a set of multiple XML node contents based on a set of XPath expressions."
+	},
+	"BML readxmlsingle": {
+		"prefix": "bml-readxmlsingle",
+		"body": [
+			"result = readxmlsingle(${1:xmlPayload}, xpaths);",
+		],
+		"description": "This function reads a set of single XML node content based on a set of XPath expressions."
+	},
+	"BML transformxml": {
+		"prefix": "bml-transformxml",
+		"body": [
+			"result = transformxml(${1:xmlcontent}, xslFileLocation);",
+		],
+		"description": "This function transforms an XML string with an XSLT file stored in the File Manager."
+	},
 }

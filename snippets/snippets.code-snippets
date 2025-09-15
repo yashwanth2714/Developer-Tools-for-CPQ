@@ -486,6 +486,7 @@
 		],
 		"description": "Converts a string to a date."
 	},
+    // URL FUNCTIONS
     "BML makeurlparam": {
 		"prefix": "bml-makeurlparam",
 		"body": [
@@ -543,6 +544,7 @@
 		],
 		"description": "Retrieves data asynchronously using POST method"
 	},
+    // XML FUNCTIONS
 	"BML applytemplate": {
 		"prefix": "bml-applytemplate",
 		"body": [
@@ -572,4 +574,152 @@
 		],
 		"description": "This function transforms an XML string with an XSLT file stored in the File Manager."
 	},
+    // ARRAY FUNCTIONS
+	"BML append": {
+		"prefix": "bml-array-append",
+		"body": [
+			"append(arr, \"value\");"
+		],
+		"description": "This function will attach a new element to the end of an array."
+	},
+	"BML boolean[n]": {
+		"prefix": "bml-array-boolean",
+		"body": [
+			"booleanArray = boolean[size];"
+		],
+		"description": "Declare a 1-D boolean array with the specified size."
+	},
+	"BML boolean[n][n]": {
+		"prefix": "bml-array-boolean2d",
+		"body": [
+			"booleanArray = boolean[size1][size2];"
+		],
+		"description": "Declare a 2-D boolean array with the specified size."
+	},
+	"BML bytearray": {
+		"prefix": "bml-array-bytearray",
+		"body": [
+			"value = bytearray(content, \"charSet\");"
+		],
+		"description": "This function stores a collection of binary data such as the contents of a file."
+	},
+	"BML date[n]": {
+		"prefix": "bml-array-date",
+		"body": [
+			"datesArray = date[size];"
+		],
+		"description": "Declare a 1-D date array with the specified size."
+	},
+	"BML date[n][n]": {
+		"prefix": "bml-array-date2d",
+		"body": [
+			"datesArray = date[size1][size2];"
+		],
+		"description": "Declare a 2-D date array with the specified size."
+	},
+	"BML findinarray": {
+		"prefix": "bml-array-findinarray",
+		"body": [
+			"index = findinarray(arr, \"value\");"
+		],
+		"description": "Find index of a value in an array"
+	},
+	"BML float[n]": {
+		"prefix": "bml-array-float",
+		"body": [
+			"floatArray = float[size];"
+		],
+		"description": "Declare a 1-D float array with the specified size."
+	},
+	"BML float[n][n]": {
+		"prefix": "bml-array-float2d",
+		"body": [
+			"floatArray = float[size1][size2];"
+		],
+		"description": "Declare a 2-D float array with the specified size."
+	},
+	"BML integer[n]": {
+		"prefix": "bml-array-integer",
+		"body": [
+			"integerArray = integer[size];"
+		],
+		"description": "Declare a 1-D integer array with the specified size."
+	},
+	"BML integer[n][n]": {
+		"prefix": "bml-array-integer2d",
+		"body": [
+			"integerArray = integer[size1][size2];"
+		],
+		"description": "Declare a 2-D integer array with the specified size."
+	},
+	"BML isempty": {
+		"prefix": "bml-array-isempty",
+		"body": [
+			"result = isempty(arr);"
+		],
+		"description": "Check whether an array is empty"
+	},
+	"BML max": {
+		"prefix": "bml-array-max",
+		"body": [
+			"maxValue = max(arr);"
+		],
+		"description": "Return maximum value in array"
+	},
+	"BML min": {
+		"prefix": "bml-array-min",
+		"body": [
+			"minValue = min(arr);"
+		],
+		"description": "Return minimum value in array"
+	},
+	"BML range": {
+		"prefix": "bml-array-range",
+		"body": [
+			"arr = range(size);"
+		],
+		"description": "Declares an integer array with a specified size and initializes it to its index value."
+	},
+	"BML remove": {
+		"prefix": "bml-array-remove",
+		"body": [
+			"index = remove(arr, position);"
+		],
+		"description": "Remove element from array by index"
+	},
+	"BML reverse": {
+		"prefix": "bml-array-reverse",
+		"body": [
+			"result = reverse(arr);"
+		],
+		"description": "Reverse the array in place"
+	},
+	"BML sizeofarray": {
+		"prefix": "bml-array-sizeofarray",
+		"body": [
+			"arraySize = sizeofarray(arr);"
+		],
+		"description": "Return number of elements in array"
+	},
+	"BML sort": {
+		"prefix": "bml-array-sort",
+		"body": [
+			"sortedArray = sort(arr, \"order\");"
+		],
+		"description": "This function sorts array elements based on defined sort method. You can sort in ascending or descending order."
+	},
+	"BML string[n]": {
+		"prefix": "bml-array-string",
+		"body": [
+			"stringArray = string[size];"
+		],
+		"description": "Declare a 1-D string array"
+	},
+	"BML string[n][n]": {
+		"prefix": "bml-array-string2d",
+		"body": [
+			"stringArray = string[size1][size2];"
+		],
+		"description": "Declare a 2-D string array with the specified size."
+	}
 }

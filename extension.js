@@ -4,13 +4,21 @@ const beautify = require("js-beautify").js;
 function activate(context) {
     vscode.languages.registerDocumentFormattingEditProvider("bml", {
         provideDocumentFormattingEdits(document) {
-            const text = document.getText();
+            let text = document.getText();
 
-            // Preprocess BML operators/keywords
-            let bmlCode = text
-                .replace(/\bAND\b/g, "&&")
-                .replace(/\bOR\b/g, "||")
-                .replace(/\belif\s*\(/g, "else if(");  // ✅ convert elif to else if
+            // Replace elif → else if (before beautify)
+            text = text.replace(/\belif\s*\(/gi, "else if(");
+
+            // Replace AND/OR only inside conditions
+            text = text.replace(
+                /(if|else if|while|for)\s*\(([^)]*)\)/gi,
+                (match, keyword, condition) => {
+                    const replaced = condition
+                        .replace(/\bAND\b/gi, "&&")
+                        .replace(/\bOR\b/gi, "||");
+                    return `${keyword}(${replaced})`;
+                }
+            );
 
             const options = {
                 indent_size: 4,
@@ -21,13 +29,13 @@ function activate(context) {
                 wrap_line_length: 0
             };
 
-            let formatted = beautify(bmlCode, options);
+            let formatted = beautify(text, options);
 
-            // Restore original BML operators/keywords
+            // Restore keywords
             formatted = formatted
-                .replace(/\&\&/g, "AND")
-                .replace(/\|\|/g, "OR")
-                .replace(/\belse if\s*\(/g, "elif (");
+                .replace(/\belse if\s*\(/g, "elif (")   // back to elif
+                .replace(/\&\&/g, "AND")               // back to AND
+                .replace(/\|\|/g, "OR");               // back to OR
 
             // Fix not-equal operator
             formatted = formatted.replace(/<\s*>/g, "<>");

@@ -930,4 +930,69 @@
 		],
 		"description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the user session."
 	},
+    // CONDITIONAL FUNCTIONS
+    "BML if": {
+		"prefix": "bml-if",
+		"body": [
+            "if (${1:condition}) {",
+            "\/\/ code",
+            "}"
+		],
+		"description": "if statement"
+	},
+    "BML if.else": {
+		"prefix": "bml-if.else",
+		"body": [
+            "if (${1:condition}) {",
+            "\/\/ code",
+            "} else {",
+            "\/\/ code",
+            "}"
+		],
+		"description": "if-else statement"
+	},
+    "BML if.elif": {
+		"prefix": "bml-if.elif",
+		"body": [
+            "if (${1:condition}) {",
+            "\/\/ code",
+            "} elif (${2:condition}) {",
+            "\/\/ code",
+            "}"
+		],
+		"description": "if-elif statement"
+	},
+    "BML if.elif.else": {
+		"prefix": "bml-if.elif.else",
+		"body": [
+            "if (${1:condition}) {",
+            "\/\/ code",
+            "} elif (${2:condition}) {",
+            "\/\/ code",
+            "} else {",
+            "\/\/ code",
+            "}"
+		],
+		"description": "if-elif-else statement"
+	},
+    "BML loop.array": {
+		"prefix": "bml-loop.array",
+		"body": [
+            "for each in ${1:array} {",
+            "\/\/ code",
+            "}"
+		],
+		"description": "Loop an array"
+	},
+    "BML loop.jsonarray": {
+		"prefix": "bml-loop.jsonarray",
+		"body": [
+            "${1:jsonArrSize} = jsonarraysize(${2:jsonArr});",
+            "${3:jsonArrRange} = range(${4:jsonArrSize});",
+            "for index in ${5:jsonArrRange} {",
+            "   ${6:val} = jsonarrayget(${7:jsonArr}, ${8:index});",
+            "}"
+		],
+		"description": "Loop a JSON Array."
+	},
 }

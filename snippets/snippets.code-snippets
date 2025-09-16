@@ -721,5 +721,146 @@
 			"stringArray = string[size1][size2];"
 		],
 		"description": "Declare a 2-D string array with the specified size."
-	}
+	},
+    // MATH FUNCTIONS
+    "BML acos": {
+		"prefix": "bml-math-acos",
+		"body": [
+			"result = acos(${1:value});"
+		],
+		"description": "This function returns the arc cosine of the number or angle in the range of 0 through π."
+	},
+	"BML asin": {
+		"prefix": "bml-math-asin",
+		"body": [
+			"result = asin(${1:value});"
+		],
+		"description": "This function returns the arcsine of a number or angle."
+	},
+	"BML atan": {
+		"prefix": "bml-math-atan",
+		"body": [
+			"result = atan(${1:value});"
+		],
+		"description": "This function returns the arctangent of the number or angle."
+	},
+	"BML ceil": {
+		"prefix": "bml-math-ceil",
+		"body": [
+			"result = ceil(${1:value});"
+		],
+		"description": "This function converts a float into the next highest whole number."
+	},
+	"BML cos": {
+		"prefix": "bml-math-cos",
+		"body": [
+			"result = cos(${1:value});"
+		],
+		"description": "This function returns the cosine of the number/angle."
+	},
+	"BML cosh": {
+		"prefix": "bml-math-cosh",
+		"body": [
+			"result = cosh(${1:value});"
+		],
+		"description": "This function returns the hyperbolic cosine of a number or angle."
+	},
+	"BML exp": {
+		"prefix": "bml-math-exp",
+		"body": [
+			"result = exp(${1:value});"
+		],
+		"description": "This function returns Euler's number e raised to the power of the number passed through the function, also known as the exponential function."
+	},
+	"BML fabs": {
+		"prefix": "bml-math-fabs",
+		"body": [
+			"result = fabs(${1:value});"
+		],
+		"description": "This function returns the absolute value of a number."
+	},
+	"BML fmod": {
+		"prefix": "bml-math-fmod",
+		"body": [
+			"result = fmod(${1:value1}, ${2:value2});"
+		],
+		"description": "This function returns the remainder of the division operation x, y."
+	},
+	"BML hypot": {
+		"prefix": "bml-math-hypot",
+		"body": [
+			"result = hypot(${1:value1}, ${2:value2});"
+		],
+		"description": "This function returns the sqrt(x2 + y2) without intermediaries."
+	},
+	"BML integer": {
+		"prefix": "bml-math-integer",
+		"body": [
+			"result = integer(${1:value});"
+		],
+		"description": "This function returns the integer portion of a float number."
+	},
+	"BML ln": {
+		"prefix": "bml-math-ln",
+		"body": [
+			"result = ln(${1:value});"
+		],
+		"description": "This function returns the natural logarithm (base e) of the number."
+	},
+	"BML log": {
+		"prefix": "bml-math-log",
+		"body": [
+			"result = log(${1:value});"
+		],
+		"description": "This function returns the base-10 logarithm of the number."
+	},
+	"BML pow": {
+		"prefix": "bml-math-pow",
+		"body": [
+			"result = pow(${1:base}, ${2:exponent});"
+		],
+		"description": "This function returns the value of the first argument raised to the power of the second argument."
+	},
+	"BML round": {
+		"prefix": "bml-math-round",
+		"body": [
+			"result = round(${1:value});"
+		],
+		"description": "This function returns the rounded value of a number up to a certain decimal point."
+	},
+	"BML sin": {
+		"prefix": "bml-math-sin",
+		"body": [
+			"result = sin(${1:value});"
+		],
+		"description": "This function returns the trigonometric sine of the number/angle."
+	},
+	"BML sinh": {
+		"prefix": "bml-math-sinh",
+		"body": [
+			"result = sinh(${1:value});"
+		],
+		"description": "This function returns the hyperbolic sine of a number or angle."
+	},
+	"BML sqrt": {
+		"prefix": "bml-math-sqrt",
+		"body": [
+			"result = sqrt(${1:value});"
+		],
+		"description": "This function returns the positive square root of a number."
+	},
+	"BML tan": {
+		"prefix": "bml-math-tan",
+		"body": [
+			"result = tan(${1:value});"
+		],
+		"description": "This function returns the tangent of the number/angle."
+	},
+	"BML tanh": {
+		"prefix": "bml-math-tanh",
+		"body": [
+			"result = tanh(${1:value});"
+		],
+		"description": "This function returns the hyperbolic tangent of a number or angle."
+	},
 }

@@ -863,4 +863,26 @@
 		],
 		"description": "This function returns the hyperbolic tangent of a number or angle."
 	},
+    // GLOBAL DICTIONARY FUNCTIONS
+    "BML globaldictset": {
+		"prefix": "bml-globaldictset",
+		"body": [
+            "globaldictset(\"key\", \"value\");"
+		],
+		"description": "This function adds or updates the key-value pair in the global dictionary."
+	},
+    "BML globaldictget": {
+		"prefix": "bml-globaldictget",
+		"body": [
+            "${1:value} = globaldictget(\"key\"});"
+		],
+		"description": "This function returns a value stored in the global dictionary corresponding to the given key. If the key is not found in the global dictionary, null is returned."
+	},
+    "BML globaldictremove": {
+		"prefix": "bml-globaldictremove",
+		"body": [
+            "${1:result} = globaldictremove(\"key\"});"
+		],
+		"description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the global dictionary."
+	},
 }

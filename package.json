@@ -2,7 +2,7 @@
     "name": "oracle-cpq-bml-snippets",
     "displayName": "Developer Tools for CPQ",
     "description": "A collection of developer tools and code snippets to speed up coding in Oracle CPQ.",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "publisher": "YashwanthKumar",
     "license": "MIT",
     "repository": {

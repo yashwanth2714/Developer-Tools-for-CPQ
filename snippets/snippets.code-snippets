@@ -874,15 +874,60 @@
     "BML globaldictget": {
 		"prefix": "bml-globaldictget",
 		"body": [
-            "${1:value} = globaldictget(\"key\"});"
+            "${1:value} = globaldictget(\"key\");"
 		],
 		"description": "This function returns a value stored in the global dictionary corresponding to the given key. If the key is not found in the global dictionary, null is returned."
 	},
     "BML globaldictremove": {
 		"prefix": "bml-globaldictremove",
 		"body": [
-            "${1:result} = globaldictremove(\"key\"});"
+            "${1:result} = globaldictremove(\"key\");"
 		],
 		"description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the global dictionary."
+	},
+    // SYSTEM CONFIGURATION FUNCTIONS
+    "BML getsystemdata": {
+		"prefix": "bml-getsystemdata",
+		"body": [
+            "${1:systemJson} = getsystemdata();"
+		],
+		"description": "Returns a JSON object containing the entire representation of the System Configuration Data."
+	},
+    "BML getsystemattrvalues": {
+		"prefix": "bml-getsystemattrvalues",
+		"body": [
+            "${1:values} = getsystemattrvalues(\"${2:$.path}\");"
+		],
+		"description": "This function returns a string containing a single attribute's values from a System Configuration."
+	},
+    "BML getsystemmultipleattrvalues": {
+		"prefix": "bml-getsystemmultipleattrvalues",
+		"body": [
+            "jsonPaths = dict(\"string\");",
+            "${1:values} = getsystemmultipleattrvalues(${2:jsonPaths});"
+		],
+		"description": "  This function returns dictionary key and value string arrays containing attribute values from a System Configuration."
+	},
+    // USER SESSION FUNCTIONS
+    "BML usersessionset": {
+		"prefix": "bml-usersessionset",
+		"body": [
+            "usersessionset(\"key\", \"value\");"
+		],
+		"description": "This function sets a key-value pair to the user session cache. The values are available as long as the user session is active. Values stored in the session cache are removed automatically when the user logs out, the session expires, or the server is restarted."
+	},
+    "BML usersessionget": {
+		"prefix": "bml-usersessionget",
+		"body": [
+            "${1:value} = usersessionget(\"key\");"
+		],
+		"description": "This function retrieves a value for a given key from a user session. If the key is not found, null is returned."
+	},
+    "BML usersessionremove": {
+		"prefix": "bml-usersessionremove",
+		"body": [
+            "${1:result} = usersessionremove(\"key\");"
+		],
+		"description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the user session."
 	},
 }

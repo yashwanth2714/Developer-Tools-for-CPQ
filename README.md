@@ -7,10 +7,11 @@ Boost your productivity with ready-to-use code templates, clean syntax highlight
 
 ## ✨ Features
 
-- 🚀 Ready-to-use snippets for **BML functions** (`json`, `dictionary`, `date`, `string`, etc.)  
+- 🚀 Ready-to-use snippets for **BML functions** 
+    (`JSON`, `Dictionary`, `Date`, `String`, `Array`, `URL Access`, `XML`, `Math` etc.)  
 - ⚡ Quick code templates for **BML control structures** (loops, conditions)  
 - 🎨 **Syntax highlighting** for `.bml` files (based on Java grammar)  
-- 🧹 **Code formatter** for `.bml` (keeps operators and conditions clean) 
+- 🧹 **Code formatter** for `.bml` 
 - 📦 Snippets reusable in `.bml`, `.txt`, `.c`, `.java` files  
 - 🔍 Optimized for Oracle CPQ developers working daily with BML   
 

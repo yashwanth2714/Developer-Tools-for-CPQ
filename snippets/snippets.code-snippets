@@ -990,7 +990,7 @@
             "${1:jsonArrSize} = jsonarraysize(${2:jsonArr});",
             "${3:jsonArrRange} = range(${4:jsonArrSize});",
             "for index in ${5:jsonArrRange} {",
-            "   ${6:val} = jsonarrayget(${7:jsonArr}, ${8:index});",
+            "    ${6:val} = jsonarrayget(${7:jsonArr}, ${8:index});",
             "}"
 		],
 		"description": "Loop a JSON Array."

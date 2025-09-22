@@ -15,7 +15,48 @@
     // 	],
     // 	"description": "Log output to console"
     // }
-
+    "BML: header template": {
+        "prefix": "bml-header-template",
+        "body": [
+            "/**",
+            "* Name: ",
+            "* Date: DD/MM/YYYY",
+            "* Purpose: ",
+            "* Parameters: ",
+            "* Return Format: ",
+            "* Sample Test Data: refer to the test script",
+            "* Author: ",
+            "*",
+            "* Rev. Date    |   Developer         | Notes / Comments",
+            "* -------------|---------------------|-------------------------------------------------------------------------",
+            "*              |                     | ",
+            "*/"
+        ],
+        "description": "Standard header template for BML scripts."
+    },
+    "BML: comment block": {
+        "prefix": "bml-comment-block",
+        "body": [
+            "/**",
+            "*",
+            "*/"
+        ],
+        "description": "Block comment template."
+    },
+    "BML: single line comment": {
+        "prefix": "bml-comment",
+        "body": [
+            "// "
+        ],
+        "description": "Single line comment."
+    },
+    "BML: print": {
+        "prefix": "bml-print",
+        "body": [
+            "print(${1:variable});"
+        ],
+        "description": "Print variable"
+    },
     // JSON FUNCTIONS
     "BML: json (create object)": {
         "prefix": "bml-json",
@@ -995,4 +1036,19 @@
 		],
 		"description": "Loop a JSON Array."
 	},
+    "BML loop.lineprocess": {
+        "prefix": "bml-loop.lineProcess",
+        "body": [
+            "for line in line_process {",
+            "    parentDocNum = line._parent_doc_number;",
+            "    docNum = line._document_number;",
+            "",
+            "    if (parentDocNum == \"\") {",
+            "        // Model logic here",
+            "    } else {",
+            "        // Line logic here",
+            "    }",
+            "}",
+        ]
+    }
 }

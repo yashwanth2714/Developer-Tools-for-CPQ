@@ -121,7 +121,7 @@
 		"prefix": "bml-jsonarray",
 		"body": [
 			"// Create JSON array from string",
-			"jsonArr = jsonarray(\"${2:[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]}\");",
+			"jsonArr = jsonarray(\"[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]\");",
 			"// Create an empty json array",
 			"jsonArr = jsonarray();"
 		],
@@ -155,7 +155,7 @@
         "prefix": "bml-jsonarrayremove",
         "body": [
             "// Remove an element from array by index",
-            "jsonarrayremove(jsonArr, ${2:0});"
+            "jsonarrayremove(jsonArr, 0);"
         ],
         "description": "Removes an element from a JSON array. The size of the array object after the object is removed is returned. An error is thrown if the given index is not available."
     },
@@ -523,7 +523,7 @@
 			"put(headerDict, \"Accept\", \"application/json\");",
 			"put(headerDict, \"Content-Type\", \"application/json\");",
 			"put(headerDict, \"Authorization\", credentials);",
-			"response = urldata(${1:url}, \"GET\", headerDict);"
+			"response = urldata(url, \"GET\", headerDict);"
 		],
 		"description": "Retrieves data using GET method"
 	},
@@ -534,7 +534,7 @@
 			"put(headerDict, \"Accept\", \"application/json\");",
 			"put(headerDict, \"Content-Type\", \"application/json\");",
 			"put(headerDict, \"Authorization\", credentials);",
-			"response = urldata(${1:url}, \"POST\", headerDict, requestPayload);"
+			"response = urldata(url, \"POST\", headerDict, requestPayload);"
 		],
 		"description": "Retrieves data using POST method"
 	},
@@ -545,14 +545,14 @@
 			"put(headerDict, \"Accept\", \"application/json\");",
 			"put(headerDict, \"Content-Type\", \"application/json\");",
 			"put(headerDict, \"Authorization\", credentials);",
-			"response = urldatabypost(${1:url}, requestPayload, \"ERROR\", headerDict);"
+			"response = urldatabypost(url, requestPayload, \"ERROR\", headerDict);"
 		],
 		"description": "Retrieves data using POST method"
 	},
 	"BML urldatabyget": {
 		"prefix": "bml-urldatabyget",
 		"body": [
-			"response = urldatabyget(${1:url}, params, \"ERROR\");"
+			"response = urldatabyget(url, params, \"ERROR\");"
 		],
 		"description": "Retrieves data using GET method"
 	},
@@ -560,7 +560,7 @@
 		"prefix": "bml-urldatabypostasync",
 		"body": [
 			"headerDict = dict(\"string\");",
-			"response = urldatabypostasync(${1:url}, params, \"ERROR\", \"callbackActionVarName\", headerDict);"
+			"response = urldatabypostasync(url, params, \"ERROR\", \"callbackActionVarName\", headerDict);"
 		],
 		"description": "Retrieves data asynchronously using POST method"
 	},
@@ -568,28 +568,28 @@
 		"prefix": "bml-applytemplate",
 		"body": [
 			"payload = dict(\"string\");",
-			"applytemplate(${1:templateFileLocation}, payload);"
+			"applytemplate(templateFileLocation, payload);"
 		],
 		"description": "This function applies a set of token key-value pairs to the template file."
 	},
 	"BML readxmlmultiple": {
 		"prefix": "bml-readxmlmultiple",
 		"body": [
-			"result = readxmlmultiple(${1:xmlPayload}, xpaths);"
+			"result = readxmlmultiple(xmlPayload, xpaths);"
 		],
 		"description": "This function reads a set of multiple XML node contents based on a set of XPath expressions."
 	},
 	"BML readxmlsingle": {
 		"prefix": "bml-readxmlsingle",
 		"body": [
-			"result = readxmlsingle(${1:xmlPayload}, xpaths);"
+			"result = readxmlsingle(xmlPayload, xpaths);"
 		],
 		"description": "This function reads a set of single XML node content based on a set of XPath expressions."
 	},
 	"BML transformxml": {
 		"prefix": "bml-transformxml",
 		"body": [
-			"result = transformxml(${1:xmlcontent}, xslFileLocation);"
+			"result = transformxml(xmlcontent, xslFileLocation);"
 		],
 		"description": "This function transforms an XML string with an XSLT file stored in the File Manager."
 	},
@@ -601,7 +601,7 @@
 		"description": "This function will attach a new element to the end of an array."
 	},
 	"BML boolean[n]": {
-		"prefix": "bml-array-boolean",
+		"prefix": "bml-array-boolean1d",
 		"body": [
 			"booleanArray = boolean[size];"
 		],
@@ -622,7 +622,7 @@
 		"description": "This function stores a collection of binary data such as the contents of a file."
 	},
 	"BML date[n]": {
-		"prefix": "bml-array-date",
+		"prefix": "bml-array-date1d",
 		"body": [
 			"datesArray = date[size];"
 		],
@@ -643,7 +643,7 @@
 		"description": "Find index of a value in an array"
 	},
 	"BML float[n]": {
-		"prefix": "bml-array-float",
+		"prefix": "bml-array-float1d",
 		"body": [
 			"floatArray = float[size];"
 		],
@@ -657,7 +657,7 @@
 		"description": "Declare a 2-D float array with the specified size."
 	},
 	"BML integer[n]": {
-		"prefix": "bml-array-integer",
+		"prefix": "bml-array-integer1d",
 		"body": [
 			"integerArray = integer[size];"
 		],
@@ -727,7 +727,7 @@
 		"description": "This function sorts array elements based on defined sort method. You can sort in ascending or descending order."
 	},
 	"BML string[n]": {
-		"prefix": "bml-array-string",
+		"prefix": "bml-array-string1d",
 		"body": [
 			"stringArray = string[size];"
 		],
@@ -743,140 +743,140 @@
     "BML acos": {
 		"prefix": "bml-math-acos",
 		"body": [
-			"result = acos(${1:value});"
+			"result = acos(value);"
 		],
 		"description": "This function returns the arc cosine of the number or angle in the range of 0 through π."
 	},
 	"BML asin": {
 		"prefix": "bml-math-asin",
 		"body": [
-			"result = asin(${1:value});"
+			"result = asin(value);"
 		],
 		"description": "This function returns the arcsine of a number or angle."
 	},
 	"BML atan": {
 		"prefix": "bml-math-atan",
 		"body": [
-			"result = atan(${1:value});"
+			"result = atan(value);"
 		],
 		"description": "This function returns the arctangent of the number or angle."
 	},
 	"BML ceil": {
 		"prefix": "bml-math-ceil",
 		"body": [
-			"result = ceil(${1:value});"
+			"result = ceil(value);"
 		],
 		"description": "This function converts a float into the next highest whole number."
 	},
 	"BML cos": {
 		"prefix": "bml-math-cos",
 		"body": [
-			"result = cos(${1:value});"
+			"result = cos(value);"
 		],
 		"description": "This function returns the cosine of the number/angle."
 	},
 	"BML cosh": {
 		"prefix": "bml-math-cosh",
 		"body": [
-			"result = cosh(${1:value});"
+			"result = cosh(value);"
 		],
 		"description": "This function returns the hyperbolic cosine of a number or angle."
 	},
 	"BML exp": {
 		"prefix": "bml-math-exp",
 		"body": [
-			"result = exp(${1:value});"
+			"result = exp(value);"
 		],
 		"description": "This function returns Euler's number e raised to the power of the number passed through the function, also known as the exponential function."
 	},
 	"BML fabs": {
 		"prefix": "bml-math-fabs",
 		"body": [
-			"result = fabs(${1:value});"
+			"result = fabs(value);"
 		],
 		"description": "This function returns the absolute value of a number."
 	},
 	"BML fmod": {
 		"prefix": "bml-math-fmod",
 		"body": [
-			"result = fmod(${1:value1}, ${2:value2});"
+			"result = fmod(value1, value2);"
 		],
 		"description": "This function returns the remainder of the division operation x, y."
 	},
 	"BML hypot": {
 		"prefix": "bml-math-hypot",
 		"body": [
-			"result = hypot(${1:value1}, ${2:value2});"
+			"result = hypot(value1, value2);"
 		],
 		"description": "This function returns the sqrt(x2 + y2) without intermediaries."
 	},
 	"BML integer": {
 		"prefix": "bml-math-integer",
 		"body": [
-			"result = integer(${1:value});"
+			"result = integer(value);"
 		],
 		"description": "This function returns the integer portion of a float number."
 	},
 	"BML ln": {
 		"prefix": "bml-math-ln",
 		"body": [
-			"result = ln(${1:value});"
+			"result = ln(value);"
 		],
 		"description": "This function returns the natural logarithm (base e) of the number."
 	},
 	"BML log": {
 		"prefix": "bml-math-log",
 		"body": [
-			"result = log(${1:value});"
+			"result = log(value);"
 		],
 		"description": "This function returns the base-10 logarithm of the number."
 	},
 	"BML pow": {
 		"prefix": "bml-math-pow",
 		"body": [
-			"result = pow(${1:base}, ${2:exponent});"
+			"result = pow(base, exponent);"
 		],
 		"description": "This function returns the value of the first argument raised to the power of the second argument."
 	},
 	"BML round": {
 		"prefix": "bml-math-round",
 		"body": [
-			"result = round(${1:value});"
+			"result = round(value);"
 		],
 		"description": "This function returns the rounded value of a number up to a certain decimal point."
 	},
 	"BML sin": {
 		"prefix": "bml-math-sin",
 		"body": [
-			"result = sin(${1:value});"
+			"result = sin(value);"
 		],
 		"description": "This function returns the trigonometric sine of the number/angle."
 	},
 	"BML sinh": {
 		"prefix": "bml-math-sinh",
 		"body": [
-			"result = sinh(${1:value});"
+			"result = sinh(value);"
 		],
 		"description": "This function returns the hyperbolic sine of a number or angle."
 	},
 	"BML sqrt": {
 		"prefix": "bml-math-sqrt",
 		"body": [
-			"result = sqrt(${1:value});"
+			"result = sqrt(value);"
 		],
 		"description": "This function returns the positive square root of a number."
 	},
 	"BML tan": {
 		"prefix": "bml-math-tan",
 		"body": [
-			"result = tan(${1:value});"
+			"result = tan(value);"
 		],
 		"description": "This function returns the tangent of the number/angle."
 	},
 	"BML tanh": {
 		"prefix": "bml-math-tanh",
 		"body": [
-			"result = tanh(${1:value});"
+			"result = tanh(value);"
 		],
 		"description": "This function returns the hyperbolic tangent of a number or angle."
 	},
@@ -890,21 +890,21 @@
     "BML globaldictget": {
 		"prefix": "bml-globaldictget",
 		"body": [
-            "${1:value} = globaldictget(\"key\");"
+            "value = globaldictget(\"key\");"
 		],
 		"description": "This function returns a value stored in the global dictionary corresponding to the given key. If the key is not found in the global dictionary, null is returned."
 	},
     "BML globaldictremove": {
 		"prefix": "bml-globaldictremove",
 		"body": [
-            "${1:result} = globaldictremove(\"key\");"
+            "result = globaldictremove(\"key\");"
 		],
 		"description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the global dictionary."
 	},
     "BML getsystemdata": {
 		"prefix": "bml-getsystemdata",
 		"body": [
-            "${1:systemJson} = getsystemdata();"
+            "systemJson = getsystemdata();"
 		],
 		"description": "Returns a JSON object containing the entire representation of the System Configuration Data."
 	},
@@ -991,7 +991,7 @@
     "BML loop.array": {
 		"prefix": "bml-loop.array",
 		"body": [
-            "for each in ${1:array} {",
+            "for each in array {",
             "\/\/ code",
             "}"
 		],

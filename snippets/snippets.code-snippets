@@ -1,20 +1,4 @@
 {
-    // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-    // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-    // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-    // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-    // Placeholders with the same ids are connected.
-    // Example:
-    // "Print to console": {
-    // 	"scope": "javascript,typescript",
-    // 	"prefix": "log",
-    // 	"body": [
-    // 		"console.log('$1');",
-    // 		"$2"
-    // 	],
-    // 	"description": "Log output to console"
-    // }
     "BML: header template": {
         "prefix": "bml-header-template",
         "body": [
@@ -57,7 +41,6 @@
         ],
         "description": "Print variable"
     },
-    // JSON FUNCTIONS
 	"BML: json (create object)": {
 		"prefix": "bml-json",
 		"body": [
@@ -90,7 +73,7 @@
         "prefix": "bml-jsonput",
         "body": [
 			"// Put or update a key in a JSON object",
-			"jsonput(jsonObj, \"key\", value);",
+			"jsonput(jsonObj, \"key\", value);"
         ],
         "description": "Adds or updates a key-value entry in a JSON object. Returns the inserted/updated value."
     },
@@ -98,7 +81,7 @@
         "prefix": "bml-jsonremove",
         "body": [
 			"// Remove first-level key from JSON object",
-			"isRemoved = jsonremove(jsonObj, \"key\");",
+			"isRemoved = jsonremove(jsonObj, \"key\");"
         ],
         "description": "Removes a first-level key-value entry from a JSON object. Returns boolean."
     },
@@ -106,7 +89,7 @@
         "prefix": "bml-jsoncopy",
         "body": [
 			"// Copy a JSON object",
-			"copyObj = jsoncopy(jsonObj);",
+			"copyObj = jsoncopy(jsonObj);"
         ],
         "description": "Creates a copy of a JSON object. Changes to the original will not affect the copy."
     },
@@ -114,7 +97,7 @@
         "prefix": "bml-jsontostr",
         "body": [
 			"// Convert JSON object to JSON-formatted string",
-			"jsonStr = jsontostr(jsonObj);",
+			"jsonStr = jsontostr(jsonObj);"
         ],
         "description": "Converts a JSON object into a JSON formatted string."
     },
@@ -122,7 +105,7 @@
         "prefix": "bml-jsonkeys",
         "body": [
 			"// Get keys",
-			"keys = jsonkeys(jsonObj);",
+			"keys = jsonkeys(jsonObj);"
         ],
         "description": "Retrieves all first-level keys from a JSON object and returns an array of strings. If the optional parameter (ignoreNullValues) is set to true, null value keys are ignored."
     },
@@ -130,7 +113,7 @@
         "prefix": "bml-jsonnull",
         "body": [
 			"// Create a JSON null value",
-			"jnull = jsonnull();",
+			"jnull = jsonnull();"
         ],
         "description": "Creates an instance of a JSON null object."
     },
@@ -148,7 +131,7 @@
         "prefix": "bml-jsonarrayappend",
         "body": [
             "// Append a value to end of JSON array",
-            "jsonarrayappend(jsonArr, \"value\");",
+            "jsonarrayappend(jsonArr, \"value\");"
         ],
         "description": "Appends a value to the end of a JSON array and returns the appended value."
     },
@@ -172,7 +155,7 @@
         "prefix": "bml-jsonarrayremove",
         "body": [
             "// Remove an element from array by index",
-            "jsonarrayremove(jsonArr, ${2:0});",
+            "jsonarrayremove(jsonArr, ${2:0});"
         ],
         "description": "Removes an element from a JSON array. The size of the array object after the object is removed is returned. An error is thrown if the given index is not available."
     },
@@ -188,7 +171,7 @@
         "prefix": "bml-jsonarraytostr",
         "body": [
 			"// Convert JSON array to string",
-			"jsonArrStr = jsonarraytostr(jsonArr);",
+			"jsonArrStr = jsonarraytostr(jsonArr);"
         ],
         "description": "Converts a JSON array into a JSON formatted string."
     },
@@ -196,7 +179,7 @@
         "prefix": "bml-jsonarrayrefid",
         "body": [
 			"// Get a unique reference id for JSON array",
-			"refId = jsonarrayrefid(jsonArr);",
+			"refId = jsonarrayrefid(jsonArr);"
         ],
         "description": "Returns a unique reference ID that represents the input JSON array. Can only be invoked by Commerce advanced modify, auto update or advanced default functions. This function provides a more efficient method to pass a JSON array to the BML output to update an array set."
     },
@@ -209,9 +192,9 @@
             "// str = \"{\\\"key1\\\":90,\\\"key2\\\":[{\\\"key1\\\":900}],\\\"key3\\\":{\\\"key1\\\":9000}}\";",
             "// jsonObj = json(str);",
             "// arrayVals = jsonpathgetmultiple(jsonObj,\"$..key1\");",
-            "// print arrayVals; //Output: [90,900,9000]",
+            "// print arrayVals; //Output: [90,900,9000]"
         ],
-        "description": "Retrieve multiple values or nodes for a JSONPath expression. asPath=false returns values, true returns nodes.",
+        "description": "Retrieve multiple values or nodes for a JSONPath expression. asPath=false returns values, true returns nodes."
     },
     "BML: jsonpathgetsingle": {
         "prefix": "bml-jsonpathgetsingle",
@@ -226,7 +209,7 @@
             "// print catArray; // Output: {\"category\":\"reference\",\"author\":\"Nigel Rees\"}",
             "// ",
             "// expenseInt = jsonpathgetsingle(jsonObj,\"$.expensive\",\"integer\");",
-            "// print expenseInt; // Output: 10",
+            "// print expenseInt; // Output: 10"
         ],
         "description": "Retrieves the first node or value corresponding to a JSONPath expression. The valueType and defaultValue parameters are optional."
     },
@@ -234,7 +217,7 @@
         "prefix": "bml-jsonpathset",
         "body": [
             "// Set/update all nodes matching jsonPath to a new value",
-			"jsonpathset(jsonObj, \"$.path\", newValue);",
+			"jsonpathset(jsonObj, \"$.path\", newValue);"
         ],
         "description": "Updates all nodes matched by a JSONPath expression and returns the nodes updated."
     },
@@ -242,7 +225,7 @@
         "prefix": "bml-jsonpathcheck",
         "body": [
             "// Check whether a JSONPath exists in the JSON object",
-			"found = jsonpathcheck(jsonObj, \"$.path\");",
+			"found = jsonpathcheck(jsonObj, \"$.path\");"
         ],
         "description": "Checks if a JSONPath exists in a JSON object; returns boolean."
     },
@@ -250,37 +233,36 @@
         "prefix": "bml-jsonpathremove",
         "body": [
             "// Remove nodes matching jsonPath",
-			"removed = jsonpathremove(jsonObj, \"$.path\");",
+			"removed = jsonpathremove(jsonObj, \"$.path\");"
         ],
         "description": "Removes nodes matching a JSONPath expression from the JSON object; returns boolean."
     },
-    // STRING FUNTIONS
     "BML: len": {
         "prefix": "bml-len",
         "body": [
             "// Get length of a string",
-			"strLength = len(myString);",
+			"strLength = len(myString);"
         ],
         "description": "Returns the number of characters in the string."
     },
     "BML: string": {
         "prefix": "bml-string",
         "body": [
-			"str = string(variable);",
+			"str = string(variable);"
         ],
         "description": "Converts a float, integer or boolean value into text."
     },
     "BML: substring": {
         "prefix": "bml-substring",
         "body": [
-			"subStr = substring(myString, start, end);",
+			"subStr = substring(myString, start, end);"
         ],
         "description": "Extracts a substring from the given string."
     },
     "BML: startswith": {
         "prefix": "bml-startswith",
         "body": [
-			"starts = startswith(myString, \"subString\");",
+			"starts = startswith(myString, \"subString\");"
         ],
         "description": "Checks whether a string starts with a particular substring."
     },
@@ -294,7 +276,7 @@
     "BML: lower": {
         "prefix": "bml-lower",
         "body": [
-			"lowerStr = lower(myString);",
+			"lowerStr = lower(myString);"
         ],
         "description": "converts all characters in the text into all lowercase letters."
     },
@@ -308,28 +290,28 @@
     "BML: trim": {
         "prefix": "bml-trim",
         "body": [
-			"trimmed = trim(myString);",
+			"trimmed = trim(myString);"
         ],
         "description": "Remove whitespace from strings."
     },
     "BML: replace": {
         "prefix": "bml-replace",
         "body": [
-			"result = replace(myString, \"old\", \"new\");",
+			"result = replace(myString, \"old\", \"new\");"
         ],
         "description": "Replace substrings inside a string."
     },
     "BML: split": {
         "prefix": "bml-split",
         "body": [
-			"arr = split(myString, ",");",
+			"arr = split(myString, ",");"
         ],
         "description": "Split a string into an array by delimiter."
     },
     "BML: join": {
         "prefix": "bml-join",
         "body": [
-			"out = join(myArray, ",");",
+			"out = join(myArray, ",");"
         ],
         "description": "Join an array of strings into a single string."
     },
@@ -343,35 +325,35 @@
     "BML: atoi": {
         "prefix": "bml-atoi",
         "body": [
-			"result = atoi(myString);",
+			"result = atoi(myString);"
         ],
         "description": "Converts text that represents a number into an integer value."
     },
     "BML: atof": {
         "prefix": "bml-atof",
         "body": [
-			"result = atof(myString);",
+			"result = atof(myString);"
         ],
         "description": "Converts text that represents a number into a float value."
     },
 	"BML: isnumber": {
 		"prefix": "bml-isnumber",
 		"body": [
-			"isnumber(myString);",
+			"isnumber(myString);"
 		],
 		"description": "Returns true when the string is a number and false if it contains other characters."
 	},
 	"BML: find": {
 		"prefix": "bml-find",
 		"body": [
-			"find(myString,\"substring\");",
+			"find(myString,\"substring\");"
 		],
 		"description": "Returns the position of a substring within a string."
 	},
     "BML: decodebase64": {
         "prefix": "bml-decodebase64",
         "body": [
-			"result = decodebase64(myString);",
+			"result = decodebase64(myString);"
         ],
         "description": "Takes an encoded Base64 string and returns it as a plain text string."
     },
@@ -380,29 +362,28 @@
 		"body": [
 			"userName = \"\";",
 			"password = \"\";",
-			"result = encodebase64(userName + \":\" + password);",
+			"result = encodebase64(userName + \":\" + password);"
 		],
 		"description": "Parses the string parameter and converts it into its Base64 equivalent, as an encoded string."
 	},
     "BML: getcurrencyvalue": {
         "prefix": "bml-getcurrencyvalue",
         "body": [
-			"result = getcurrencyvalue(value, \"currencyCode\");",
+			"result = getcurrencyvalue(value, \"currencyCode\");"
         ],
         "description": "Takes a formatted currency string and returns the string's numeric value."
     },
     "BML: html": {
         "prefix": "bml-html",
         "body": [
-			"result = html(myString);",
+			"result = html(myString);"
         ],
         "description": "A method for HTML escaping (output encoding) of a string as safe plain text."
     },
-    // DICTIONARY FUNCTIONS
 	"BML: containskey (dictionary)": {
 		"prefix": "bml-dict-containskey",
 		"body": [
-			"containskey(myDictionary, \"key\");",
+			"containskey(myDictionary, \"key\");"
 		],
 		"description": "Returns true if the specified key exists in the dictionary."
 	},
@@ -410,43 +391,42 @@
 		"prefix": "bml-dict",
 		"body": [
 			"// Create a dictionary",
-			"myDictionary = dict(\"string\");",
+			"myDictionary = dict(\"string\");"
 		],
 		"description": "Create a dictionary for the specified data type."
 	},
 	"BML: get (dictionary)": {
 		"prefix": "bml-dict-get",
 		"body": [
-			"value = get(myDictionary, \"key\");",
+			"value = get(myDictionary, \"key\");"
 		],
 		"description": "Get the value stored in the dictionary for the given key."
 	},
 	"BML: keys (dictionary)": {
 		"prefix": "bml-dict-keys",
 		"body": [
-			"keysArr = keys(myDictionary);",
+			"keysArr = keys(myDictionary);"
 		],
 		"description": "Retrieve an unordered string array of all keys in a dictionary."
 	},
 	"BML: put (dictionary)": {
 		"prefix": "bml-dict-put",
 		"body": [
-			"put(myDictionary, \"key\", value);",
+			"put(myDictionary, \"key\", value);"
 		],
 		"description": "Insert or update a value in the dictionary under the given key."
 	},
 	"BML: values (dictionary)": {
 		"prefix": "bml-dict-values",
 		"body": [
-			"vals = values(myDictionary);",
+			"vals = values(myDictionary);"
 		],
 		"description": "Get an array of all values stored in the dictionary."
 	},
-    // DATE FUNCTIONS
 	"BML: adddays": {
 		"prefix": "bml-date-adddays",
 		"body": [
-			"newDate = adddays(date, noOfDays);",
+			"newDate = adddays(date, noOfDays);"
 		],
 		"description": "Adds days to a date."
 	},
@@ -460,80 +440,79 @@
 	"BML: comparedates": {
 		"prefix": "bml-date-comparedates",
 		"body": [
-			"result = comparedates(date1, date2);",
+			"result = comparedates(date1, date2);"
 		],
 		"description": "Compare two dates based on date and time."
 	},
 	"BML: datetostr": {
 		"prefix": "bml-date-datetostr",
 		"body": [
-			"result = datetostr(date, dateFormat);",
+			"result = datetostr(date, dateFormat);"
 		],
 		"description": "Converts a date to a string."
 	},
 	"BML: getcurrenttimeinmillis": {
 		"prefix": "bml-date-getcurrenttimeinmillis",
 		"body": [
-			"result = getcurrenttimeinmillis();",
+			"result = getcurrenttimeinmillis();"
 		],
 		"description": "Returns the current time in milliseconds."
 	},
 	"BML: getdate": {
 		"prefix": "bml-date-getdate",
 		"body": [
-			"currentDate = getdate();",
+			"currentDate = getdate();"
 		],
 		"description": "Returns the current date."
 	},
 	"BML: getdiffindays": {
 		"prefix": "bml-date-getdiffindays",
 		"body": [
-			"result = getdiffindays(date1, date2);",
+			"result = getdiffindays(date1, date2);"
 		],
 		"description": "Calculates the number of days between two different dates."
 	},
 	"BML: getstrdate": {
 		"prefix": "bml-date-getstrdate",
 		"body": [
-			"result = getstrdate();",
+			"result = getstrdate();"
 		],
 		"description": "Returns the string representation of current date."
 	},
 	"BML: isleap": {
 		"prefix": "bml-date-isleap",
 		"body": [
-			"result = isleap(Year);",
+			"result = isleap(Year);"
 		],
 		"description": "Returns true if the year provided is a leap year."
 	},
 	"BML: isweekend": {
 		"prefix": "bml-date-isweekend",
 		"body": [
-			"result = isweekend(date);",
+			"result = isweekend(date);"
 		],
 		"description": "Returns true if the date provided is a Saturday or Sunday."
 	},
     "BML: minusdays": {
 		"prefix": "bml-date-minusdays",
 		"body": [
-			"newDate = minusdays(date, noOfDays);",
+			"newDate = minusdays(date, noOfDays);"
 		],
 		"description": "Subtracts days to a date."
 	},
 	"BML: strtojavadate": {
 		"prefix": "bml-date-strtojavadate",
 		"body": [
-			"result = strtojavadate(dateString, dateFormat);",
+			"result = strtojavadate(dateString, dateFormat);"
 		],
 		"description": "Converts a string to a date."
 	},
-    // URL FUNCTIONS
     "BML makeurlparam": {
 		"prefix": "bml-makeurlparam",
 		"body": [
 			"params = makeurlparam({",
 			"    'param1' : \"value\",",
-			"});",
+			"});"
 		],
 		"description": "Converts a series of name-value pairs into a query string, which can be appended to a URL."
 	},
@@ -544,7 +523,7 @@
 			"put(headerDict, \"Accept\", \"application/json\");",
 			"put(headerDict, \"Content-Type\", \"application/json\");",
 			"put(headerDict, \"Authorization\", credentials);",
-			"response = urldata(${1:url}, \"GET\", headerDict);",
+			"response = urldata(${1:url}, \"GET\", headerDict);"
 		],
 		"description": "Retrieves data using GET method"
 	},
@@ -555,7 +534,7 @@
 			"put(headerDict, \"Accept\", \"application/json\");",
 			"put(headerDict, \"Content-Type\", \"application/json\");",
 			"put(headerDict, \"Authorization\", credentials);",
-			"response = urldata(${1:url}, \"POST\", headerDict, requestPayload);",
+			"response = urldata(${1:url}, \"POST\", headerDict, requestPayload);"
 		],
 		"description": "Retrieves data using POST method"
 	},
@@ -566,14 +545,14 @@
 			"put(headerDict, \"Accept\", \"application/json\");",
 			"put(headerDict, \"Content-Type\", \"application/json\");",
 			"put(headerDict, \"Authorization\", credentials);",
-			"response = urldatabypost(${1:url}, requestPayload, \"ERROR\", headerDict);",
+			"response = urldatabypost(${1:url}, requestPayload, \"ERROR\", headerDict);"
 		],
 		"description": "Retrieves data using POST method"
 	},
 	"BML urldatabyget": {
 		"prefix": "bml-urldatabyget",
 		"body": [
-			"response = urldatabyget(${1:url}, params, \"ERROR\");",
+			"response = urldatabyget(${1:url}, params, \"ERROR\");"
 		],
 		"description": "Retrieves data using GET method"
 	},
@@ -581,41 +560,39 @@
 		"prefix": "bml-urldatabypostasync",
 		"body": [
 			"headerDict = dict(\"string\");",
-			"response = urldatabypostasync(${1:url}, params, \"ERROR\", \"callbackActionVarName\", headerDict);",
+			"response = urldatabypostasync(${1:url}, params, \"ERROR\", \"callbackActionVarName\", headerDict);"
 		],
 		"description": "Retrieves data asynchronously using POST method"
 	},
-    // XML FUNCTIONS
 	"BML applytemplate": {
 		"prefix": "bml-applytemplate",
 		"body": [
 			"payload = dict(\"string\");",
-			"applytemplate(${1:templateFileLocation}, payload);",
+			"applytemplate(${1:templateFileLocation}, payload);"
 		],
 		"description": "This function applies a set of token key-value pairs to the template file."
 	},
 	"BML readxmlmultiple": {
 		"prefix": "bml-readxmlmultiple",
 		"body": [
-			"result = readxmlmultiple(${1:xmlPayload}, xpaths);",
+			"result = readxmlmultiple(${1:xmlPayload}, xpaths);"
 		],
 		"description": "This function reads a set of multiple XML node contents based on a set of XPath expressions."
 	},
 	"BML readxmlsingle": {
 		"prefix": "bml-readxmlsingle",
 		"body": [
-			"result = readxmlsingle(${1:xmlPayload}, xpaths);",
+			"result = readxmlsingle(${1:xmlPayload}, xpaths);"
 		],
 		"description": "This function reads a set of single XML node content based on a set of XPath expressions."
 	},
 	"BML transformxml": {
 		"prefix": "bml-transformxml",
 		"body": [
-			"result = transformxml(${1:xmlcontent}, xslFileLocation);",
+			"result = transformxml(${1:xmlcontent}, xslFileLocation);"
 		],
 		"description": "This function transforms an XML string with an XSLT file stored in the File Manager."
 	},
-    // ARRAY FUNCTIONS
 	"BML append": {
 		"prefix": "bml-array-append",
 		"body": [
@@ -763,7 +740,6 @@
 		],
 		"description": "Declare a 2-D string array with the specified size."
 	},
-    // MATH FUNCTIONS
     "BML acos": {
 		"prefix": "bml-math-acos",
 		"body": [
@@ -904,7 +880,6 @@
 		],
 		"description": "This function returns the hyperbolic tangent of a number or angle."
 	},
-    // GLOBAL DICTIONARY FUNCTIONS
     "BML globaldictset": {
 		"prefix": "bml-globaldictset",
 		"body": [
@@ -926,7 +901,6 @@
 		],
 		"description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the global dictionary."
 	},
-    // SYSTEM CONFIGURATION FUNCTIONS
     "BML getsystemdata": {
 		"prefix": "bml-getsystemdata",
 		"body": [
@@ -949,7 +923,6 @@
 		],
 		"description": "  This function returns dictionary key and value string arrays containing attribute values from a System Configuration."
 	},
-    // USER SESSION FUNCTIONS
     "BML usersessionset": {
 		"prefix": "bml-usersessionset",
 		"body": [
@@ -971,7 +944,6 @@
 		],
 		"description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the user session."
 	},
-    // CONDITIONAL FUNCTIONS
     "BML if": {
 		"prefix": "bml-if",
 		"body": [
@@ -1048,7 +1020,7 @@
             "    } else {",
             "        // Line logic here",
             "    }",
-            "}",
+            "}"
         ]
     }
 }

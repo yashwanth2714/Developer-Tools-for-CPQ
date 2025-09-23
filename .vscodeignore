@@ -1,3 +1,5 @@
+scripts/**
+build/**
 .vscode/**
 .vscode-test/**
 .gitignore

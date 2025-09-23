@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 0.5em;
+        }
+
+        #searchBox {
+            width: 100%;
+            padding: 6px;
+            font-size: 13px;
+        }
+
+        li {
+            margin-bottom: 25px;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 6px;
+        }
+
+        code {
+            display: block;
+            background: #222;
+            color: #eee;
+            padding: 6px;
+            border-radius: 4px;
+            margin: 6px 0;
+        }
+
+        pre {
+            background: #111;
+            color: #eee;
+            padding: 8px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+
+        button.copy-btn {
+            margin-top: 6px;
+            padding: 4px 10px;
+            font-size: 12px;
+            background: #007acc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="searchBox" type="text" placeholder="Search BML functions..." />
+    <div id="results"></div>
+
+    <script>
+        const vscode = acquireVsCodeApi();
+        const searchBox = document.getElementById('searchBox');
+        const resultsDiv = document.getElementById('results');
+
+        searchBox.addEventListener('input', e => {
+            vscode.postMessage({ type: 'search', query: e.target.value });
+        });
+
+        window.addEventListener('message', event => {
+            const msg = event.data;
+            if (msg.type === 'updateResults') {
+                resultsDiv.innerHTML = msg.html;
+
+                // wire up copy buttons
+                document.querySelectorAll(".copy-btn").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        const snippet = btn.getAttribute("data-snippet");
+                        navigator.clipboard.writeText(snippet).then(() => {
+                            vscode.postMessage({ type: "info", message: "✅ Snippet copied!" });
+                        });
+                    });
+                });
+            }
+        });
+
+        // Initial load
+        vscode.postMessage({ type: 'search', query: '' });
+    </script>
+</body>
+
+</html>

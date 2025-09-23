@@ -2,23 +2,39 @@ const fs = require("fs");
 const path = require("path");
 const { minify } = require("terser");
 
-const folder = "."; // current directory (root folder)
+const root = "."; // current folder
+const excludeDirs = ["node_modules", ".git", "scripts"]; // skip these folders
 
-async function run() {
-    const files = fs.readdirSync(folder);
+function getAllJsFiles(dir, allFiles = []) {
+    const files = fs.readdirSync(dir);
 
     for (const file of files) {
-        if (file.endsWith(".js") && !file.endsWith(".min.js")) {
-            const filePath = path.join(folder, file);
-            const code = fs.readFileSync(filePath, "utf8");
+        const fullPath = path.join(dir, file);
+        const stat = fs.statSync(fullPath);
 
-            const result = await minify(code, { compress: true, mangle: true });
-
-            const outPath = path.join(folder, file.replace(".js", ".min.js"));
-            fs.writeFileSync(outPath, result.code);
-
-            console.log(`✅ Minified: ${file} → ${path.basename(outPath)}`);
+        if (stat.isDirectory()) {
+            if (!excludeDirs.includes(file)) {
+                getAllJsFiles(fullPath, allFiles); // recursive
+            }
+        } else if (file.endsWith(".js") && !file.endsWith(".min.js")) {
+            allFiles.push(fullPath);
         }
+    }
+
+    return allFiles;
+}
+
+async function run() {
+    const jsFiles = getAllJsFiles(root);
+
+    for (const filePath of jsFiles) {
+        const code = fs.readFileSync(filePath, "utf8");
+        const result = await minify(code, { compress: true, mangle: true });
+
+        const outPath = filePath.replace(/\.js$/, ".min.js");
+        fs.writeFileSync(outPath, result.code);
+
+        console.log(`✅ Minified: ${filePath} → ${outPath}`);
     }
 }
 

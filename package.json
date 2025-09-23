@@ -9,11 +9,12 @@
         "type": "git",
         "url": "https://github.com/yashwanth2714/Oracle-CPQ-BML-Snippets"
     },
-    "icon": "./images/logo.png",
+    "icon": "images/logo.png",
     "engines": {
         "vscode": "^1.86.0"
     },
     "scripts": {
+        "minify": "node scripts/minify.js",
         "package": "node scripts/package.js"
     },
     "main": "./extension.js",
@@ -35,7 +36,7 @@
                 {
                     "id": "cpqExplorer",
                     "title": "CPQ",
-                    "icon": "./images/activityBarIcon.svg"
+                    "icon": "images/activityBarIcon.svg"
                 }
             ]
         },
@@ -44,7 +45,7 @@
                 {
                     "id": "cpqDocs",
                     "name": "BML Functions",
-                    "icon": "./images/activityBarIcon.svg",
+                    "icon": "images/activityBarIcon.svg",
                     "type": "webview"
                 }
             ]
@@ -61,8 +62,8 @@
                 ],
                 "configuration": "./language-configuration.json",
                 "icon": {
-                    "dark": "./images/bml.svg",
-                    "light": "./images/bml.svg"
+                    "dark": "images/bml.svg",
+                    "light": "images/bml.svg"
                 }
             }
         ],
@@ -246,5 +247,8 @@
     ],
     "dependencies": {
         "js-beautify": "^1.15.4"
+    },
+    "devDependencies": {
+        "terser": "^5.44.0"
     }
 }

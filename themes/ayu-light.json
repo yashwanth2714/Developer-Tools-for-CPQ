@@ -1,0 +1,44 @@
+{
+    "$schema": "vscode://schemas/color-theme",
+    "name": "Ayu Light (CPQ)",
+    "type": "light",
+    "colors": {
+        "editor.background": "#fafafa",
+        "editor.foreground": "#5c6773",
+        "editorCursor.foreground": "#ff9940",
+        "editor.lineHighlightBackground": "#f0f0f0",
+        "editor.selectionBackground": "#cce3ff"
+    },
+    "tokenColors": [
+        {
+            "scope": "comment",
+            "settings": {
+                "foreground": "#abb0b6"
+            }
+        },
+        {
+            "scope": "string",
+            "settings": {
+                "foreground": "#86b300"
+            }
+        },
+        {
+            "scope": "keyword",
+            "settings": {
+                "foreground": "#fa8d3e"
+            }
+        },
+        {
+            "scope": "variable",
+            "settings": {
+                "foreground": "#55b4d4"
+            }
+        },
+        {
+            "scope": "function",
+            "settings": {
+                "foreground": "#f29718"
+            }
+        }
+    ]
+}

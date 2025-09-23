@@ -27,7 +27,6 @@ function loadSnippets(context) {
             docs[funcName] = { desc, body, signature: snippet.signature };
         }
     }
-    console.log(docs);
     return docs;
 }
 
@@ -134,6 +133,48 @@ function activate(context) {
             }
         }, "(", ",") // triggers
     );
+
+    // context.subscriptions.push(
+    //     vscode.languages.registerCompletionItemProvider("bml", {
+    //         provideCompletionItems() {
+    //             console.log("provideCompletionItems")
+    //             console.log(docs);
+    //             console.log(docs.length);
+    //             console.log(Object.entries(docs));
+    //             const completions = [];
+
+    //             for (const [label, snip] of Object.entries(docs)) {
+    //                 // docs keys are already like "jsonget", "len", etc.
+    //                 const funcName = label.toLowerCase();
+
+    //                 if (funcName.startsWith("bml-")) continue;
+
+    //                 const item = new vscode.CompletionItem(funcName, vscode.CompletionItemKind.Function);
+
+    //                 if (Array.isArray(snip.body)) {
+    //                     item.insertText = new vscode.SnippetString(snip.body.join("\n"));
+    //                 } else if (typeof snip.body === "string") {
+    //                     item.insertText = new vscode.SnippetString(snip.body);
+    //                 }
+
+    //                 item.detail = snip.signature || funcName;
+
+    //                 const doc = new vscode.MarkdownString();
+    //                 if (snip.desc) doc.appendMarkdown(`**Description:** ${snip.desc}\n\n`);
+    //                 if (snip.signature) doc.appendMarkdown(`**Signature:** \`${snip.signature}\`\n`);
+    //                 item.documentation = doc;
+
+    //                 completions.push(item);
+    //             }
+    //             console.log(completions)
+    //             return completions;
+    //         },
+    //     },
+    //         ...'abcdefghijklmnopqrstuvwxyz'.split('')
+    //     )
+
+    // );
+
 }
 
 function deactivate() { }

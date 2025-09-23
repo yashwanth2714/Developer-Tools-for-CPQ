@@ -18,12 +18,16 @@
     },
     "main": "./extension.js",
     "activationEvents": [
-        "onLanguage:bml"
+        "onLanguage:bml",
+        "onLanguage:plaintext",
+        "onLanguage:java",
+        "onLanguage:c"
     ],
     "categories": [
         "Snippets",
         "Programming Languages",
-        "Formatters"
+        "Formatters",
+        "Themes"
     ],
     "contributes": {
         "languages": [
@@ -72,7 +76,104 @@
             "[bml]": {
                 "editor.defaultFormatter": "YashwanthKumar.oracle-cpq-bml-snippets"
             }
-        }
+        },
+        "themes": [
+            {
+                "label": "Dracula (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/dracula.json"
+            },
+            {
+                "label": "One Dark Pro (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/one-dark-pro.json"
+            },
+            {
+                "label": "Solarized Dark (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/solarized-dark.json"
+            },
+            {
+                "label": "Solarized Light (CPQ)",
+                "uiTheme": "vs",
+                "path": "./themes/solarized-light.json"
+            },
+            {
+                "label": "Monokai (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/monokai.json"
+            },
+            {
+                "label": "Gruvbox Dark (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/gruvbox-dark.json"
+            },
+            {
+                "label": "Night Owl (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/night-owl.json"
+            },
+            {
+                "label": "Palenight (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/palenight.json"
+            },
+            {
+                "label": "Tomorrow Night Blue (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/tomorrow-night-blue.json"
+            },
+            {
+                "label": "Dark+ (CPQ Custom)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/dark-plus.json"
+            },
+            {
+                "label": "GitHub Dark Dimmed (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/github-dark-dimmed.json"
+            },
+            {
+                "label": "GitHub Light (CPQ)",
+                "uiTheme": "vs",
+                "path": "./themes/github-light.json"
+            },
+            {
+                "label": "Ayu Mirage (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/ayu-mirage.json"
+            },
+            {
+                "label": "Ayu Light (CPQ)",
+                "uiTheme": "vs",
+                "path": "./themes/ayu-light.json"
+            },
+            {
+                "label": "Nord (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/nord.json"
+            },
+            {
+                "label": "Quiet Light (CPQ)",
+                "uiTheme": "vs",
+                "path": "./themes/quiet-light.json"
+            },
+            {
+                "label": "Bluloco Light (CPQ)",
+                "uiTheme": "vs",
+                "path": "./themes/bluloco-light.json"
+            },
+            {
+                "label": "Notepad++ Light (CPQ)",
+                "uiTheme": "vs",
+                "path": "./themes/notepadpp-light.json"
+            },
+            {
+                "label": "Notepad++ Obsidian (CPQ)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/notepadpp-obsidian.json"
+            }
+        ]
     },
     "galleryBanner": {
         "color": "#1F4761",

@@ -1,6 +1,1373 @@
 {
+    "BML: json (create object)": {
+        "prefix": "bml-json",
+        "category": "JSON",
+        "body": [
+            "// Create from JSON string",
+            "jsonObj = json(\"{\\\"key\\\":\\\"value\\\"}\");",
+            "// Create an empty json object",
+            "jsonObj = json();"
+        ],
+        "description": "Create a JSON object from a JSON formatted string (or empty if omitted).",
+        "signature": "json(string jsonStr?)",
+        "functionName": "json"
+    },
+    "BML: isjsonnull": {
+        "prefix": "bml-isjsonnull",
+        "category": "JSON",
+        "body": [
+            "// Check if a JSON key is null",
+            "isNull = isjsonnull(jsonObj, \"key\");",
+            "// Check if an array index is null",
+            "isNull = isjsonnull(jsonArr, 0);"
+        ],
+        "description": "Checks for null values in a JSON object or JSON array. Returns boolean.",
+        "signature": "isjsonnull(JSON obj, string key)",
+        "functionName": "isjsonnull"
+    },
+    "BML: jsonget": {
+        "prefix": "bml-jsonget",
+        "category": "JSON",
+        "body": [
+            "// Get value with default",
+            "val = jsonget(jsonObj, \"key\", \"string\", \"defaultValue\");"
+        ],
+        "description": "Retrieve a value from a JSON object for the given key. Optional valueType and defaultValue.",
+        "signature": "jsonget(JSON obj, string key, string valueType?, defaultValue?)",
+        "functionName": "jsonget"
+    },
+    "BML: jsonput": {
+        "prefix": "bml-jsonput",
+        "category": "JSON",
+        "body": [
+            "// Put or update a key in a JSON object",
+            "jsonput(jsonObj, \"key\", value);"
+        ],
+        "description": "Adds or updates a key-value entry in a JSON object. Returns the inserted/updated value.",
+        "signature": "jsonput(JSON obj, string key, value)",
+        "functionName": "jsonput"
+    },
+    "BML: jsonremove": {
+        "prefix": "bml-jsonremove",
+        "category": "JSON",
+        "body": [
+            "// Remove first-level key from JSON object",
+            "isRemoved = jsonremove(jsonObj, \"key\");"
+        ],
+        "description": "Removes a first-level key-value entry from a JSON object. Returns boolean.",
+        "signature": "jsonremove(JSON obj, string key)",
+        "functionName": "jsonremove"
+    },
+    "BML: jsoncopy": {
+        "prefix": "bml-jsoncopy",
+        "category": "JSON",
+        "body": [
+            "// Copy a JSON object",
+            "copyObj = jsoncopy(jsonObj);"
+        ],
+        "description": "Creates a copy of a JSON object. Changes to the original will not affect the copy.",
+        "signature": "jsoncopy(JSON obj)",
+        "functionName": "jsoncopy"
+    },
+    "BML: jsontostr": {
+        "prefix": "bml-jsontostr",
+        "category": "JSON",
+        "body": [
+            "// Convert JSON object to JSON-formatted string",
+            "jsonStr = jsontostr(jsonObj);"
+        ],
+        "description": "Converts a JSON object into a JSON formatted string.",
+        "signature": "jsontostr(JSON obj)",
+        "functionName": "jsontostr"
+    },
+    "BML: jsonkeys": {
+        "prefix": "bml-jsonkeys",
+        "category": "JSON",
+        "body": [
+            "// Get keys",
+            "keys = jsonkeys(jsonObj);"
+        ],
+        "description": "Retrieves all first-level keys from a JSON object and returns an array of strings. If the optional parameter (ignoreNullValues) is set to true, null value keys are ignored.",
+        "signature": "jsonkeys(JSON obj)",
+        "functionName": "jsonkeys"
+    },
+    "BML: jsonnull": {
+        "prefix": "bml-jsonnull",
+        "category": "JSON",
+        "body": [
+            "// Create a JSON null value",
+            "jnull = jsonnull();"
+        ],
+        "description": "Creates an instance of a JSON null object.",
+        "signature": "jsonnull()",
+        "functionName": "jsonnull"
+    },
+    "BML: jsonarray (create array)": {
+        "prefix": "bml-jsonarray",
+        "category": "JSON Array",
+        "body": [
+            "// Create JSON array from string",
+            "jsonArr = jsonarray(\"[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]\");",
+            "// Create an empty json array",
+            "jsonArr = jsonarray();"
+        ],
+        "description": "Create a JSON array from a JSON-formatted array string, or an empty array if omitted.",
+        "signature": "jsonarray(string jsonArrayStr?)",
+        "functionName": "jsonarray"
+    },
+    "BML: jsonarrayappend": {
+        "prefix": "bml-jsonarrayappend",
+        "category": "JSON Array",
+        "body": [
+            "// Append a value to end of JSON array",
+            "jsonarrayappend(jsonArr, \"value\");"
+        ],
+        "description": "Appends a value to the end of a JSON array and returns the appended value.",
+        "signature": "jsonarrayappend(JSON array, value)",
+        "functionName": "jsonarrayappend"
+    },
+    "BML: jsonarrayget": {
+        "prefix": "bml-jsonarrayget",
+        "category": "JSON Array",
+        "body": [
+            "// Get an element from a JSON array",
+            "val = jsonarrayget(jsonArr, 0, \"string\");"
+        ],
+        "description": "Returns the value from a JSON array at a given index. Optional valueType.",
+        "signature": "jsonarrayget(JSON array, integer index)",
+        "functionName": "jsonarrayget"
+    },
+    "BML: jsonarraysize": {
+        "prefix": "bml-jsonarraysize",
+        "category": "JSON Array",
+        "body": [
+            "// Get size of JSON array",
+            "size = jsonarraysize(jsonArr);"
+        ],
+        "description": "Returns the size (number of elements) of a JSON array.",
+        "signature": "jsonarraysize(jsonArr)",
+        "functionName": "jsonarraysize"
+    },
+    "BML: jsonarrayremove": {
+        "prefix": "bml-jsonarrayremove",
+        "category": "JSON Array",
+        "body": [
+            "// Remove an element from array by index",
+            "jsonarrayremove(jsonArr, 0);"
+        ],
+        "description": "Removes an element from a JSON array. The size of the array object after the object is removed is returned. An error is thrown if the given index is not available.",
+        "signature": "jsonarrayremove(jsonArr, 0)",
+        "functionName": "jsonarrayremove"
+    },
+    "BML: jsonarraycopy": {
+        "prefix": "bml-jsonarraycopy",
+        "category": "JSON Array",
+        "body": [
+            "// Make a copy of a JSON array",
+            "copyJsonArr = jsonarraycopy(jsonArr);"
+        ],
+        "description": "Creates a copy of a JSON array.",
+        "signature": "jsonarraycopy(jsonArr)",
+        "functionName": "jsonarraycopy"
+    },
+    "BML: jsonarraytostr": {
+        "prefix": "bml-jsonarraytostr",
+        "category": "JSON Array",
+        "body": [
+            "// Convert JSON array to string",
+            "jsonArrStr = jsonarraytostr(jsonArr);"
+        ],
+        "description": "Converts a JSON array into a JSON formatted string.",
+        "signature": "jsonarraytostr(jsonArr)",
+        "functionName": "jsonarraytostr"
+    },
+    "BML: jsonarrayrefid": {
+        "prefix": "bml-jsonarrayrefid",
+        "category": "JSON Array",
+        "body": [
+            "// Get a unique reference id for JSON array",
+            "refId = jsonarrayrefid(jsonArr);"
+        ],
+        "description": "Returns a unique reference ID that represents the input JSON array. Can only be invoked by Commerce advanced modify, auto update or advanced default functions. This function provides a more efficient method to pass a JSON array to the BML output to update an array set.",
+        "signature": "jsonarrayrefid(jsonArr)",
+        "functionName": "jsonarrayrefid"
+    },
+    "BML: jsonpathgetmultiple": {
+        "prefix": "bml-jsonpathgetmultiple",
+        "category": "JSON",
+        "body": [
+            "// Get multiple values matching jsonPath",
+            "arr = jsonpathgetmultiple(jsonObj, \"$.path\");",
+            "// Example:",
+            "// str = \"{\\\"key1\\\":90,\\\"key2\\\":[{\\\"key1\\\":900}],\\\"key3\\\":{\\\"key1\\\":9000}}\";",
+            "// jsonObj = json(str);",
+            "// arrayVals = jsonpathgetmultiple(jsonObj,\"$..key1\");",
+            "// print arrayVals; //Output: [90,900,9000]"
+        ],
+        "description": "Retrieve multiple values or nodes for a JSONPath expression. asPath=false returns values, true returns nodes.",
+        "signature": "jsonpathgetmultiple(JSON obj, string jsonPath)",
+        "functionName": "jsonpathgetmultiple"
+    },
+    "BML: jsonpathgetsingle": {
+        "prefix": "bml-jsonpathgetsingle",
+        "category": "JSON",
+        "body": [
+            "// Get single value for jsonPath",
+            "val = jsonpathgetsingle(jsonObj, \"$.path\");",
+            "// Example:",
+            "// str = \"{\\\"store\\\":{\\\"book\\\":[{\\\"category\\\":\\\"reference\\\",\\\"author\\\":\\\"Nigel Rees\\\"},{\\\"category\\\":\\\"fiction\\\",\\\"author\\\":\\\"Evelyn Waugh\\\"}]},\\\"expensive\\\":10}\";",
+            "// jsonObj = json(str);",
+            "// ",
+            "// catArray = jsonpathgetsingle(jsonObj,\"$.store.book[0]\");",
+            "// print catArray; // Output: {\"category\":\"reference\",\"author\":\"Nigel Rees\"}",
+            "// ",
+            "// expenseInt = jsonpathgetsingle(jsonObj,\"$.expensive\",\"integer\");",
+            "// print expenseInt; // Output: 10"
+        ],
+        "description": "Retrieves the first node or value corresponding to a JSONPath expression. The valueType and defaultValue parameters are optional.",
+        "signature": "jsonpathgetsingle(JSON obj, string jsonPath, string valueType?)",
+        "functionName": "jsonpathgetsingle"
+    },
+    "BML: jsonpathset": {
+        "prefix": "bml-jsonpathset",
+        "category": "JSON",
+        "body": [
+            "// Set/update all nodes matching jsonPath to a new value",
+            "jsonpathset(jsonObj, \"$.path\", newValue);"
+        ],
+        "description": "Updates all nodes matched by a JSONPath expression and returns the nodes updated.",
+        "signature": "jsonpathset(JSON obj, string jsonPath, newValue)",
+        "functionName": "jsonpathset"
+    },
+    "BML: jsonpathcheck": {
+        "prefix": "bml-jsonpathcheck",
+        "category": "JSON",
+        "body": [
+            "// Check whether a JSONPath exists in the JSON object",
+            "found = jsonpathcheck(jsonObj, \"$.path\");"
+        ],
+        "description": "Checks if a JSONPath exists in a JSON object; returns boolean.",
+        "signature": "jsonpathcheck(jsonObj, $.path)",
+        "functionName": "jsonpathcheck"
+    },
+    "BML: jsonpathremove": {
+        "prefix": "bml-jsonpathremove",
+        "category": "JSON",
+        "body": [
+            "// Remove nodes matching jsonPath",
+            "removed = jsonpathremove(jsonObj, \"$.path\");"
+        ],
+        "description": "Removes nodes matching a JSONPath expression from the JSON object; returns boolean.",
+        "signature": "jsonpathremove(JSON obj, string jsonPath)",
+        "functionName": "jsonpathremove"
+    },
+    "BML: len": {
+        "prefix": "bml-len",
+        "category": "String",
+        "body": [
+            "// Get length of a string",
+            "strLength = len(myString);"
+        ],
+        "description": "Returns the number of characters in the string.",
+        "signature": "len(string text)",
+        "functionName": "len"
+    },
+    "BML: string": {
+        "prefix": "bml-string",
+        "category": "String",
+        "body": [
+            "str = string(variable);"
+        ],
+        "description": "Converts a float, integer or boolean value into text.",
+        "signature": "string(variable)",
+        "functionName": "string"
+    },
+    "BML: substring": {
+        "prefix": "bml-substring",
+        "category": "String",
+        "body": [
+            "subStr = substring(myString, start, end);"
+        ],
+        "description": "Extracts a substring from the given string.",
+        "signature": "substring(string text, integer start, integer end?)",
+        "functionName": "substring"
+    },
+    "BML: startswith": {
+        "prefix": "bml-startswith",
+        "category": "String",
+        "body": [
+            "starts = startswith(myString, \"subString\");"
+        ],
+        "description": "Checks whether a string starts with a particular substring.",
+        "signature": "startswith(string text, string prefix)",
+        "functionName": "startswith"
+    },
+    "BML: endswith": {
+        "prefix": "bml-endswith",
+        "category": "String",
+        "body": [
+            "ends = endswith(myString, \"subString\");"
+        ],
+        "description": "Checks whether a string ends with a particular substring.",
+        "signature": "endswith(string text, string suffix)",
+        "functionName": "endswith"
+    },
+    "BML: lower": {
+        "prefix": "bml-lower",
+        "category": "String",
+        "body": [
+            "lowerStr = lower(myString);"
+        ],
+        "description": "converts all characters in the text into all lowercase letters.",
+        "signature": "lower(string text)",
+        "functionName": "lower"
+    },
+    "BML: upper": {
+        "prefix": "bml-upper",
+        "category": "String",
+        "body": [
+            "upperStr = upper(myString);"
+        ],
+        "description": "converts all characters in the text into all uppercase letters.",
+        "signature": "upper(string text)",
+        "functionName": "upper"
+    },
+    "BML: trim": {
+        "prefix": "bml-trim",
+        "category": "String",
+        "body": [
+            "trimmed = trim(myString);"
+        ],
+        "description": "Remove whitespace from strings.",
+        "signature": "trim(string text)",
+        "functionName": "trim"
+    },
+    "BML: replace": {
+        "prefix": "bml-replace",
+        "category": "String",
+        "body": [
+            "result = replace(myString, \"old\", \"new\");"
+        ],
+        "description": "Replace substrings inside a string.",
+        "signature": "replace(string text, string old, string new)",
+        "functionName": "replace"
+    },
+    "BML: split": {
+        "prefix": "bml-split",
+        "category": "String",
+        "body": [
+            "arr = split(myString, ",
+            ");"
+        ],
+        "description": "Split a string into an array by delimiter.",
+        "signature": "split(string text, string delimiter)",
+        "functionName": "split"
+    },
+    "BML: join": {
+        "prefix": "bml-join",
+        "category": "String",
+        "body": [
+            "output = join(myArray, ",
+            ");"
+        ],
+        "description": "Join an array of strings into a single string.",
+        "signature": "join(array arr, string delimiter)",
+        "functionName": "join"
+    },
+    "BML: formatascurrency": {
+        "prefix": "bml-formatascurrency",
+        "category": "String",
+        "body": [
+            "formatted = formatascurrency(value, \"currencyCode\");"
+        ],
+        "description": "Takes a number and returns it as a formatted currency string.",
+        "signature": "formatascurrency(number value, string currencyCode)",
+        "functionName": "formatascurrency"
+    },
+    "BML: atoi": {
+        "prefix": "bml-atoi",
+        "category": "String",
+        "body": [
+            "result = atoi(myString);"
+        ],
+        "description": "Converts text that represents a number into an integer value.",
+        "signature": "atoi(string s)",
+        "functionName": "atoi"
+    },
+    "BML: atof": {
+        "prefix": "bml-atof",
+        "category": "String",
+        "body": [
+            "result = atof(myString);"
+        ],
+        "description": "Converts text that represents a number into a float value.",
+        "signature": "atof(string s)",
+        "functionName": "atof"
+    },
+    "BML: isnumber": {
+        "prefix": "bml-isnumber",
+        "category": "String",
+        "body": [
+            "isnumber(myString);"
+        ],
+        "description": "Returns true when the string is a number and false if it contains other characters.",
+        "signature": "isnumber(myString)",
+        "functionName": "isnumber"
+    },
+    "BML: find": {
+        "prefix": "bml-find",
+        "category": "String",
+        "body": [
+            "find(myString,\"substring\");"
+        ],
+        "description": "Returns the position of a substring within a string.",
+        "signature": "find(myString, substring)",
+        "functionName": "find"
+    },
+    "BML: decodebase64": {
+        "prefix": "bml-decodebase64",
+        "category": "String",
+        "body": [
+            "result = decodebase64(myString);"
+        ],
+        "description": "Takes an encoded Base64 string and returns it as a plain text string.",
+        "signature": "decodebase64(myString)",
+        "functionName": "decodebase64"
+    },
+    "BML: encodebase64": {
+        "prefix": "bml-encodebase64",
+        "category": "String",
+        "body": [
+            "userName = \"\";",
+            "password = \"\";",
+            "result = encodebase64(userName + \":\" + password);"
+        ],
+        "description": "Parses the string parameter and converts it into its Base64 equivalent, as an encoded string.",
+        "signature": "encodebase64(userName + : + password)",
+        "functionName": "encodebase64"
+    },
+    "BML: getcurrencyvalue": {
+        "prefix": "bml-getcurrencyvalue",
+        "category": "String",
+        "body": [
+            "result = getcurrencyvalue(value, \"currencyCode\");"
+        ],
+        "description": "Takes a formatted currency string and returns the string's numeric value.",
+        "signature": "getcurrencyvalue(value, currencyCode)",
+        "functionName": "getcurrencyvalue"
+    },
+    "BML: html": {
+        "prefix": "bml-html",
+        "category": "String",
+        "body": [
+            "result = html(myString);"
+        ],
+        "description": "A method for HTML escaping (output encoding) of a string as safe plain text.",
+        "signature": "html(myString)",
+        "functionName": "html"
+    },
+    "BML: containskey (dictionary)": {
+        "prefix": "bml-dict-containskey",
+        "category": "Dictionary",
+        "body": [
+            "containskey(myDictionary, \"key\");"
+        ],
+        "description": "Returns true if the specified key exists in the dictionary.",
+        "signature": "containskey(dictionary dict, string key)",
+        "functionName": "containskey"
+    },
+    "BML: dict (create dictionary)": {
+        "prefix": "bml-dict",
+        "category": "Dictionary",
+        "body": [
+            "// Create a dictionary",
+            "myDictionary = dict(\"string\");"
+        ],
+        "description": "Create a dictionary for the specified data type.",
+        "signature": "dict(string)",
+        "functionName": "dict"
+    },
+    "BML: get (dictionary)": {
+        "prefix": "bml-dict-get",
+        "category": "Dictionary",
+        "body": [
+            "value = get(myDictionary, \"key\");"
+        ],
+        "description": "Get the value stored in the dictionary for the given key.",
+        "signature": "get(dictionary dict, string key)",
+        "functionName": "get"
+    },
+    "BML: keys (dictionary)": {
+        "prefix": "bml-dict-keys",
+        "category": "Dictionary",
+        "body": [
+            "keysArr = keys(myDictionary);"
+        ],
+        "description": "Retrieve an unordered string array of all keys in a dictionary.",
+        "signature": "keys(dictionary dict)",
+        "functionName": "keys"
+    },
+    "BML: put (dictionary)": {
+        "prefix": "bml-dict-put",
+        "category": "Dictionary",
+        "body": [
+            "put(myDictionary, \"key\", value);"
+        ],
+        "description": "Insert or update a value in the dictionary under the given key.",
+        "signature": "put(myDictionary, key, value)",
+        "functionName": "put"
+    },
+    "BML: values (dictionary)": {
+        "prefix": "bml-dict-values",
+        "category": "Dictionary",
+        "body": [
+            "vals = values(myDictionary);"
+        ],
+        "description": "Get an array of all values stored in the dictionary.",
+        "signature": "values(myDictionary)",
+        "functionName": "values"
+    },
+    "BML: adddays": {
+        "prefix": "bml-date-adddays",
+        "category": "Date",
+        "body": [
+            "newDate = adddays(date, noOfDays);"
+        ],
+        "description": "Adds days to a date.",
+        "signature": "adddays(date, noOfDays)",
+        "functionName": "adddays"
+    },
+    "BML: addmonths": {
+        "prefix": "bml-date-addmonths",
+        "category": "Date",
+        "body": [
+            "newDate = addmonths(date, noOfMonths);"
+        ],
+        "description": "Adds months to a date.",
+        "signature": "addmonths(date d, integer months)",
+        "functionName": "addmonths"
+    },
+    "BML: comparedates": {
+        "prefix": "bml-date-comparedates",
+        "category": "Date",
+        "body": [
+            "result = comparedates(date1, date2);"
+        ],
+        "description": "Compare two dates based on date and time.",
+        "signature": "comparedates(date1, date2)",
+        "functionName": "comparedates"
+    },
+    "BML: datetostr": {
+        "prefix": "bml-date-datetostr",
+        "category": "Date",
+        "body": [
+            "result = datetostr(date, dateFormat);"
+        ],
+        "description": "Converts a date to a string.",
+        "signature": "datetostr(date, dateFormat)",
+        "functionName": "datetostr"
+    },
+    "BML: getcurrenttimeinmillis": {
+        "prefix": "bml-date-getcurrenttimeinmillis",
+        "category": "Date",
+        "body": [
+            "result = getcurrenttimeinmillis();"
+        ],
+        "description": "Returns the current time in milliseconds.",
+        "signature": "getcurrenttimeinmillis()",
+        "functionName": "getcurrenttimeinmillis"
+    },
+    "BML: getdate": {
+        "prefix": "bml-date-getdate",
+        "category": "Date",
+        "body": [
+            "currentDate = getdate();"
+        ],
+        "description": "Returns the current date.",
+        "signature": "getdate()",
+        "functionName": "getdate"
+    },
+    "BML: getdiffindays": {
+        "prefix": "bml-date-getdiffindays",
+        "category": "Date",
+        "body": [
+            "result = getdiffindays(date1, date2);"
+        ],
+        "description": "Calculates the number of days between two different dates.",
+        "signature": "getdiffindays(date1, date2)",
+        "functionName": "getdiffindays"
+    },
+    "BML: getstrdate": {
+        "prefix": "bml-date-getstrdate",
+        "category": "Date",
+        "body": [
+            "result = getstrdate();"
+        ],
+        "description": "Returns the string representation of current date.",
+        "signature": "getstrdate()",
+        "functionName": "getstrdate"
+    },
+    "BML: isleap": {
+        "prefix": "bml-date-isleap",
+        "category": "Date",
+        "body": [
+            "result = isleap(Year);"
+        ],
+        "description": "Returns true if the year provided is a leap year.",
+        "signature": "isleap(Year)",
+        "functionName": "isleap"
+    },
+    "BML: isweekend": {
+        "prefix": "bml-date-isweekend",
+        "category": "Date",
+        "body": [
+            "result = isweekend(date);"
+        ],
+        "description": "Returns true if the date provided is a Saturday or Sunday.",
+        "signature": "isweekend(date)",
+        "functionName": "isweekend"
+    },
+    "BML: minusdays": {
+        "prefix": "bml-date-minusdays",
+        "category": "Date",
+        "body": [
+            "newDate = minusdays(date, noOfDays);"
+        ],
+        "description": "Subtracts days to a date.",
+        "signature": "minusdays(date, noOfDays)",
+        "functionName": "minusdays"
+    },
+    "BML: strtojavadate": {
+        "prefix": "bml-date-strtojavadate",
+        "category": "Date",
+        "body": [
+            "result = strtojavadate(dateString, dateFormat);"
+        ],
+        "description": "Converts a string to a date.",
+        "signature": "strtojavadate(dateString, dateFormat)",
+        "functionName": "strtojavadate"
+    },
+    "BML makeurlparam": {
+        "prefix": "bml-makeurlparam",
+        "category": "URL",
+        "body": [
+            "params = makeurlparam({",
+            "    'param1' : \"value\",",
+            "});"
+        ],
+        "description": "Converts a series of name-value pairs into a query string, which can be appended to a URL.",
+        "signature": "makeurlparam({\n    param1, })",
+        "functionName": "makeurlparam"
+    },
+    "BML urldata (GET)": {
+        "prefix": "bml-urldata-get",
+        "category": "URL",
+        "body": [
+            "headerDict = dict(\"string\");",
+            "put(headerDict, \"Accept\", \"application/json\");",
+            "put(headerDict, \"Content-Type\", \"application/json\");",
+            "put(headerDict, \"Authorization\", credentials);",
+            "response = urldata(url, \"GET\", headerDict);"
+        ],
+        "description": "Retrieves data using GET method",
+        "signature": "urldata(url, method, headerDict, requestPayload)",
+        "functionName": "urldata"
+    },
+    "BML urldata (POST)": {
+        "prefix": "bml-urldata-post",
+        "category": "URL",
+        "body": [
+            "headerDict = dict(\"string\");",
+            "put(headerDict, \"Accept\", \"application/json\");",
+            "put(headerDict, \"Content-Type\", \"application/json\");",
+            "put(headerDict, \"Authorization\", credentials);",
+            "response = urldata(url, \"POST\", headerDict, requestPayload);"
+        ],
+        "description": "Retrieves data using POST method",
+        "signature": "urldata(url, method, headerDict, requestPayload)",
+        "functionName": "urldata"
+    },
+    "BML urldatabypost": {
+        "prefix": "bml-urldatabypost",
+        "category": "URL",
+        "body": [
+            "headerDict = dict(\"string\");",
+            "put(headerDict, \"Accept\", \"application/json\");",
+            "put(headerDict, \"Content-Type\", \"application/json\");",
+            "put(headerDict, \"Authorization\", credentials);",
+            "response = urldatabypost(url, requestPayload, \"ERROR\", headerDict);"
+        ],
+        "description": "Retrieves data using POST method",
+        "signature": "urldatabypost(url, requestPayload, ERROR, headerDict)",
+        "functionName": "urldatabypost"
+    },
+    "BML urldatabyget": {
+        "prefix": "bml-urldatabyget",
+        "category": "URL",
+        "body": [
+            "response = urldatabyget(url, params, \"ERROR\");"
+        ],
+        "description": "Retrieves data using GET method",
+        "signature": "urldatabyget(url, params, ERROR)",
+        "functionName": "urldatabyget"
+    },
+    "BML urldatabypostasync": {
+        "prefix": "bml-urldatabypostasync",
+        "category": "URL",
+        "body": [
+            "headerDict = dict(\"string\");",
+            "response = urldatabypostasync(url, params, \"ERROR\", \"callbackActionVarName\", headerDict);"
+        ],
+        "description": "Retrieves data asynchronously using POST method",
+        "signature": "urldatabypostasync(url, params, ERROR, callbackActionVarName, headerDict)",
+        "functionName": "urldatabypostasync"
+    },
+    "BML applytemplate": {
+        "prefix": "bml-applytemplate",
+        "category": "XML",
+        "body": [
+            "payload = dict(\"string\");",
+            "applytemplate(templateFileLocation, payload);"
+        ],
+        "description": "This function applies a set of token key-value pairs to the template file.",
+        "signature": "applytemplate(templateFileLocation, payload)",
+        "functionName": "applytemplate"
+    },
+    "BML readxmlmultiple": {
+        "prefix": "bml-readxmlmultiple",
+        "category": "XML",
+        "body": [
+            "result = readxmlmultiple(xmlPayload, xpaths);"
+        ],
+        "description": "This function reads a set of multiple XML node contents based on a set of XPath expressions.",
+        "signature": "readxmlmultiple(xmlPayload, xpaths)",
+        "functionName": "readxmlmultiple"
+    },
+    "BML readxmlsingle": {
+        "prefix": "bml-readxmlsingle",
+        "category": "XML",
+        "body": [
+            "result = readxmlsingle(xmlPayload, xpaths);"
+        ],
+        "description": "This function reads a set of single XML node content based on a set of XPath expressions.",
+        "signature": "readxmlsingle(xmlPayload, xpaths)",
+        "functionName": "readxmlsingle"
+    },
+    "BML transformxml": {
+        "prefix": "bml-transformxml",
+        "category": "XML",
+        "body": [
+            "result = transformxml(xmlcontent, xslFileLocation);"
+        ],
+        "description": "This function transforms an XML string with an XSLT file stored in the File Manager.",
+        "signature": "transformxml(xmlcontent, xslFileLocation)",
+        "functionName": "transformxml"
+    },
+    "BML append": {
+        "prefix": "bml-array-append",
+        "category": "Array",
+        "body": [
+            "append(arr, \"value\");"
+        ],
+        "description": "This function will attach a new element to the end of an array.",
+        "signature": "append(array arr, value)",
+        "functionName": "append"
+    },
+    "BML boolean[n]": {
+        "prefix": "bml-array-boolean1d",
+        "category": "Array",
+        "body": [
+            "booleanArray = boolean[size];"
+        ],
+        "description": "Declare a 1-D boolean array with the specified size.",
+        "signature": "boolean[size]",
+        "functionName": "boolean[n]"
+    },
+    "BML boolean[n][n]": {
+        "prefix": "bml-array-boolean2d",
+        "category": "Array",
+        "body": [
+            "booleanArray = boolean[size1][size2];"
+        ],
+        "description": "Declare a 2-D boolean array with the specified size.",
+        "signature": "boolean[size1][size2]",
+        "functionName": "boolean[n][n]"
+    },
+    "BML bytearray": {
+        "prefix": "bml-array-bytearray",
+        "category": "Array",
+        "body": [
+            "value = bytearray(content, \"charSet\");"
+        ],
+        "description": "This function stores a collection of binary data such as the contents of a file.",
+        "signature": "bytearray(content, charSet)",
+        "functionName": "bytearray"
+    },
+    "BML date[n]": {
+        "prefix": "bml-array-date1d",
+        "category": "Array",
+        "body": [
+            "datesArray = date[size];"
+        ],
+        "description": "Declare a 1-D date array with the specified size.",
+        "signature": "date[size]",
+        "functionName": "date[n]"
+    },
+    "BML date[n][n]": {
+        "prefix": "bml-array-date2d",
+        "category": "Array",
+        "body": [
+            "datesArray = date[size1][size2];"
+        ],
+        "description": "Declare a 2-D date array with the specified size.",
+        "signature": "date[size1][size2]",
+        "functionName": "date[n][n]"
+    },
+    "BML findinarray": {
+        "prefix": "bml-array-findinarray",
+        "category": "Array",
+        "body": [
+            "index = findinarray(arr, \"value\");"
+        ],
+        "description": "Find index of a value in an array",
+        "signature": "findinarray(array arr, value)",
+        "functionName": "findinarray"
+    },
+    "BML float[n]": {
+        "prefix": "bml-array-float1d",
+        "category": "Array",
+        "body": [
+            "floatArray = float[size];"
+        ],
+        "description": "Declare a 1-D float array with the specified size.",
+        "signature": "float[size]",
+        "functionName": "float[n]"
+    },
+    "BML float[n][n]": {
+        "prefix": "bml-array-float2d",
+        "category": "Array",
+        "body": [
+            "floatArray = float[size1][size2];"
+        ],
+        "description": "Declare a 2-D float array with the specified size.",
+        "signature": "float[size1][size2]",
+        "functionName": "float[n][n]"
+    },
+    "BML integer[n]": {
+        "prefix": "bml-array-integer1d",
+        "category": "Array",
+        "body": [
+            "integerArray = integer[size];"
+        ],
+        "description": "Declare a 1-D integer array with the specified size.",
+        "signature": "integer[size]",
+        "functionName": "integer[n]"
+    },
+    "BML integer[n][n]": {
+        "prefix": "bml-array-integer2d",
+        "category": "Array",
+        "body": [
+            "integerArray = integer[size1][size2];"
+        ],
+        "description": "Declare a 2-D integer array with the specified size.",
+        "signature": "integer[size1][size2]",
+        "functionName": "integer[n][n]"
+    },
+    "BML isempty": {
+        "prefix": "bml-array-isempty",
+        "category": "Array",
+        "body": [
+            "result = isempty(arr);"
+        ],
+        "description": "Check whether an array is empty",
+        "signature": "isempty(array arr)",
+        "functionName": "isempty"
+    },
+    "BML max": {
+        "prefix": "bml-array-max",
+        "category": "Array",
+        "body": [
+            "maxValue = max(arr);"
+        ],
+        "description": "Return maximum value in array",
+        "signature": "max(array arr)",
+        "functionName": "max"
+    },
+    "BML min": {
+        "prefix": "bml-array-min",
+        "category": "Array",
+        "body": [
+            "minValue = min(arr);"
+        ],
+        "description": "Return minimum value in array",
+        "signature": "min(array arr)",
+        "functionName": "min"
+    },
+    "BML range": {
+        "prefix": "bml-array-range",
+        "category": "Array",
+        "body": [
+            "arr = range(size);"
+        ],
+        "description": "Declares an integer array with a specified size and initializes it to its index value.",
+        "signature": "range(size)",
+        "functionName": "range"
+    },
+    "BML remove": {
+        "prefix": "bml-array-remove",
+        "category": "Array",
+        "body": [
+            "index = remove(arr, position);"
+        ],
+        "description": "Remove element from array by index",
+        "signature": "remove(array arr, integer position)",
+        "functionName": "remove"
+    },
+    "BML reverse": {
+        "prefix": "bml-array-reverse",
+        "category": "Array",
+        "body": [
+            "result = reverse(arr);"
+        ],
+        "description": "Reverse the array in place",
+        "signature": "reverse(array arr)",
+        "functionName": "reverse"
+    },
+    "BML sizeofarray": {
+        "prefix": "bml-array-sizeofarray",
+        "category": "Array",
+        "body": [
+            "arraySize = sizeofarray(arr);"
+        ],
+        "description": "Return number of elements in array",
+        "signature": "sizeofarray(array arr)",
+        "functionName": "sizeofarray"
+    },
+    "BML sort": {
+        "prefix": "bml-array-sort",
+        "category": "Array",
+        "body": [
+            "sortedArray = sort(arr, \"order\");"
+        ],
+        "description": "This function sorts array elements based on defined sort method. You can sort in ascending or descending order.",
+        "signature": "sort(array arr, string order)",
+        "functionName": "sort"
+    },
+    "BML string[n]": {
+        "prefix": "bml-array-string1d",
+        "category": "Array",
+        "body": [
+            "stringArray = string[size];"
+        ],
+        "description": "Declare a 1-D string array",
+        "signature": "string[size]",
+        "functionName": "string[n]"
+    },
+    "BML string[n][n]": {
+        "prefix": "bml-array-string2d",
+        "category": "Array",
+        "body": [
+            "stringArray = string[size1][size2];"
+        ],
+        "description": "Declare a 2-D string array with the specified size.",
+        "signature": "string[size1][size2]",
+        "functionName": "string[n][n]"
+    },
+    "BML acos": {
+        "prefix": "bml-math-acos",
+        "category": "Math",
+        "body": [
+            "result = acos(value);"
+        ],
+        "description": "This function returns the arc cosine of the number or angle in the range of 0 through π.",
+        "signature": "acos(value)",
+        "functionName": "acos"
+    },
+    "BML asin": {
+        "prefix": "bml-math-asin",
+        "category": "Math",
+        "body": [
+            "result = asin(value);"
+        ],
+        "description": "This function returns the arcsine of a number or angle.",
+        "signature": "asin(value)",
+        "functionName": "asin"
+    },
+    "BML atan": {
+        "prefix": "bml-math-atan",
+        "category": "Math",
+        "body": [
+            "result = atan(value);"
+        ],
+        "description": "This function returns the arctangent of the number or angle.",
+        "signature": "atan(value)",
+        "functionName": "atan"
+    },
+    "BML ceil": {
+        "prefix": "bml-math-ceil",
+        "category": "Math",
+        "body": [
+            "result = ceil(value);"
+        ],
+        "description": "This function converts a float into the next highest whole number.",
+        "signature": "ceil(value)",
+        "functionName": "ceil"
+    },
+    "BML cos": {
+        "prefix": "bml-math-cos",
+        "category": "Math",
+        "body": [
+            "result = cos(value);"
+        ],
+        "description": "This function returns the cosine of the number/angle.",
+        "signature": "cos(value)",
+        "functionName": "cos"
+    },
+    "BML cosh": {
+        "prefix": "bml-math-cosh",
+        "category": "Math",
+        "body": [
+            "result = cosh(value);"
+        ],
+        "description": "This function returns the hyperbolic cosine of a number or angle.",
+        "signature": "cosh(value)",
+        "functionName": "cosh"
+    },
+    "BML exp": {
+        "prefix": "bml-math-exp",
+        "category": "Math",
+        "body": [
+            "result = exp(value);"
+        ],
+        "description": "This function returns Euler's number e raised to the power of the number passed through the function, also known as the exponential function.",
+        "signature": "exp(value)",
+        "functionName": "exp"
+    },
+    "BML fabs": {
+        "prefix": "bml-math-fabs",
+        "category": "Math",
+        "body": [
+            "result = fabs(value);"
+        ],
+        "description": "This function returns the absolute value of a number.",
+        "signature": "fabs(value)",
+        "functionName": "fabs"
+    },
+    "BML fmod": {
+        "prefix": "bml-math-fmod",
+        "category": "Math",
+        "body": [
+            "result = fmod(value1, value2);"
+        ],
+        "description": "This function returns the remainder of the division operation x, y.",
+        "signature": "fmod(value1, value2)",
+        "functionName": "fmod"
+    },
+    "BML hypot": {
+        "prefix": "bml-math-hypot",
+        "category": "Math",
+        "body": [
+            "result = hypot(value1, value2);"
+        ],
+        "description": "This function returns the sqrt(x2 + y2) without intermediaries.",
+        "signature": "hypot(value1, value2)",
+        "functionName": "hypot"
+    },
+    "BML integer": {
+        "prefix": "bml-math-integer",
+        "category": "Math",
+        "body": [
+            "result = integer(value);"
+        ],
+        "description": "This function returns the integer portion of a float number.",
+        "signature": "integer(value)",
+        "functionName": "integer"
+    },
+    "BML ln": {
+        "prefix": "bml-math-ln",
+        "category": "Math",
+        "body": [
+            "result = ln(value);"
+        ],
+        "description": "This function returns the natural logarithm (base e) of the number.",
+        "signature": "ln(value)",
+        "functionName": "ln"
+    },
+    "BML log": {
+        "prefix": "bml-math-log",
+        "category": "Math",
+        "body": [
+            "result = log(value);"
+        ],
+        "description": "This function returns the base-10 logarithm of the number.",
+        "signature": "log(value)",
+        "functionName": "log"
+    },
+    "BML pow": {
+        "prefix": "bml-math-pow",
+        "category": "Math",
+        "body": [
+            "result = pow(base, exponent);"
+        ],
+        "description": "This function returns the value of the first argument raised to the power of the second argument.",
+        "signature": "pow(base, exponent)",
+        "functionName": "pow"
+    },
+    "BML round": {
+        "prefix": "bml-math-round",
+        "category": "Math",
+        "body": [
+            "result = round(value);"
+        ],
+        "description": "This function returns the rounded value of a number up to a certain decimal point.",
+        "signature": "round(value)",
+        "functionName": "round"
+    },
+    "BML sin": {
+        "prefix": "bml-math-sin",
+        "category": "Math",
+        "body": [
+            "result = sin(value);"
+        ],
+        "description": "This function returns the trigonometric sine of the number/angle.",
+        "signature": "sin(value)",
+        "functionName": "sin"
+    },
+    "BML sinh": {
+        "prefix": "bml-math-sinh",
+        "category": "Math",
+        "body": [
+            "result = sinh(value);"
+        ],
+        "description": "This function returns the hyperbolic sine of a number or angle.",
+        "signature": "sinh(value)",
+        "functionName": "sinh"
+    },
+    "BML sqrt": {
+        "prefix": "bml-math-sqrt",
+        "category": "Math",
+        "body": [
+            "result = sqrt(value);"
+        ],
+        "description": "This function returns the positive square root of a number.",
+        "signature": "sqrt(value)",
+        "functionName": "sqrt"
+    },
+    "BML tan": {
+        "prefix": "bml-math-tan",
+        "category": "Math",
+        "body": [
+            "result = tan(value);"
+        ],
+        "description": "This function returns the tangent of the number/angle.",
+        "signature": "tan(value)",
+        "functionName": "tan"
+    },
+    "BML tanh": {
+        "prefix": "bml-math-tanh",
+        "category": "Math",
+        "body": [
+            "result = tanh(value);"
+        ],
+        "description": "This function returns the hyperbolic tangent of a number or angle.",
+        "signature": "tanh(value)",
+        "functionName": "tanh"
+    },
+    "BML globaldictset": {
+        "prefix": "bml-globaldictset",
+        "category": "Global Dictionary",
+        "body": [
+            "globaldictset(\"key\", \"value\");"
+        ],
+        "description": "This function adds or updates the key-value pair in the global dictionary.",
+        "signature": "globaldictset(key, value)",
+        "functionName": "globaldictset"
+    },
+    "BML globaldictget": {
+        "prefix": "bml-globaldictget",
+        "category": "Global Dictionary",
+        "body": [
+            "value = globaldictget(\"key\");"
+        ],
+        "description": "This function returns a value stored in the global dictionary corresponding to the given key. If the key is not found in the global dictionary, null is returned.",
+        "signature": "globaldictget(key)",
+        "functionName": "globaldictget"
+    },
+    "BML globaldictremove": {
+        "prefix": "bml-globaldictremove",
+        "category": "Global Dictionary",
+        "body": [
+            "result = globaldictremove(\"key\");"
+        ],
+        "description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the global dictionary.",
+        "signature": "globaldictremove(key)",
+        "functionName": "globaldictremove"
+    },
+    "BML getsystemdata": {
+        "prefix": "bml-getsystemdata",
+        "category": "System Configuration",
+        "body": [
+            "systemJson = getsystemdata();"
+        ],
+        "description": "Returns a JSON object containing the entire representation of the System Configuration Data.",
+        "signature": "getsystemdata()",
+        "functionName": "getsystemdata"
+    },
+    "BML getsystemattrvalues": {
+        "prefix": "bml-getsystemattrvalues",
+        "category": "System Configuration",
+        "body": [
+            "values = getsystemattrvalues(\"$.path\");"
+        ],
+        "description": "This function returns a string containing a single attribute's values from a System Configuration.",
+        "signature": "getsystemattrvalues($.path)",
+        "functionName": "getsystemattrvalues"
+    },
+    "BML getsystemmultipleattrvalues": {
+        "prefix": "bml-getsystemmultipleattrvalues",
+        "category": "System Configuration",
+        "body": [
+            "jsonPaths = dict(\"string\");",
+            "values = getsystemmultipleattrvalues(jsonPaths);"
+        ],
+        "description": "  This function returns dictionary key and value string arrays containing attribute values from a System Configuration.",
+        "signature": "getsystemmultipleattrvalues(jsonPaths)",
+        "functionName": "getsystemmultipleattrvalues"
+    },
+    "BML usersessionset": {
+        "prefix": "bml-usersessionset",
+        "category": "User Sessions",
+        "body": [
+            "usersessionset(\"key\", \"value\");"
+        ],
+        "description": "This function sets a key-value pair to the user session cache. The values are available as long as the user session is active. Values stored in the session cache are removed automatically when the user logs out, the session expires, or the server is restarted.",
+        "signature": "usersessionset(key, value)",
+        "functionName": "usersessionset"
+    },
+    "BML usersessionget": {
+        "prefix": "bml-usersessionget",
+        "category": "User Sessions",
+        "body": [
+            "value = usersessionget(\"key\");"
+        ],
+        "description": "This function retrieves a value for a given key from a user session. If the key is not found, null is returned.",
+        "signature": "usersessionget(key)",
+        "functionName": "usersessionget"
+    },
+    "BML usersessionremove": {
+        "prefix": "bml-usersessionremove",
+        "category": "User Sessions",
+        "body": [
+            "result = usersessionremove(\"key\");"
+        ],
+        "description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the user session.",
+        "signature": "usersessionremove(key)",
+        "functionName": "usersessionremove"
+    },
+    "BML if": {
+        "prefix": "bml-if",
+        "category": "Conditionals",
+        "body": [
+            "if (condition) {",
+            "\/\/ code",
+            "}"
+        ],
+        "description": "if statement",
+        "signature": "...",
+        "functionName": "if"
+    },
+    "BML if.else": {
+        "prefix": "bml-if.else",
+        "category": "Conditionals",
+        "body": [
+            "if (condition) {",
+            "\/\/ code",
+            "} else {",
+            "\/\/ code",
+            "}"
+        ],
+        "description": "if-else statement",
+        "signature": "...",
+        "functionName": "if-else"
+    },
+    "BML if.elif": {
+        "prefix": "bml-if.elif",
+        "category": "Conditionals",
+        "body": [
+            "if (condition) {",
+            "\/\/ code",
+            "} elif (condition) {",
+            "\/\/ code",
+            "}"
+        ],
+        "description": "if-elif statement",
+        "signature": "...",
+        "functionName": "if-elif"
+    },
+    "BML if.elif.else": {
+        "prefix": "bml-if.elif.else",
+        "category": "Conditionals",
+        "body": [
+            "if (condition) {",
+            "\/\/ code",
+            "} elif (condition) {",
+            "\/\/ code",
+            "} else {",
+            "\/\/ code",
+            "}"
+        ],
+        "description": "if-elif-else statement",
+        "signature": "...",
+        "functionName": "if-elif-else"
+    },
+    "BML loop.array": {
+        "prefix": "bml-loop.array",
+        "category": "Loops",
+        "body": [
+            "for each in array {",
+            "\/\/ code",
+            "}"
+        ],
+        "description": "Loop an array",
+        "signature": "...",
+        "functionName": "loopArray"
+    },
+    "BML: loop.jsonarray": {
+        "prefix": "bml-loop.jsonarray",
+        "category": "Loops",
+        "body": [
+            "jsonArrSize = jsonarraysize(jsonArr);",
+            "jsonArrRange = range(jsonArrSize);",
+            "for index in jsonArrRange {",
+            "    val = jsonarrayget(jsonArr, index);",
+            "}"
+        ],
+        "description": "Loop a JSON Array",
+        "signature": "...",
+        "functionName": "loopJSONArray"
+    },
+    "BML loop.lineprocess": {
+        "prefix": "bml-loop.lineProcess",
+        "category": "Loops",
+        "body": [
+            "for line in line_process {",
+            "    parentDocNum = line._parent_doc_number;",
+            "    docNum = line._document_number;",
+            "",
+            "    if (parentDocNum == \"\") {",
+            "        // Model logic here",
+            "    } else {",
+            "        // Line logic here",
+            "    }",
+            "}"
+        ],
+        "description": "Loop line process",
+        "signature": "...",
+        "functionName": "loopLineProcess"
+    },
     "BML: header template": {
         "prefix": "bml-header-template",
+        "category": "Others",
         "body": [
             "/**",
             "* Name: ",
@@ -16,1111 +1383,40 @@
             "*              |                     | ",
             "*/"
         ],
-        "description": "Standard header template for BML scripts."
+        "description": "Standard header template for BML scripts.",
+        "signature": "...",
+        "functionName": "headerTemplate"
     },
     "BML: comment block": {
         "prefix": "bml-comment-block",
+        "category": "Others",
         "body": [
             "/**",
             "*",
             "*/"
         ],
-        "description": "Block comment template."
+        "description": "Block comment template.",
+        "signature": "...",
+        "functionName": "MultiLineComment"
     },
     "BML: single line comment": {
         "prefix": "bml-comment",
+        "category": "Others",
         "body": [
             "// "
         ],
-        "description": "Single line comment."
+        "description": "Single line comment.",
+        "signature": "...",
+        "functionName": "singleLineComment"
     },
     "BML: print": {
         "prefix": "bml-print",
+        "category": "Others",
         "body": [
             "print(variable);"
         ],
         "description": "Print variable",
-        "signature": "print(variable)"
-    },
-    "BML: json (create object)": {
-        "prefix": "bml-json",
-        "body": [
-            "// Create from JSON string",
-            "jsonObj = json(\"{\\\"key\\\":\\\"value\\\"}\");",
-            "// Create an empty json object",
-            "jsonObj = json();"
-        ],
-        "description": "Create a JSON object from a JSON formatted string (or empty if omitted).",
-        "signature": "json(string jsonStr?)"
-    },
-    "BML: isjsonnull": {
-        "prefix": "bml-isjsonnull",
-        "body": [
-            "// Check if a JSON key is null",
-            "isNull = isjsonnull(jsonObj, \"key\");",
-            "// Check if an array index is null",
-            "isNull = isjsonnull(jsonArr, 0);"
-        ],
-        "description": "Checks for null values in a JSON object or JSON array. Returns boolean.",
-        "signature": "isjsonnull(JSON obj, string key)"
-    },
-    "BML: jsonget": {
-        "prefix": "bml-jsonget",
-        "body": [
-            "// Get value with default",
-            "val = jsonget(jsonObj, \"key\", \"string\", \"defaultValue\");"
-        ],
-        "description": "Retrieve a value from a JSON object for the given key. Optional valueType and defaultValue.",
-        "signature": "jsonget(JSON obj, string key, string valueType?, defaultValue?)"
-    },
-    "BML: jsonput": {
-        "prefix": "bml-jsonput",
-        "body": [
-            "// Put or update a key in a JSON object",
-            "jsonput(jsonObj, \"key\", value);"
-        ],
-        "description": "Adds or updates a key-value entry in a JSON object. Returns the inserted/updated value.",
-        "signature": "jsonput(JSON obj, string key, value)"
-    },
-    "BML: jsonremove": {
-        "prefix": "bml-jsonremove",
-        "body": [
-            "// Remove first-level key from JSON object",
-            "isRemoved = jsonremove(jsonObj, \"key\");"
-        ],
-        "description": "Removes a first-level key-value entry from a JSON object. Returns boolean.",
-        "signature": "jsonremove(JSON obj, string key)"
-    },
-    "BML: jsoncopy": {
-        "prefix": "bml-jsoncopy",
-        "body": [
-            "// Copy a JSON object",
-            "copyObj = jsoncopy(jsonObj);"
-        ],
-        "description": "Creates a copy of a JSON object. Changes to the original will not affect the copy.",
-        "signature": "jsoncopy(JSON obj)"
-    },
-    "BML: jsontostr": {
-        "prefix": "bml-jsontostr",
-        "body": [
-            "// Convert JSON object to JSON-formatted string",
-            "jsonStr = jsontostr(jsonObj);"
-        ],
-        "description": "Converts a JSON object into a JSON formatted string.",
-        "signature": "jsontostr(JSON obj)"
-    },
-    "BML: jsonkeys": {
-        "prefix": "bml-jsonkeys",
-        "body": [
-            "// Get keys",
-            "keys = jsonkeys(jsonObj);"
-        ],
-        "description": "Retrieves all first-level keys from a JSON object and returns an array of strings. If the optional parameter (ignoreNullValues) is set to true, null value keys are ignored.",
-        "signature": "jsonkeys(JSON obj)"
-    },
-    "BML: jsonnull": {
-        "prefix": "bml-jsonnull",
-        "body": [
-            "// Create a JSON null value",
-            "jnull = jsonnull();"
-        ],
-        "description": "Creates an instance of a JSON null object.",
-        "signature": "jsonnull()"
-    },
-    "BML: jsonarray (create array)": {
-        "prefix": "bml-jsonarray",
-        "body": [
-            "// Create JSON array from string",
-            "jsonArr = jsonarray(\"[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]\");",
-            "// Create an empty json array",
-            "jsonArr = jsonarray();"
-        ],
-        "description": "Create a JSON array from a JSON-formatted array string, or an empty array if omitted.",
-        "signature": "jsonarray(string jsonArrayStr?)"
-    },
-    "BML: jsonarrayappend": {
-        "prefix": "bml-jsonarrayappend",
-        "body": [
-            "// Append a value to end of JSON array",
-            "jsonarrayappend(jsonArr, \"value\");"
-        ],
-        "description": "Appends a value to the end of a JSON array and returns the appended value.",
-        "signature": "jsonarrayappend(JSON array, value)"
-    },
-    "BML: jsonarrayget": {
-        "prefix": "bml-jsonarrayget",
-        "body": [
-            "// Get an element from a JSON array",
-            "val = jsonarrayget(jsonArr, 0, \"string\");"
-        ],
-        "description": "Returns the value from a JSON array at a given index. Optional valueType.",
-        "signature": "jsonarrayget(JSON array, integer index)"
-    },
-    "BML: jsonarraysize": {
-        "prefix": "bml-jsonarraysize",
-        "body": [
-            "// Get size of JSON array",
-            "size = jsonarraysize(jsonArr);"
-        ],
-        "description": "Returns the size (number of elements) of a JSON array.",
-        "signature": "jsonarraysize(jsonArr)"
-    },
-    "BML: jsonarrayremove": {
-        "prefix": "bml-jsonarrayremove",
-        "body": [
-            "// Remove an element from array by index",
-            "jsonarrayremove(jsonArr, 0);"
-        ],
-        "description": "Removes an element from a JSON array. The size of the array object after the object is removed is returned. An error is thrown if the given index is not available.",
-        "signature": "jsonarrayremove(jsonArr, 0)"
-    },
-    "BML: jsonarraycopy": {
-        "prefix": "bml-jsonarraycopy",
-        "body": [
-            "// Make a copy of a JSON array",
-            "copyJsonArr = jsonarraycopy(jsonArr);"
-        ],
-        "description": "Creates a copy of a JSON array.",
-        "signature": "jsonarraycopy(jsonArr)"
-    },
-    "BML: jsonarraytostr": {
-        "prefix": "bml-jsonarraytostr",
-        "body": [
-            "// Convert JSON array to string",
-            "jsonArrStr = jsonarraytostr(jsonArr);"
-        ],
-        "description": "Converts a JSON array into a JSON formatted string.",
-        "signature": "jsonarraytostr(jsonArr)"
-    },
-    "BML: jsonarrayrefid": {
-        "prefix": "bml-jsonarrayrefid",
-        "body": [
-            "// Get a unique reference id for JSON array",
-            "refId = jsonarrayrefid(jsonArr);"
-        ],
-        "description": "Returns a unique reference ID that represents the input JSON array. Can only be invoked by Commerce advanced modify, auto update or advanced default functions. This function provides a more efficient method to pass a JSON array to the BML output to update an array set.",
-        "signature": "jsonarrayrefid(jsonArr)"
-    },
-    "BML: jsonpathgetmultiple": {
-        "prefix": "bml-jsonpathgetmultiple",
-        "body": [
-            "// Get multiple values matching jsonPath",
-            "arr = jsonpathgetmultiple(jsonObj, \"$.path\");",
-            "// Example:",
-            "// str = \"{\\\"key1\\\":90,\\\"key2\\\":[{\\\"key1\\\":900}],\\\"key3\\\":{\\\"key1\\\":9000}}\";",
-            "// jsonObj = json(str);",
-            "// arrayVals = jsonpathgetmultiple(jsonObj,\"$..key1\");",
-            "// print arrayVals; //Output: [90,900,9000]"
-        ],
-        "description": "Retrieve multiple values or nodes for a JSONPath expression. asPath=false returns values, true returns nodes.",
-        "signature": "jsonpathgetmultiple(JSON obj, string jsonPath)"
-    },
-    "BML: jsonpathgetsingle": {
-        "prefix": "bml-jsonpathgetsingle",
-        "body": [
-            "// Get single value for jsonPath",
-            "val = jsonpathgetsingle(jsonObj, \"$.path\");",
-            "// Example:",
-            "// str = \"{\\\"store\\\":{\\\"book\\\":[{\\\"category\\\":\\\"reference\\\",\\\"author\\\":\\\"Nigel Rees\\\"},{\\\"category\\\":\\\"fiction\\\",\\\"author\\\":\\\"Evelyn Waugh\\\"}]},\\\"expensive\\\":10}\";",
-            "// jsonObj = json(str);",
-            "// ",
-            "// catArray = jsonpathgetsingle(jsonObj,\"$.store.book[0]\");",
-            "// print catArray; // Output: {\"category\":\"reference\",\"author\":\"Nigel Rees\"}",
-            "// ",
-            "// expenseInt = jsonpathgetsingle(jsonObj,\"$.expensive\",\"integer\");",
-            "// print expenseInt; // Output: 10"
-        ],
-        "description": "Retrieves the first node or value corresponding to a JSONPath expression. The valueType and defaultValue parameters are optional.",
-        "signature": "jsonpathgetsingle(JSON obj, string jsonPath, string valueType?)"
-    },
-    "BML: jsonpathset": {
-        "prefix": "bml-jsonpathset",
-        "body": [
-            "// Set/update all nodes matching jsonPath to a new value",
-            "jsonpathset(jsonObj, \"$.path\", newValue);"
-        ],
-        "description": "Updates all nodes matched by a JSONPath expression and returns the nodes updated.",
-        "signature": "jsonpathset(JSON obj, string jsonPath, newValue)"
-    },
-    "BML: jsonpathcheck": {
-        "prefix": "bml-jsonpathcheck",
-        "body": [
-            "// Check whether a JSONPath exists in the JSON object",
-            "found = jsonpathcheck(jsonObj, \"$.path\");"
-        ],
-        "description": "Checks if a JSONPath exists in a JSON object; returns boolean.",
-        "signature": "jsonpathcheck(jsonObj, $.path)"
-    },
-    "BML: jsonpathremove": {
-        "prefix": "bml-jsonpathremove",
-        "body": [
-            "// Remove nodes matching jsonPath",
-            "removed = jsonpathremove(jsonObj, \"$.path\");"
-        ],
-        "description": "Removes nodes matching a JSONPath expression from the JSON object; returns boolean.",
-        "signature": "jsonpathremove(JSON obj, string jsonPath)"
-    },
-    "BML: len": {
-        "prefix": "bml-len",
-        "body": [
-            "// Get length of a string",
-            "strLength = len(myString);"
-        ],
-        "description": "Returns the number of characters in the string.",
-        "signature": "len(string text)"
-    },
-    "BML: string": {
-        "prefix": "bml-string",
-        "body": [
-            "str = string(variable);"
-        ],
-        "description": "Converts a float, integer or boolean value into text.",
-        "signature": "string(variable)"
-    },
-    "BML: substring": {
-        "prefix": "bml-substring",
-        "body": [
-            "subStr = substring(myString, start, end);"
-        ],
-        "description": "Extracts a substring from the given string.",
-        "signature": "substring(string text, integer start, integer end?)"
-    },
-    "BML: startswith": {
-        "prefix": "bml-startswith",
-        "body": [
-            "starts = startswith(myString, \"subString\");"
-        ],
-        "description": "Checks whether a string starts with a particular substring.",
-        "signature": "startswith(string text, string prefix)"
-    },
-    "BML: endswith": {
-        "prefix": "bml-endswith",
-        "body": [
-            "ends = endswith(myString, \"subString\");"
-        ],
-        "description": "Checks whether a string ends with a particular substring.",
-        "signature": "endswith(string text, string suffix)"
-    },
-    "BML: lower": {
-        "prefix": "bml-lower",
-        "body": [
-            "lowerStr = lower(myString);"
-        ],
-        "description": "converts all characters in the text into all lowercase letters.",
-        "signature": "lower(string text)"
-    },
-    "BML: upper": {
-        "prefix": "bml-upper",
-        "body": [
-            "upperStr = upper(myString);"
-        ],
-        "description": "converts all characters in the text into all uppercase letters.",
-        "signature": "upper(string text)"
-    },
-    "BML: trim": {
-        "prefix": "bml-trim",
-        "body": [
-            "trimmed = trim(myString);"
-        ],
-        "description": "Remove whitespace from strings.",
-        "signature": "trim(string text)"
-    },
-    "BML: replace": {
-        "prefix": "bml-replace",
-        "body": [
-            "result = replace(myString, \"old\", \"new\");"
-        ],
-        "description": "Replace substrings inside a string.",
-        "signature": "replace(string text, string old, string new)"
-    },
-    "BML: split": {
-        "prefix": "bml-split",
-        "body": [
-            "arr = split(myString, ",");"
-        ],
-        "description": "Split a string into an array by delimiter.",
-        "signature": "split(string text, string delimiter)"
-    },
-    "BML: join": {
-        "prefix": "bml-join",
-        "body": [
-            "output = join(myArray, ",");"
-        ],
-        "description": "Join an array of strings into a single string.",
-        "signature": "join(array arr, string delimiter)"
-    },
-    "BML: formatascurrency": {
-        "prefix": "bml-formatascurrency",
-        "body": [
-            "formatted = formatascurrency(value, \"currencyCode\");"
-        ],
-        "description": "Takes a number and returns it as a formatted currency string.",
-        "signature": "formatascurrency(number value, string currencyCode)"
-    },
-    "BML: atoi": {
-        "prefix": "bml-atoi",
-        "body": [
-            "result = atoi(myString);"
-        ],
-        "description": "Converts text that represents a number into an integer value.",
-        "signature": "atoi(string s)"
-    },
-    "BML: atof": {
-        "prefix": "bml-atof",
-        "body": [
-            "result = atof(myString);"
-        ],
-        "description": "Converts text that represents a number into a float value.",
-        "signature": "atof(string s)"
-    },
-    "BML: isnumber": {
-        "prefix": "bml-isnumber",
-        "body": [
-            "isnumber(myString);"
-        ],
-        "description": "Returns true when the string is a number and false if it contains other characters.",
-        "signature": "isnumber(myString)"
-    },
-    "BML: find": {
-        "prefix": "bml-find",
-        "body": [
-            "find(myString,\"substring\");"
-        ],
-        "description": "Returns the position of a substring within a string.",
-        "signature": "find(myString, substring)"
-    },
-    "BML: decodebase64": {
-        "prefix": "bml-decodebase64",
-        "body": [
-            "result = decodebase64(myString);"
-        ],
-        "description": "Takes an encoded Base64 string and returns it as a plain text string.",
-        "signature": "decodebase64(myString)"
-    },
-    "BML: encodebase64": {
-        "prefix": "bml-encodebase64",
-        "body": [
-            "userName = \"\";",
-            "password = \"\";",
-            "result = encodebase64(userName + \":\" + password);"
-        ],
-        "description": "Parses the string parameter and converts it into its Base64 equivalent, as an encoded string.",
-        "signature": "encodebase64(userName + : + password)"
-    },
-    "BML: getcurrencyvalue": {
-        "prefix": "bml-getcurrencyvalue",
-        "body": [
-            "result = getcurrencyvalue(value, \"currencyCode\");"
-        ],
-        "description": "Takes a formatted currency string and returns the string's numeric value.",
-        "signature": "getcurrencyvalue(value, currencyCode)"
-    },
-    "BML: html": {
-        "prefix": "bml-html",
-        "body": [
-            "result = html(myString);"
-        ],
-        "description": "A method for HTML escaping (output encoding) of a string as safe plain text.",
-        "signature": "html(myString)"
-    },
-    "BML: containskey (dictionary)": {
-        "prefix": "bml-dict-containskey",
-        "body": [
-            "containskey(myDictionary, \"key\");"
-        ],
-        "description": "Returns true if the specified key exists in the dictionary.",
-        "signature": "containskey(dictionary dict, string key)"
-    },
-    "BML: dict (create dictionary)": {
-        "prefix": "bml-dict",
-        "body": [
-            "// Create a dictionary",
-            "myDictionary = dict(\"string\");"
-        ],
-        "description": "Create a dictionary for the specified data type.",
-        "signature": "dict(string)"
-    },
-    "BML: get (dictionary)": {
-        "prefix": "bml-dict-get",
-        "body": [
-            "value = get(myDictionary, \"key\");"
-        ],
-        "description": "Get the value stored in the dictionary for the given key.",
-        "signature": "get(dictionary dict, string key)"
-    },
-    "BML: keys (dictionary)": {
-        "prefix": "bml-dict-keys",
-        "body": [
-            "keysArr = keys(myDictionary);"
-        ],
-        "description": "Retrieve an unordered string array of all keys in a dictionary.",
-        "signature": "keys(dictionary dict)"
-    },
-    "BML: put (dictionary)": {
-        "prefix": "bml-dict-put",
-        "body": [
-            "put(myDictionary, \"key\", value);"
-        ],
-        "description": "Insert or update a value in the dictionary under the given key.",
-        "signature": "put(myDictionary, key, value)"
-    },
-    "BML: values (dictionary)": {
-        "prefix": "bml-dict-values",
-        "body": [
-            "vals = values(myDictionary);"
-        ],
-        "description": "Get an array of all values stored in the dictionary.",
-        "signature": "values(myDictionary)"
-    },
-    "BML: adddays": {
-        "prefix": "bml-date-adddays",
-        "body": [
-            "newDate = adddays(date, noOfDays);"
-        ],
-        "description": "Adds days to a date.",
-        "signature": "adddays(date, noOfDays)"
-    },
-    "BML: addmonths": {
-        "prefix": "bml-date-addmonths",
-        "body": [
-            "newDate = addmonths(date, noOfMonths);"
-        ],
-        "description": "Adds months to a date.",
-        "signature": "addmonths(date d, integer months)"
-    },
-    "BML: comparedates": {
-        "prefix": "bml-date-comparedates",
-        "body": [
-            "result = comparedates(date1, date2);"
-        ],
-        "description": "Compare two dates based on date and time.",
-        "signature": "comparedates(date1, date2)"
-    },
-    "BML: datetostr": {
-        "prefix": "bml-date-datetostr",
-        "body": [
-            "result = datetostr(date, dateFormat);"
-        ],
-        "description": "Converts a date to a string.",
-        "signature": "datetostr(date, dateFormat)"
-    },
-    "BML: getcurrenttimeinmillis": {
-        "prefix": "bml-date-getcurrenttimeinmillis",
-        "body": [
-            "result = getcurrenttimeinmillis();"
-        ],
-        "description": "Returns the current time in milliseconds.",
-        "signature": "getcurrenttimeinmillis()"
-    },
-    "BML: getdate": {
-        "prefix": "bml-date-getdate",
-        "body": [
-            "currentDate = getdate();"
-        ],
-        "description": "Returns the current date.",
-        "signature": "getdate()"
-    },
-    "BML: getdiffindays": {
-        "prefix": "bml-date-getdiffindays",
-        "body": [
-            "result = getdiffindays(date1, date2);"
-        ],
-        "description": "Calculates the number of days between two different dates.",
-        "signature": "getdiffindays(date1, date2)"
-    },
-    "BML: getstrdate": {
-        "prefix": "bml-date-getstrdate",
-        "body": [
-            "result = getstrdate();"
-        ],
-        "description": "Returns the string representation of current date.",
-        "signature": "getstrdate()"
-    },
-    "BML: isleap": {
-        "prefix": "bml-date-isleap",
-        "body": [
-            "result = isleap(Year);"
-        ],
-        "description": "Returns true if the year provided is a leap year.",
-        "signature": "isleap(Year)"
-    },
-    "BML: isweekend": {
-        "prefix": "bml-date-isweekend",
-        "body": [
-            "result = isweekend(date);"
-        ],
-        "description": "Returns true if the date provided is a Saturday or Sunday.",
-        "signature": "isweekend(date)"
-    },
-    "BML: minusdays": {
-        "prefix": "bml-date-minusdays",
-        "body": [
-            "newDate = minusdays(date, noOfDays);"
-        ],
-        "description": "Subtracts days to a date.",
-        "signature": "minusdays(date, noOfDays)"
-    },
-    "BML: strtojavadate": {
-        "prefix": "bml-date-strtojavadate",
-        "body": [
-            "result = strtojavadate(dateString, dateFormat);"
-        ],
-        "description": "Converts a string to a date.",
-        "signature": "strtojavadate(dateString, dateFormat)"
-    },
-    "BML makeurlparam": {
-        "prefix": "bml-makeurlparam",
-        "body": [
-            "params = makeurlparam({",
-            "    'param1' : \"value\",",
-            "});"
-        ],
-        "description": "Converts a series of name-value pairs into a query string, which can be appended to a URL.",
-        "signature": "makeurlparam({\n    param1, })"
-    },
-    "BML urldata (GET)": {
-        "prefix": "bml-urldata-get",
-        "body": [
-            "headerDict = dict(\"string\");",
-            "put(headerDict, \"Accept\", \"application/json\");",
-            "put(headerDict, \"Content-Type\", \"application/json\");",
-            "put(headerDict, \"Authorization\", credentials);",
-            "response = urldata(url, \"GET\", headerDict);"
-        ],
-        "description": "Retrieves data using GET method",
-        "signature": "get(dictionary dict, string key)"
-    },
-    "BML urldata (POST)": {
-        "prefix": "bml-urldata-post",
-        "body": [
-            "headerDict = dict(\"string\");",
-            "put(headerDict, \"Accept\", \"application/json\");",
-            "put(headerDict, \"Content-Type\", \"application/json\");",
-            "put(headerDict, \"Authorization\", credentials);",
-            "response = urldata(url, \"POST\", headerDict, requestPayload);"
-        ],
-        "description": "Retrieves data using POST method",
-        "signature": "dict(string)"
-    },
-    "BML urldatabypost": {
-        "prefix": "bml-urldatabypost",
-        "body": [
-            "headerDict = dict(\"string\");",
-            "put(headerDict, \"Accept\", \"application/json\");",
-            "put(headerDict, \"Content-Type\", \"application/json\");",
-            "put(headerDict, \"Authorization\", credentials);",
-            "response = urldatabypost(url, requestPayload, \"ERROR\", headerDict);"
-        ],
-        "description": "Retrieves data using POST method",
-        "signature": "urldatabypost(url, requestPayload, ERROR, headerDict)"
-    },
-    "BML urldatabyget": {
-        "prefix": "bml-urldatabyget",
-        "body": [
-            "response = urldatabyget(url, params, \"ERROR\");"
-        ],
-        "description": "Retrieves data using GET method",
-        "signature": "urldatabyget(url, params, ERROR)"
-    },
-    "BML urldatabypostasync": {
-        "prefix": "bml-urldatabypostasync",
-        "body": [
-            "headerDict = dict(\"string\");",
-            "response = urldatabypostasync(url, params, \"ERROR\", \"callbackActionVarName\", headerDict);"
-        ],
-        "description": "Retrieves data asynchronously using POST method",
-        "signature": "urldatabypostasync(url, params, ERROR, callbackActionVarName, headerDict)"
-    },
-    "BML applytemplate": {
-        "prefix": "bml-applytemplate",
-        "body": [
-            "payload = dict(\"string\");",
-            "applytemplate(templateFileLocation, payload);"
-        ],
-        "description": "This function applies a set of token key-value pairs to the template file.",
-        "signature": "applytemplate(templateFileLocation, payload)"
-    },
-    "BML readxmlmultiple": {
-        "prefix": "bml-readxmlmultiple",
-        "body": [
-            "result = readxmlmultiple(xmlPayload, xpaths);"
-        ],
-        "description": "This function reads a set of multiple XML node contents based on a set of XPath expressions.",
-        "signature": "readxmlmultiple(xmlPayload, xpaths)"
-    },
-    "BML readxmlsingle": {
-        "prefix": "bml-readxmlsingle",
-        "body": [
-            "result = readxmlsingle(xmlPayload, xpaths);"
-        ],
-        "description": "This function reads a set of single XML node content based on a set of XPath expressions.",
-        "signature": "readxmlsingle(xmlPayload, xpaths)"
-    },
-    "BML transformxml": {
-        "prefix": "bml-transformxml",
-        "body": [
-            "result = transformxml(xmlcontent, xslFileLocation);"
-        ],
-        "description": "This function transforms an XML string with an XSLT file stored in the File Manager.",
-        "signature": "transformxml(xmlcontent, xslFileLocation)"
-    },
-    "BML append": {
-        "prefix": "bml-array-append",
-        "body": [
-            "append(arr, \"value\");"
-        ],
-        "description": "This function will attach a new element to the end of an array."
-    },
-    "BML boolean[n]": {
-        "prefix": "bml-array-boolean1d",
-        "body": [
-            "booleanArray = boolean[size];"
-        ],
-        "description": "Declare a 1-D boolean array with the specified size."
-    },
-    "BML boolean[n][n]": {
-        "prefix": "bml-array-boolean2d",
-        "body": [
-            "booleanArray = boolean[size1][size2];"
-        ],
-        "description": "Declare a 2-D boolean array with the specified size."
-    },
-    "BML bytearray": {
-        "prefix": "bml-array-bytearray",
-        "body": [
-            "value = bytearray(content, \"charSet\");"
-        ],
-        "description": "This function stores a collection of binary data such as the contents of a file."
-    },
-    "BML date[n]": {
-        "prefix": "bml-array-date1d",
-        "body": [
-            "datesArray = date[size];"
-        ],
-        "description": "Declare a 1-D date array with the specified size."
-    },
-    "BML date[n][n]": {
-        "prefix": "bml-array-date2d",
-        "body": [
-            "datesArray = date[size1][size2];"
-        ],
-        "description": "Declare a 2-D date array with the specified size."
-    },
-    "BML findinarray": {
-        "prefix": "bml-array-findinarray",
-        "body": [
-            "index = findinarray(arr, \"value\");"
-        ],
-        "description": "Find index of a value in an array"
-    },
-    "BML float[n]": {
-        "prefix": "bml-array-float1d",
-        "body": [
-            "floatArray = float[size];"
-        ],
-        "description": "Declare a 1-D float array with the specified size."
-    },
-    "BML float[n][n]": {
-        "prefix": "bml-array-float2d",
-        "body": [
-            "floatArray = float[size1][size2];"
-        ],
-        "description": "Declare a 2-D float array with the specified size."
-    },
-    "BML integer[n]": {
-        "prefix": "bml-array-integer1d",
-        "body": [
-            "integerArray = integer[size];"
-        ],
-        "description": "Declare a 1-D integer array with the specified size."
-    },
-    "BML integer[n][n]": {
-        "prefix": "bml-array-integer2d",
-        "body": [
-            "integerArray = integer[size1][size2];"
-        ],
-        "description": "Declare a 2-D integer array with the specified size."
-    },
-    "BML isempty": {
-        "prefix": "bml-array-isempty",
-        "body": [
-            "result = isempty(arr);"
-        ],
-        "description": "Check whether an array is empty"
-    },
-    "BML max": {
-        "prefix": "bml-array-max",
-        "body": [
-            "maxValue = max(arr);"
-        ],
-        "description": "Return maximum value in array"
-    },
-    "BML min": {
-        "prefix": "bml-array-min",
-        "body": [
-            "minValue = min(arr);"
-        ],
-        "description": "Return minimum value in array"
-    },
-    "BML range": {
-        "prefix": "bml-array-range",
-        "body": [
-            "arr = range(size);"
-        ],
-        "description": "Declares an integer array with a specified size and initializes it to its index value."
-    },
-    "BML remove": {
-        "prefix": "bml-array-remove",
-        "body": [
-            "index = remove(arr, position);"
-        ],
-        "description": "Remove element from array by index"
-    },
-    "BML reverse": {
-        "prefix": "bml-array-reverse",
-        "body": [
-            "result = reverse(arr);"
-        ],
-        "description": "Reverse the array in place"
-    },
-    "BML sizeofarray": {
-        "prefix": "bml-array-sizeofarray",
-        "body": [
-            "arraySize = sizeofarray(arr);"
-        ],
-        "description": "Return number of elements in array"
-    },
-    "BML sort": {
-        "prefix": "bml-array-sort",
-        "body": [
-            "sortedArray = sort(arr, \"order\");"
-        ],
-        "description": "This function sorts array elements based on defined sort method. You can sort in ascending or descending order."
-    },
-    "BML string[n]": {
-        "prefix": "bml-array-string1d",
-        "body": [
-            "stringArray = string[size];"
-        ],
-        "description": "Declare a 1-D string array"
-    },
-    "BML string[n][n]": {
-        "prefix": "bml-array-string2d",
-        "body": [
-            "stringArray = string[size1][size2];"
-        ],
-        "description": "Declare a 2-D string array with the specified size."
-    },
-    "BML acos": {
-        "prefix": "bml-math-acos",
-        "body": [
-            "result = acos(value);"
-        ],
-        "description": "This function returns the arc cosine of the number or angle in the range of 0 through π.",
-        "signature": "acos(value)"
-    },
-    "BML asin": {
-        "prefix": "bml-math-asin",
-        "body": [
-            "result = asin(value);"
-        ],
-        "description": "This function returns the arcsine of a number or angle.",
-        "signature": "asin(value)"
-    },
-    "BML atan": {
-        "prefix": "bml-math-atan",
-        "body": [
-            "result = atan(value);"
-        ],
-        "description": "This function returns the arctangent of the number or angle.",
-        "signature": "atan(value)"
-    },
-    "BML ceil": {
-        "prefix": "bml-math-ceil",
-        "body": [
-            "result = ceil(value);"
-        ],
-        "description": "This function converts a float into the next highest whole number.",
-        "signature": "ceil(value)"
-    },
-    "BML cos": {
-        "prefix": "bml-math-cos",
-        "body": [
-            "result = cos(value);"
-        ],
-        "description": "This function returns the cosine of the number/angle.",
-        "signature": "cos(value)"
-    },
-    "BML cosh": {
-        "prefix": "bml-math-cosh",
-        "body": [
-            "result = cosh(value);"
-        ],
-        "description": "This function returns the hyperbolic cosine of a number or angle.",
-        "signature": "cosh(value)"
-    },
-    "BML exp": {
-        "prefix": "bml-math-exp",
-        "body": [
-            "result = exp(value);"
-        ],
-        "description": "This function returns Euler's number e raised to the power of the number passed through the function, also known as the exponential function.",
-        "signature": "exp(value)"
-    },
-    "BML fabs": {
-        "prefix": "bml-math-fabs",
-        "body": [
-            "result = fabs(value);"
-        ],
-        "description": "This function returns the absolute value of a number.",
-        "signature": "fabs(value)"
-    },
-    "BML fmod": {
-        "prefix": "bml-math-fmod",
-        "body": [
-            "result = fmod(value1, value2);"
-        ],
-        "description": "This function returns the remainder of the division operation x, y.",
-        "signature": "fmod(value1, value2)"
-    },
-    "BML hypot": {
-        "prefix": "bml-math-hypot",
-        "body": [
-            "result = hypot(value1, value2);"
-        ],
-        "description": "This function returns the sqrt(x2 + y2) without intermediaries.",
-        "signature": "hypot(value1, value2)"
-    },
-    "BML integer": {
-        "prefix": "bml-math-integer",
-        "body": [
-            "result = integer(value);"
-        ],
-        "description": "This function returns the integer portion of a float number.",
-        "signature": "integer(value)"
-    },
-    "BML ln": {
-        "prefix": "bml-math-ln",
-        "body": [
-            "result = ln(value);"
-        ],
-        "description": "This function returns the natural logarithm (base e) of the number.",
-        "signature": "ln(value)"
-    },
-    "BML log": {
-        "prefix": "bml-math-log",
-        "body": [
-            "result = log(value);"
-        ],
-        "description": "This function returns the base-10 logarithm of the number.",
-        "signature": "log(value)"
-    },
-    "BML pow": {
-        "prefix": "bml-math-pow",
-        "body": [
-            "result = pow(base, exponent);"
-        ],
-        "description": "This function returns the value of the first argument raised to the power of the second argument.",
-        "signature": "pow(base, exponent)"
-    },
-    "BML round": {
-        "prefix": "bml-math-round",
-        "body": [
-            "result = round(value);"
-        ],
-        "description": "This function returns the rounded value of a number up to a certain decimal point.",
-        "signature": "round(value)"
-    },
-    "BML sin": {
-        "prefix": "bml-math-sin",
-        "body": [
-            "result = sin(value);"
-        ],
-        "description": "This function returns the trigonometric sine of the number/angle.",
-        "signature": "sin(value)"
-    },
-    "BML sinh": {
-        "prefix": "bml-math-sinh",
-        "body": [
-            "result = sinh(value);"
-        ],
-        "description": "This function returns the hyperbolic sine of a number or angle.",
-        "signature": "sinh(value)"
-    },
-    "BML sqrt": {
-        "prefix": "bml-math-sqrt",
-        "body": [
-            "result = sqrt(value);"
-        ],
-        "description": "This function returns the positive square root of a number.",
-        "signature": "sqrt(value)"
-    },
-    "BML tan": {
-        "prefix": "bml-math-tan",
-        "body": [
-            "result = tan(value);"
-        ],
-        "description": "This function returns the tangent of the number/angle.",
-        "signature": "tan(value)"
-    },
-    "BML tanh": {
-        "prefix": "bml-math-tanh",
-        "body": [
-            "result = tanh(value);"
-        ],
-        "description": "This function returns the hyperbolic tangent of a number or angle.",
-        "signature": "tanh(value)"
-    },
-    "BML globaldictset": {
-        "prefix": "bml-globaldictset",
-        "body": [
-            "globaldictset(\"key\", \"value\");"
-        ],
-        "description": "This function adds or updates the key-value pair in the global dictionary.",
-        "signature": "globaldictset(key, value)"
-    },
-    "BML globaldictget": {
-        "prefix": "bml-globaldictget",
-        "body": [
-            "value = globaldictget(\"key\");"
-        ],
-        "description": "This function returns a value stored in the global dictionary corresponding to the given key. If the key is not found in the global dictionary, null is returned.",
-        "signature": "globaldictget(key)"
-    },
-    "BML globaldictremove": {
-        "prefix": "bml-globaldictremove",
-        "body": [
-            "result = globaldictremove(\"key\");"
-        ],
-        "description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the global dictionary.",
-        "signature": "globaldictremove(key)"
-    },
-    "BML getsystemdata": {
-        "prefix": "bml-getsystemdata",
-        "body": [
-            "systemJson = getsystemdata();"
-        ],
-        "description": "Returns a JSON object containing the entire representation of the System Configuration Data.",
-        "signature": "getsystemdata()"
-    },
-    "BML getsystemattrvalues": {
-        "prefix": "bml-getsystemattrvalues",
-        "body": [
-            "values = getsystemattrvalues(\"$.path\");"
-        ],
-        "description": "This function returns a string containing a single attribute's values from a System Configuration.",
-        "signature": "getsystemattrvalues($.path)"
-    },
-    "BML getsystemmultipleattrvalues": {
-        "prefix": "bml-getsystemmultipleattrvalues",
-        "body": [
-            "jsonPaths = dict(\"string\");",
-            "values = getsystemmultipleattrvalues(jsonPaths);"
-        ],
-        "description": "  This function returns dictionary key and value string arrays containing attribute values from a System Configuration.",
-        "signature": "getsystemmultipleattrvalues(jsonPaths)"
-    },
-    "BML usersessionset": {
-        "prefix": "bml-usersessionset",
-        "body": [
-            "usersessionset(\"key\", \"value\");"
-        ],
-        "description": "This function sets a key-value pair to the user session cache. The values are available as long as the user session is active. Values stored in the session cache are removed automatically when the user logs out, the session expires, or the server is restarted.",
-        "signature": "usersessionset(key, value)"
-    },
-    "BML usersessionget": {
-        "prefix": "bml-usersessionget",
-        "body": [
-            "value = usersessionget(\"key\");"
-        ],
-        "description": "This function retrieves a value for a given key from a user session. If the key is not found, null is returned.",
-        "signature": "usersessionget(key)"
-    },
-    "BML usersessionremove": {
-        "prefix": "bml-usersessionremove",
-        "body": [
-            "result = usersessionremove(\"key\");"
-        ],
-        "description": "The function returns true if the key-value pair is successfully removed, and returns false if the key does not exist in the user session.",
-        "signature": "usersessionremove(key)"
-    },
-    "BML if": {
-        "prefix": "bml-if",
-        "body": [
-            "if (condition) {",
-            "\/\/ code",
-            "}"
-        ],
-        "description": "if statement"
-    },
-    "BML if.else": {
-        "prefix": "bml-if.else",
-        "body": [
-            "if (condition) {",
-            "\/\/ code",
-            "} else {",
-            "\/\/ code",
-            "}"
-        ],
-        "description": "if-else statement"
-    },
-    "BML if.elif": {
-        "prefix": "bml-if.elif",
-        "body": [
-            "if (condition) {",
-            "\/\/ code",
-            "} elif (condition) {",
-            "\/\/ code",
-            "}"
-        ],
-        "description": "if-elif statement"
-    },
-    "BML if.elif.else": {
-        "prefix": "bml-if.elif.else",
-        "body": [
-            "if (condition) {",
-            "\/\/ code",
-            "} elif (condition) {",
-            "\/\/ code",
-            "} else {",
-            "\/\/ code",
-            "}"
-        ],
-        "description": "if-elif-else statement"
-    },
-    "BML loop.array": {
-        "prefix": "bml-loop.array",
-        "body": [
-            "for each in array {",
-            "\/\/ code",
-            "}"
-        ],
-        "description": "Loop an array"
-    },
-    "BML: loop.jsonarray": {
-        "prefix": "bml-loop.jsonarray",
-        "body": [
-            "jsonArrSize = jsonarraysize(jsonArr);",
-            "jsonArrRange = range(jsonArrSize);",
-            "for index in jsonArrRange {",
-            "    val = jsonarrayget(jsonArr, index);",
-            "}"
-        ],
-        "description": "Loop a JSON Array."
-    },
-    "BML loop.lineprocess": {
-        "prefix": "bml-loop.lineProcess",
-        "body": [
-            "for line in line_process {",
-            "    parentDocNum = line._parent_doc_number;",
-            "    docNum = line._document_number;",
-            "",
-            "    if (parentDocNum == \"\") {",
-            "        // Model logic here",
-            "    } else {",
-            "        // Line logic here",
-            "    }",
-            "}"
-        ]
+        "signature": "print(variable)",
+        "functionName": "print"
     }
 }

@@ -2,14 +2,14 @@
     "name": "oracle-cpq-bml-snippets",
     "displayName": "Developer Tools for CPQ",
     "description": "A collection of developer tools and code snippets to speed up coding in Oracle CPQ.",
-    "version": "0.0.27",
+    "version": "0.0.29",
     "publisher": "YashwanthKumar",
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/yashwanth2714/Oracle-CPQ-BML-Snippets"
     },
-    "icon": "logo.png",
+    "icon": "./images/logo.png",
     "engines": {
         "vscode": "^1.86.0"
     },
@@ -30,6 +30,25 @@
         "Themes"
     ],
     "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "cpqExplorer",
+                    "title": "CPQ",
+                    "icon": "./images/activityBarIcon.svg"
+                }
+            ]
+        },
+        "views": {
+            "cpqExplorer": [
+                {
+                    "id": "cpqDocs",
+                    "name": "BML Functions",
+                    "icon": "./images/activityBarIcon.svg",
+                    "type": "webview"
+                }
+            ]
+        },
         "languages": [
             {
                 "id": "bml",
@@ -42,8 +61,8 @@
                 ],
                 "configuration": "./language-configuration.json",
                 "icon": {
-                    "dark": "bml.svg",
-                    "light": "bml.svg"
+                    "dark": "./images/bml.svg",
+                    "light": "./images/bml.svg"
                 }
             }
         ],

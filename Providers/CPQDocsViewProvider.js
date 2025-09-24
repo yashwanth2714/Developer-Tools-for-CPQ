@@ -45,7 +45,6 @@ class CPQDocsViewProvider {
         view.webview.options = { enableScripts: true };
 
         const htmlPath = path.join(this.extensionPath, "Providers/CPQDocs.html");
-        console.log(htmlPath)
         let html = fs.readFileSync(htmlPath, "utf8");
 
         view.webview.html = html;
@@ -55,7 +54,6 @@ class CPQDocsViewProvider {
                 const filtered = this.filterSnippets(message.query);
                 const htmlResults = this.buildResults(filtered);
                 view.webview.postMessage({ type: "updateResults", html: htmlResults });
-
             } else if (message.type === "insertSnippet") {
                 this.insertSnippet(message.snippet);
 
@@ -100,22 +98,22 @@ class CPQDocsViewProvider {
 
         let html = "";
         for (const cat in categories) {
-            html += `<h3>${cat}</h3><ul>`;
+            html += `<h3 class="category">${cat}</h3><div>`;
             for (const { funcName, snip, safeBody, escapedForAttr } of categories[cat]) {
                 html += `
-          <li>
-            <div style="font-weight:bold;font-size:14px;">${funcName}</div>
-            <code>${snip.signature || ""}</code>
-            <div style="font-size:13px;color:rgb(182, 179, 179);margin:8px 0;">
-              ${snip.description || ""}
-            </div>
-            <pre>${safeBody}</pre>
-            <button class="copy-btn" data-snippet="${escapedForAttr}">📋 Copy</button>
-            <button class="insert-btn" data-snippet="${escapedForAttr}" style="margin-left:6px;">➕ Insert</button>
-          </li>
-        `;
+                <div class="list-item">
+                    <div class="functionName">${funcName}</div>
+                    <code>${snip.signature || ""}</code>
+                    <div class="description">
+                    ${snip.description || ""}
+                    </div>
+                    <pre>${safeBody}</pre>
+                    <button class="copy-btn" data-snippet="${escapedForAttr}">Copy</button>
+                    <button class="insert-btn" data-snippet="${escapedForAttr}">Insert</button>
+                </div>
+                `;
             }
-            html += `</ul>`;
+            html += `</div>`;
         }
         return html;
     }

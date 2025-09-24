@@ -2,7 +2,7 @@
     "name": "oracle-cpq-bml-snippets",
     "displayName": "Developer Tools for CPQ",
     "description": "A collection of developer tools and code snippets to speed up coding in Oracle CPQ.",
-    "version": "0.0.30",
+    "version": "0.0.33",
     "publisher": "YashwanthKumar",
     "license": "MIT",
     "repository": {
@@ -162,11 +162,6 @@
                 "label": "Ayu Mirage (CPQ)",
                 "uiTheme": "vs-dark",
                 "path": "./themes/ayu-mirage.json"
-            },
-            {
-                "label": "Ayu Light (CPQ)",
-                "uiTheme": "vs",
-                "path": "./themes/ayu-light.json"
             },
             {
                 "label": "Nord (CPQ)",

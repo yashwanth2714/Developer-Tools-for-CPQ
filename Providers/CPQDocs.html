@@ -7,48 +7,76 @@
         body {
             font-family: sans-serif;
             padding: 0.5em;
+            background-color: var(--vscode-sideBar-background);
+            color: var(--vscode-sideBar-foreground);
         }
 
         #searchBox {
             width: 100%;
             padding: 6px;
             font-size: 13px;
+            background: var(--vscode-input-background);
+            color: var(--vscode-input-foreground);
+            border: 1px solid var(--vscode-input-border);
         }
 
-        li {
+        .category {
+            color: var(--vscode-editor-foreground);
+            text-align: center;
+        }
+
+        .functionName {
+            font-weight: bold;
+            font-size: 14px;
+            color: var(--vscode-editor-foreground);
+        }
+
+        .description {
+            font-size: 13px;
+            color: var(--vscode-editor-foreground);
+            margin: 8px 0;
+        }
+
+        .list-item {
             margin-bottom: 25px;
             padding: 10px;
-            border: 1px solid #333;
+            border: 1px solid var(--vscode-sideBarSectionHeader-border, #333);
             border-radius: 6px;
+            background: var(--vscode-sideBarSectionHeader-background, transparent);
         }
 
         code {
             display: block;
-            background: #222;
-            color: #eee;
+            background: var(--vscode-editor-background);
+            color: var(--vscode-editor-foreground);
             padding: 6px;
             border-radius: 4px;
             margin: 6px 0;
         }
 
         pre {
-            background: #111;
-            color: #eee;
+            background: var(--vscode-editor-background);
+            color: var(--vscode-editor-foreground);
             padding: 8px;
             border-radius: 4px;
             overflow-x: auto;
             font-size: 12px;
         }
 
-        button.copy-btn {
+        button.copy-btn,
+        .insert-btn {
             margin-top: 6px;
             padding: 4px 10px;
             font-size: 12px;
-            background: #007acc;
-            color: white;
+            background: var(--vscode-button-background);
+            color: var(--vscode-button-foreground);
             border: none;
             border-radius: 4px;
             cursor: pointer;
+        }
+
+        .insert-btn {
+            margin-left: 6px;
         }
     </style>
 </head>

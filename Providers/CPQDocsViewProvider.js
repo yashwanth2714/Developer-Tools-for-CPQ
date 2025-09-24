@@ -9,6 +9,38 @@ class CPQDocsViewProvider {
         this.snippets = JSON.parse(fs.readFileSync(snippetsPath, "utf8"));
     }
 
+    insertSnippet(snippetText) {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            vscode.window.showWarningMessage("No active editor to insert snippet.");
+            return;
+        }
+
+        const position = editor.selection.active;
+
+        // Get editor settings
+        const { insertSpaces, tabSize } = editor.options;
+        let indentUnit = insertSpaces ? " ".repeat(tabSize) : "\t";
+
+        // Get current line’s leading whitespace
+        const lineText = editor.document.lineAt(position.line).text;
+        const currentIndentMatch = lineText.match(/^\s*/);
+        const currentIndent = currentIndentMatch ? currentIndentMatch[0] : "";
+
+        // Apply indentation for multiline snippets
+        const indentedSnippet = snippetText
+            .split("\n")
+            .map((line, idx) => (idx === 0 ? line : currentIndent + line))
+            .join("\n");
+
+        editor.edit(editBuilder => {
+            editBuilder.insert(position, indentedSnippet);
+        });
+
+        vscode.window.showInformationMessage("✅ Snippet inserted into editor");
+    }
+
+
     resolveWebviewView(view) {
         view.webview.options = { enableScripts: true };
 
@@ -23,10 +55,15 @@ class CPQDocsViewProvider {
                 const filtered = this.filterSnippets(message.query);
                 const htmlResults = this.buildResults(filtered);
                 view.webview.postMessage({ type: "updateResults", html: htmlResults });
+
+            } else if (message.type === "insertSnippet") {
+                this.insertSnippet(message.snippet);
+
             } else if (message.type === "info") {
                 vscode.window.showInformationMessage(message.message);
             }
         });
+
     }
 
     filterSnippets(query) {
@@ -35,7 +72,8 @@ class CPQDocsViewProvider {
         for (const [key, snip] of Object.entries(this.snippets)) {
             if (
                 key.toLowerCase().includes(query.toLowerCase()) ||
-                (snip.description && snip.description.toLowerCase().includes(query.toLowerCase()))
+                (snip.prefix && snip.prefix.toLowerCase().includes(query.toLowerCase())) ||
+                (snip.category && snip.category.toLowerCase().includes(query.toLowerCase()))
             ) {
                 result[key] = snip;
             }
@@ -72,7 +110,8 @@ class CPQDocsViewProvider {
               ${snip.description || ""}
             </div>
             <pre>${safeBody}</pre>
-            <button class="copy-btn" data-snippet="${escapedForAttr}">📋 Copy Snippet</button>
+            <button class="copy-btn" data-snippet="${escapedForAttr}">📋 Copy</button>
+            <button class="insert-btn" data-snippet="${escapedForAttr}" style="margin-left:6px;">➕ Insert</button>
           </li>
         `;
             }

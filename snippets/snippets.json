@@ -9,7 +9,7 @@
             "jsonObj = json();"
         ],
         "description": "Create a JSON object from a JSON formatted string (or empty if omitted).",
-        "signature": "json(string jsonStr?)",
+        "signature": "json(string jsonStr)",
         "functionName": "json"
     },
     "BML: isjsonnull": {
@@ -670,8 +670,8 @@
             "response = urldata(url, \"GET\", headerDict);"
         ],
         "description": "Retrieves data using GET method",
-        "signature": "urldata(url, method, headerDict, requestPayload)",
-        "functionName": "urldata"
+        "signature": "urldata(url, \"GET\", headerDict, requestPayload)",
+        "functionName": "urldata-GET"
     },
     "BML urldata (POST)": {
         "prefix": "bml-urldata-post",
@@ -684,8 +684,8 @@
             "response = urldata(url, \"POST\", headerDict, requestPayload);"
         ],
         "description": "Retrieves data using POST method",
-        "signature": "urldata(url, method, headerDict, requestPayload)",
-        "functionName": "urldata"
+        "signature": "urldata(url, \"POST\", headerDict, requestPayload)",
+        "functionName": "urldata-POST"
     },
     "BML urldatabypost": {
         "prefix": "bml-urldatabypost",

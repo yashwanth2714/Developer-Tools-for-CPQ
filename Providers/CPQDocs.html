@@ -71,15 +71,24 @@
             if (msg.type === 'updateResults') {
                 resultsDiv.innerHTML = msg.html;
 
-                // wire up copy buttons
+                // Copy button
                 document.querySelectorAll(".copy-btn").forEach(btn => {
                     btn.addEventListener("click", () => {
                         const snippet = btn.getAttribute("data-snippet");
                         navigator.clipboard.writeText(snippet).then(() => {
-                            vscode.postMessage({ type: "info", message: "✅ Snippet copied!" });
+                            vscode.postMessage({ type: "info", message: "✅ Snippet copied to clipboard" });
                         });
                     });
                 });
+
+                // Insert button
+                document.querySelectorAll(".insert-btn").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        const snippet = btn.getAttribute("data-snippet");
+                        vscode.postMessage({ type: "insertSnippet", snippet });
+                    });
+                });
+
             }
         });
 

@@ -12,7 +12,7 @@ class BMLHoverProvider {
         const word = document.getText(range).toLowerCase();
         if (this.docs[word]) {
             const md = new vscode.MarkdownString(
-                `${this.docs[word].desc}\n\n\`\`\`bml\n${this.docs[word].body}\n\`\`\``
+                `${this.docs[word].desc}\n\n\`\`\`bml\n${this.docs[word].signature}\n\`\`\``
             );
             return new vscode.Hover(md);
         }

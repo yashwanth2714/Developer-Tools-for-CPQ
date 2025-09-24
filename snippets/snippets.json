@@ -1,7 +1,7 @@
 {
     "BML: json (create object)": {
         "prefix": "bml-json",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Create from JSON string",
             "jsonObj = json(\"{\\\"key\\\":\\\"value\\\"}\");",
@@ -14,7 +14,7 @@
     },
     "BML: isjsonnull": {
         "prefix": "bml-isjsonnull",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Check if a JSON key is null",
             "isNull = isjsonnull(jsonObj, \"key\");",
@@ -27,7 +27,7 @@
     },
     "BML: jsonget": {
         "prefix": "bml-jsonget",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Get value with default",
             "val = jsonget(jsonObj, \"key\", \"string\", \"defaultValue\");"
@@ -38,7 +38,7 @@
     },
     "BML: jsonput": {
         "prefix": "bml-jsonput",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Put or update a key in a JSON object",
             "jsonput(jsonObj, \"key\", value);"
@@ -49,7 +49,7 @@
     },
     "BML: jsonremove": {
         "prefix": "bml-jsonremove",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Remove first-level key from JSON object",
             "isRemoved = jsonremove(jsonObj, \"key\");"
@@ -60,7 +60,7 @@
     },
     "BML: jsoncopy": {
         "prefix": "bml-jsoncopy",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Copy a JSON object",
             "copyObj = jsoncopy(jsonObj);"
@@ -71,7 +71,7 @@
     },
     "BML: jsontostr": {
         "prefix": "bml-jsontostr",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Convert JSON object to JSON-formatted string",
             "jsonStr = jsontostr(jsonObj);"
@@ -82,7 +82,7 @@
     },
     "BML: jsonkeys": {
         "prefix": "bml-jsonkeys",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Get keys",
             "keys = jsonkeys(jsonObj);"
@@ -93,7 +93,7 @@
     },
     "BML: jsonnull": {
         "prefix": "bml-jsonnull",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Create a JSON null value",
             "jnull = jsonnull();"
@@ -104,7 +104,7 @@
     },
     "BML: jsonarray (create array)": {
         "prefix": "bml-jsonarray",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Create JSON array from string",
             "jsonArr = jsonarray(\"[1,\\\"val1\\\",{\\\"key1\\\":10,\\\"key2\\\":\\\"val2\\\"}]\");",
@@ -117,7 +117,7 @@
     },
     "BML: jsonarrayappend": {
         "prefix": "bml-jsonarrayappend",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Append a value to end of JSON array",
             "jsonarrayappend(jsonArr, \"value\");"
@@ -128,7 +128,7 @@
     },
     "BML: jsonarrayget": {
         "prefix": "bml-jsonarrayget",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Get an element from a JSON array",
             "val = jsonarrayget(jsonArr, 0, \"string\");"
@@ -139,7 +139,7 @@
     },
     "BML: jsonarraysize": {
         "prefix": "bml-jsonarraysize",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Get size of JSON array",
             "size = jsonarraysize(jsonArr);"
@@ -150,7 +150,7 @@
     },
     "BML: jsonarrayremove": {
         "prefix": "bml-jsonarrayremove",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Remove an element from array by index",
             "jsonarrayremove(jsonArr, 0);"
@@ -161,7 +161,7 @@
     },
     "BML: jsonarraycopy": {
         "prefix": "bml-jsonarraycopy",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Make a copy of a JSON array",
             "copyJsonArr = jsonarraycopy(jsonArr);"
@@ -172,7 +172,7 @@
     },
     "BML: jsonarraytostr": {
         "prefix": "bml-jsonarraytostr",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Convert JSON array to string",
             "jsonArrStr = jsonarraytostr(jsonArr);"
@@ -183,7 +183,7 @@
     },
     "BML: jsonarrayrefid": {
         "prefix": "bml-jsonarrayrefid",
-        "category": "JSON Array",
+        "category": "JSON Array Functions",
         "body": [
             "// Get a unique reference id for JSON array",
             "refId = jsonarrayrefid(jsonArr);"
@@ -194,7 +194,7 @@
     },
     "BML: jsonpathgetmultiple": {
         "prefix": "bml-jsonpathgetmultiple",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Get multiple values matching jsonPath",
             "arr = jsonpathgetmultiple(jsonObj, \"$.path\");",
@@ -210,7 +210,7 @@
     },
     "BML: jsonpathgetsingle": {
         "prefix": "bml-jsonpathgetsingle",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Get single value for jsonPath",
             "val = jsonpathgetsingle(jsonObj, \"$.path\");",
@@ -230,7 +230,7 @@
     },
     "BML: jsonpathset": {
         "prefix": "bml-jsonpathset",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Set/update all nodes matching jsonPath to a new value",
             "jsonpathset(jsonObj, \"$.path\", newValue);"
@@ -241,7 +241,7 @@
     },
     "BML: jsonpathcheck": {
         "prefix": "bml-jsonpathcheck",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Check whether a JSONPath exists in the JSON object",
             "found = jsonpathcheck(jsonObj, \"$.path\");"
@@ -252,7 +252,7 @@
     },
     "BML: jsonpathremove": {
         "prefix": "bml-jsonpathremove",
-        "category": "JSON",
+        "category": "JSON Functions",
         "body": [
             "// Remove nodes matching jsonPath",
             "removed = jsonpathremove(jsonObj, \"$.path\");"
@@ -263,7 +263,7 @@
     },
     "BML: len": {
         "prefix": "bml-len",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "// Get length of a string",
             "strLength = len(myString);"
@@ -274,7 +274,7 @@
     },
     "BML: string": {
         "prefix": "bml-string",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "str = string(variable);"
         ],
@@ -284,7 +284,7 @@
     },
     "BML: substring": {
         "prefix": "bml-substring",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "subStr = substring(myString, start, end);"
         ],
@@ -294,7 +294,7 @@
     },
     "BML: startswith": {
         "prefix": "bml-startswith",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "starts = startswith(myString, \"subString\");"
         ],
@@ -304,7 +304,7 @@
     },
     "BML: endswith": {
         "prefix": "bml-endswith",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "ends = endswith(myString, \"subString\");"
         ],
@@ -314,7 +314,7 @@
     },
     "BML: lower": {
         "prefix": "bml-lower",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "lowerStr = lower(myString);"
         ],
@@ -324,7 +324,7 @@
     },
     "BML: upper": {
         "prefix": "bml-upper",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "upperStr = upper(myString);"
         ],
@@ -334,7 +334,7 @@
     },
     "BML: trim": {
         "prefix": "bml-trim",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "trimmed = trim(myString);"
         ],
@@ -344,7 +344,7 @@
     },
     "BML: replace": {
         "prefix": "bml-replace",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "result = replace(myString, \"old\", \"new\");"
         ],
@@ -354,7 +354,7 @@
     },
     "BML: split": {
         "prefix": "bml-split",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "arr = split(myString, ",
             ");"
@@ -365,7 +365,7 @@
     },
     "BML: join": {
         "prefix": "bml-join",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "output = join(myArray, ",
             ");"
@@ -376,7 +376,7 @@
     },
     "BML: formatascurrency": {
         "prefix": "bml-formatascurrency",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "formatted = formatascurrency(value, \"currencyCode\");"
         ],
@@ -386,7 +386,7 @@
     },
     "BML: atoi": {
         "prefix": "bml-atoi",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "result = atoi(myString);"
         ],
@@ -396,7 +396,7 @@
     },
     "BML: atof": {
         "prefix": "bml-atof",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "result = atof(myString);"
         ],
@@ -406,7 +406,7 @@
     },
     "BML: isnumber": {
         "prefix": "bml-isnumber",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "isnumber(myString);"
         ],
@@ -416,7 +416,7 @@
     },
     "BML: find": {
         "prefix": "bml-find",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "find(myString,\"substring\")"
         ],
@@ -426,7 +426,7 @@
     },
     "BML: decodebase64": {
         "prefix": "bml-decodebase64",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "result = decodebase64(myString);"
         ],
@@ -436,7 +436,7 @@
     },
     "BML: encodebase64": {
         "prefix": "bml-encodebase64",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "userName = \"\";",
             "password = \"\";",
@@ -448,7 +448,7 @@
     },
     "BML: getcurrencyvalue": {
         "prefix": "bml-getcurrencyvalue",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "result = getcurrencyvalue(value, \"currencyCode\");"
         ],
@@ -458,7 +458,7 @@
     },
     "BML: html": {
         "prefix": "bml-html",
-        "category": "String",
+        "category": "String Functions",
         "body": [
             "result = html(myString);"
         ],
@@ -468,7 +468,7 @@
     },
     "BML: containskey (dictionary)": {
         "prefix": "bml-dict-containskey",
-        "category": "Dictionary",
+        "category": "Dictionary Functions",
         "body": [
             "containskey(myDictionary, \"key\");"
         ],
@@ -478,7 +478,7 @@
     },
     "BML: dict (create dictionary)": {
         "prefix": "bml-dict",
-        "category": "Dictionary",
+        "category": "Dictionary Functions",
         "body": [
             "// Create a dictionary",
             "myDictionary = dict(\"string\");"
@@ -489,7 +489,7 @@
     },
     "BML: get (dictionary)": {
         "prefix": "bml-dict-get",
-        "category": "Dictionary",
+        "category": "Dictionary Functions",
         "body": [
             "value = get(myDictionary, \"key\");"
         ],
@@ -499,7 +499,7 @@
     },
     "BML: keys (dictionary)": {
         "prefix": "bml-dict-keys",
-        "category": "Dictionary",
+        "category": "Dictionary Functions",
         "body": [
             "keysArr = keys(myDictionary);"
         ],
@@ -509,7 +509,7 @@
     },
     "BML: put (dictionary)": {
         "prefix": "bml-dict-put",
-        "category": "Dictionary",
+        "category": "Dictionary Functions",
         "body": [
             "put(myDictionary, \"key\", value);"
         ],
@@ -519,7 +519,7 @@
     },
     "BML: values (dictionary)": {
         "prefix": "bml-dict-values",
-        "category": "Dictionary",
+        "category": "Dictionary Functions",
         "body": [
             "vals = values(myDictionary);"
         ],
@@ -529,7 +529,7 @@
     },
     "BML: adddays": {
         "prefix": "bml-date-adddays",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "newDate = adddays(date, noOfDays);"
         ],
@@ -539,7 +539,7 @@
     },
     "BML: addmonths": {
         "prefix": "bml-date-addmonths",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "newDate = addmonths(date, noOfMonths);"
         ],
@@ -549,7 +549,7 @@
     },
     "BML: comparedates": {
         "prefix": "bml-date-comparedates",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = comparedates(date1, date2);"
         ],
@@ -559,7 +559,7 @@
     },
     "BML: datetostr": {
         "prefix": "bml-date-datetostr",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = datetostr(date, dateFormat);"
         ],
@@ -569,7 +569,7 @@
     },
     "BML: getcurrenttimeinmillis": {
         "prefix": "bml-date-getcurrenttimeinmillis",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = getcurrenttimeinmillis();"
         ],
@@ -579,7 +579,7 @@
     },
     "BML: getdate": {
         "prefix": "bml-date-getdate",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "currentDate = getdate();"
         ],
@@ -589,7 +589,7 @@
     },
     "BML: getdiffindays": {
         "prefix": "bml-date-getdiffindays",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = getdiffindays(date1, date2);"
         ],
@@ -599,7 +599,7 @@
     },
     "BML: getstrdate": {
         "prefix": "bml-date-getstrdate",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = getstrdate();"
         ],
@@ -609,7 +609,7 @@
     },
     "BML: isleap": {
         "prefix": "bml-date-isleap",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = isleap(Year);"
         ],
@@ -619,7 +619,7 @@
     },
     "BML: isweekend": {
         "prefix": "bml-date-isweekend",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = isweekend(date);"
         ],
@@ -629,7 +629,7 @@
     },
     "BML: minusdays": {
         "prefix": "bml-date-minusdays",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "newDate = minusdays(date, noOfDays);"
         ],
@@ -639,7 +639,7 @@
     },
     "BML: strtojavadate": {
         "prefix": "bml-date-strtojavadate",
-        "category": "Date",
+        "category": "Date Functions",
         "body": [
             "result = strtojavadate(dateString, dateFormat);"
         ],
@@ -649,7 +649,7 @@
     },
     "BML makeurlparam": {
         "prefix": "bml-makeurlparam",
-        "category": "URL",
+        "category": "URL Functions",
         "body": [
             "params = makeurlparam({",
             "    'param1' : \"value\",",
@@ -661,7 +661,7 @@
     },
     "BML urldata (GET)": {
         "prefix": "bml-urldata-get",
-        "category": "URL",
+        "category": "URL Functions",
         "body": [
             "headerDict = dict(\"string\");",
             "put(headerDict, \"Accept\", \"application/json\");",
@@ -675,7 +675,7 @@
     },
     "BML urldata (POST)": {
         "prefix": "bml-urldata-post",
-        "category": "URL",
+        "category": "URL Functions",
         "body": [
             "headerDict = dict(\"string\");",
             "put(headerDict, \"Accept\", \"application/json\");",
@@ -689,7 +689,7 @@
     },
     "BML urldatabypost": {
         "prefix": "bml-urldatabypost",
-        "category": "URL",
+        "category": "URL Functions",
         "body": [
             "headerDict = dict(\"string\");",
             "put(headerDict, \"Accept\", \"application/json\");",
@@ -703,7 +703,7 @@
     },
     "BML urldatabyget": {
         "prefix": "bml-urldatabyget",
-        "category": "URL",
+        "category": "URL Functions",
         "body": [
             "response = urldatabyget(url, params, \"ERROR\");"
         ],
@@ -713,7 +713,7 @@
     },
     "BML urldatabypostasync": {
         "prefix": "bml-urldatabypostasync",
-        "category": "URL",
+        "category": "URL Functions",
         "body": [
             "headerDict = dict(\"string\");",
             "response = urldatabypostasync(url, params, \"ERROR\", \"callbackActionVarName\", headerDict);"
@@ -724,7 +724,7 @@
     },
     "BML applytemplate": {
         "prefix": "bml-applytemplate",
-        "category": "XML",
+        "category": "XML Functions",
         "body": [
             "payload = dict(\"string\");",
             "applytemplate(templateFileLocation, payload);"
@@ -735,7 +735,7 @@
     },
     "BML readxmlmultiple": {
         "prefix": "bml-readxmlmultiple",
-        "category": "XML",
+        "category": "XML Functions",
         "body": [
             "result = readxmlmultiple(xmlPayload, xpaths);"
         ],
@@ -745,7 +745,7 @@
     },
     "BML readxmlsingle": {
         "prefix": "bml-readxmlsingle",
-        "category": "XML",
+        "category": "XML Functions",
         "body": [
             "result = readxmlsingle(xmlPayload, xpaths);"
         ],
@@ -755,7 +755,7 @@
     },
     "BML transformxml": {
         "prefix": "bml-transformxml",
-        "category": "XML",
+        "category": "XML Functions",
         "body": [
             "result = transformxml(xmlcontent, xslFileLocation);"
         ],
@@ -765,7 +765,7 @@
     },
     "BML append": {
         "prefix": "bml-array-append",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "append(arr, \"value\");"
         ],
@@ -775,7 +775,7 @@
     },
     "BML boolean[n]": {
         "prefix": "bml-array-boolean1d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "booleanArray = boolean[size];"
         ],
@@ -785,7 +785,7 @@
     },
     "BML boolean[n][n]": {
         "prefix": "bml-array-boolean2d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "booleanArray = boolean[size1][size2];"
         ],
@@ -795,7 +795,7 @@
     },
     "BML bytearray": {
         "prefix": "bml-array-bytearray",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "value = bytearray(content, \"charSet\");"
         ],
@@ -805,7 +805,7 @@
     },
     "BML date[n]": {
         "prefix": "bml-array-date1d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "datesArray = date[size];"
         ],
@@ -815,7 +815,7 @@
     },
     "BML date[n][n]": {
         "prefix": "bml-array-date2d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "datesArray = date[size1][size2];"
         ],
@@ -825,7 +825,7 @@
     },
     "BML findinarray": {
         "prefix": "bml-array-findinarray",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "findinarray(arr, \"value\")"
         ],
@@ -835,7 +835,7 @@
     },
     "BML float[n]": {
         "prefix": "bml-array-float1d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "floatArray = float[size];"
         ],
@@ -845,7 +845,7 @@
     },
     "BML float[n][n]": {
         "prefix": "bml-array-float2d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "floatArray = float[size1][size2];"
         ],
@@ -855,7 +855,7 @@
     },
     "BML integer[n]": {
         "prefix": "bml-array-integer1d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "integerArray = integer[size];"
         ],
@@ -865,7 +865,7 @@
     },
     "BML integer[n][n]": {
         "prefix": "bml-array-integer2d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "integerArray = integer[size1][size2];"
         ],
@@ -875,7 +875,7 @@
     },
     "BML isempty": {
         "prefix": "bml-array-isempty",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "result = isempty(arr);"
         ],
@@ -885,7 +885,7 @@
     },
     "BML max": {
         "prefix": "bml-array-max",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "maxValue = max(arr);"
         ],
@@ -895,7 +895,7 @@
     },
     "BML min": {
         "prefix": "bml-array-min",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "minValue = min(arr);"
         ],
@@ -905,7 +905,7 @@
     },
     "BML range": {
         "prefix": "bml-array-range",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "arr = range(size);"
         ],
@@ -915,7 +915,7 @@
     },
     "BML remove": {
         "prefix": "bml-array-remove",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "index = remove(arr, position);"
         ],
@@ -925,7 +925,7 @@
     },
     "BML reverse": {
         "prefix": "bml-array-reverse",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "result = reverse(arr);"
         ],
@@ -935,7 +935,7 @@
     },
     "BML sizeofarray": {
         "prefix": "bml-array-sizeofarray",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "arraySize = sizeofarray(arr);"
         ],
@@ -945,7 +945,7 @@
     },
     "BML sort": {
         "prefix": "bml-array-sort",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "sortedArray = sort(arr, \"order\");"
         ],
@@ -955,7 +955,7 @@
     },
     "BML string[n]": {
         "prefix": "bml-array-string1d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "stringArray = string[size];"
         ],
@@ -965,7 +965,7 @@
     },
     "BML string[n][n]": {
         "prefix": "bml-array-string2d",
-        "category": "Array",
+        "category": "Array Functions",
         "body": [
             "stringArray = string[size1][size2];"
         ],
@@ -975,7 +975,7 @@
     },
     "BML acos": {
         "prefix": "bml-math-acos",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = acos(value);"
         ],
@@ -985,7 +985,7 @@
     },
     "BML asin": {
         "prefix": "bml-math-asin",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = asin(value);"
         ],
@@ -995,7 +995,7 @@
     },
     "BML atan": {
         "prefix": "bml-math-atan",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = atan(value);"
         ],
@@ -1005,7 +1005,7 @@
     },
     "BML ceil": {
         "prefix": "bml-math-ceil",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = ceil(value);"
         ],
@@ -1015,7 +1015,7 @@
     },
     "BML cos": {
         "prefix": "bml-math-cos",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = cos(value);"
         ],
@@ -1025,7 +1025,7 @@
     },
     "BML cosh": {
         "prefix": "bml-math-cosh",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = cosh(value);"
         ],
@@ -1035,7 +1035,7 @@
     },
     "BML exp": {
         "prefix": "bml-math-exp",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = exp(value);"
         ],
@@ -1045,7 +1045,7 @@
     },
     "BML fabs": {
         "prefix": "bml-math-fabs",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = fabs(value);"
         ],
@@ -1055,7 +1055,7 @@
     },
     "BML fmod": {
         "prefix": "bml-math-fmod",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = fmod(value1, value2);"
         ],
@@ -1065,7 +1065,7 @@
     },
     "BML hypot": {
         "prefix": "bml-math-hypot",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = hypot(value1, value2);"
         ],
@@ -1075,7 +1075,7 @@
     },
     "BML integer": {
         "prefix": "bml-math-integer",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = integer(value);"
         ],
@@ -1085,7 +1085,7 @@
     },
     "BML ln": {
         "prefix": "bml-math-ln",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = ln(value);"
         ],
@@ -1095,7 +1095,7 @@
     },
     "BML log": {
         "prefix": "bml-math-log",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = log(value);"
         ],
@@ -1105,7 +1105,7 @@
     },
     "BML pow": {
         "prefix": "bml-math-pow",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = pow(base, exponent);"
         ],
@@ -1115,7 +1115,7 @@
     },
     "BML round": {
         "prefix": "bml-math-round",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = round(value);"
         ],
@@ -1125,7 +1125,7 @@
     },
     "BML sin": {
         "prefix": "bml-math-sin",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = sin(value);"
         ],
@@ -1135,7 +1135,7 @@
     },
     "BML sinh": {
         "prefix": "bml-math-sinh",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = sinh(value);"
         ],
@@ -1145,7 +1145,7 @@
     },
     "BML sqrt": {
         "prefix": "bml-math-sqrt",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = sqrt(value);"
         ],
@@ -1155,7 +1155,7 @@
     },
     "BML tan": {
         "prefix": "bml-math-tan",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = tan(value);"
         ],
@@ -1165,7 +1165,7 @@
     },
     "BML tanh": {
         "prefix": "bml-math-tanh",
-        "category": "Math",
+        "category": "Math Functions",
         "body": [
             "result = tanh(value);"
         ],
@@ -1175,7 +1175,7 @@
     },
     "BML globaldictset": {
         "prefix": "bml-globaldictset",
-        "category": "Global Dictionary",
+        "category": "Global Dictionaries",
         "body": [
             "globaldictset(\"key\", \"value\");"
         ],
@@ -1185,7 +1185,7 @@
     },
     "BML globaldictget": {
         "prefix": "bml-globaldictget",
-        "category": "Global Dictionary",
+        "category": "Global Dictionaries",
         "body": [
             "value = globaldictget(\"key\");"
         ],
@@ -1195,7 +1195,7 @@
     },
     "BML globaldictremove": {
         "prefix": "bml-globaldictremove",
-        "category": "Global Dictionary",
+        "category": "Global Dictionaries",
         "body": [
             "result = globaldictremove(\"key\");"
         ],
@@ -1266,7 +1266,7 @@
     },
     "BML if": {
         "prefix": "bml-if",
-        "category": "Conditionals",
+        "category": "Conditional Functions",
         "body": [
             "if (condition) {",
             "\/\/ code",
@@ -1278,7 +1278,7 @@
     },
     "BML if.else": {
         "prefix": "bml-if.else",
-        "category": "Conditionals",
+        "category": "Conditional Functions",
         "body": [
             "if (condition) {",
             "\/\/ code",
@@ -1292,7 +1292,7 @@
     },
     "BML if.elif": {
         "prefix": "bml-if.elif",
-        "category": "Conditionals",
+        "category": "Conditional Functions",
         "body": [
             "if (condition) {",
             "\/\/ code",
@@ -1306,7 +1306,7 @@
     },
     "BML if.elif.else": {
         "prefix": "bml-if.elif.else",
-        "category": "Conditionals",
+        "category": "Conditional Functions",
         "body": [
             "if (condition) {",
             "\/\/ code",

@@ -5,12 +5,15 @@
     <meta charset="UTF-8" />
     <style>
         body {
-            font-family: sans-serif;
+            font-family: var(--vscode-font-family, "Segoe WPC", "Segoe UI", sans-serif);
+            font-size: 13px;
+            /* base sidebar size */
             padding: 0.5em;
             background-color: var(--vscode-sideBar-background);
             color: var(--vscode-sideBar-foreground);
         }
 
+        /* Search box */
         #searchBox {
             width: 100%;
             padding: 6px;
@@ -18,65 +21,96 @@
             background: var(--vscode-input-background);
             color: var(--vscode-input-foreground);
             border: 1px solid var(--vscode-input-border);
+            border-radius: 4px;
         }
 
+        /* Category headers */
         .category {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 14px 0 8px;
             color: var(--vscode-editor-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             text-align: center;
         }
 
+        /* Function name (title inside cards) */
         .functionName {
-            font-weight: bold;
             font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 6px;
             color: var(--vscode-editor-foreground);
         }
 
+        /* Description text */
         .description {
             font-size: 13px;
-            color: var(--vscode-editor-foreground);
+            line-height: 1.4;
             margin: 8px 0;
+            color: var(--vscode-editor-foreground);
         }
 
+        /* Card container */
         .list-item {
             margin-bottom: 25px;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid var(--vscode-sideBarSectionHeader-border, #333);
             border-radius: 6px;
             background: var(--vscode-sideBarSectionHeader-background, transparent);
         }
 
+        /* Inline code */
         code {
-            display: block;
+            font-family: var(--vscode-editor-font-family, Consolas, "Courier New", monospace);
+            font-size: 12px;
+            display: inline-block;
             background: var(--vscode-editor-background);
             color: var(--vscode-editor-foreground);
-            padding: 6px;
-            border-radius: 4px;
-            margin: 6px 0;
+            padding: 2px 4px;
+            border-radius: 3px;
         }
 
+        /* Code blocks */
         pre {
+            font-family: var(--vscode-editor-font-family, Consolas, "Courier New", monospace);
+            font-size: 12px;
             background: var(--vscode-editor-background);
             color: var(--vscode-editor-foreground);
             padding: 8px;
             border-radius: 4px;
             overflow-x: auto;
-            font-size: 12px;
+            line-height: 1.5;
+            margin: 8px 0;
         }
 
+        /* Action buttons */
         button.copy-btn,
         .insert-btn {
-            margin-top: 6px;
-            padding: 4px 10px;
+            min-width: 60px;
+            padding: 4px 12px;
             font-size: 12px;
+            font-weight: 500;
             background: var(--vscode-button-background);
             color: var(--vscode-button-foreground);
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            transition: background 0.15s;
         }
 
-        .insert-btn {
-            margin-left: 6px;
+        /* Button hover */
+        button.copy-btn:hover,
+        .insert-btn:hover {
+            background: var(--vscode-button-hoverBackground);
+        }
+
+        /* Button container (right-aligned) */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
         }
     </style>
 </head>

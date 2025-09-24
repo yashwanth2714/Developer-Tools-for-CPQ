@@ -103,13 +103,15 @@ class CPQDocsViewProvider {
                 html += `
                 <div class="list-item">
                     <div class="functionName">${funcName}</div>
-                    <code>${snip.signature || ""}</code>
+                    <pre>Syntax:\n\n${snip.signature || ""}</pre>
                     <div class="description">
                     ${snip.description || ""}
                     </div>
-                    <pre>${safeBody}</pre>
-                    <button class="copy-btn" data-snippet="${escapedForAttr}">Copy</button>
-                    <button class="insert-btn" data-snippet="${escapedForAttr}">Insert</button>
+                    <pre>Example:\n\n${safeBody}</pre>
+                    <div class="buttons">
+                        <button class="copy-btn" data-snippet="${escapedForAttr}" title="Copy snippet">Copy</button>
+                        <button class="insert-btn" data-snippet="${escapedForAttr}" title="Insert snippet">Insert</button>
+                    </div>
                 </div>
                 `;
             }

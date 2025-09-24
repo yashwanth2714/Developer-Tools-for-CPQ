@@ -37,43 +37,43 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
 
 ### ✂️ Code Snippets
 Insert ready-to-use BML snippets for functions, arrays, dates, JSON, and more.  
-![Code Snippets](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/snippet.gif)
+![Code Snippets](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/snippet.gif)
 
 ---
 
 ### 📄 Hover Help
 Get instant documentation and function signature while hovering.  
-![Hover Help](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/hover.gif)
+![Hover Help](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/hover.gif)
 
 ---
 
 ### 🔮 Signature Help
 Inline function parameter hints while coding.  
-![Signature Help](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/signature.gif)
+![Signature Help](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/signature.gif)
 
 ---
 
 ### 🧹 Code Formatter
 Clean and properly indented BML code with one command.  
-![Formatter](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/formatter.gif)
+![Formatter](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/formatter.gif)
 
 ---
 
 ### 📚 Sidebar Docs Explorer
 Browse, search, copy, and insert BML snippets directly from the sidebar.  
-![Docs Explorer](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/sidebar.gif)
+![Docs Explorer](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/sidebar.gif)
 
 ---
 
 ### 📂 Use in Plaintext Files
 Use BML snippets and features inside plain text files.  
-![Plaintext Usage](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/selection.gif)
+![Plaintext Usage](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/selection.gif)
 
 ---
 
 ### 🎨 Themes
 Switch between built-in dark/light themes for better readability.  
-![Themes](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/themes.gif)
+![Themes](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/themes.gif)
 
 ---
 

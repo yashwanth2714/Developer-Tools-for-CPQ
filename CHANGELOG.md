@@ -10,11 +10,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.0.36] - 2025-09-24  
+### Improved  
+- README file
+
+---
+
 ## [0.0.35] - 2025-09-24  
 ### Added  
 - 🖱️ **Hover Help**: Show BML function signatures & descriptions when hovering in the editor  
 - 🔍 **Docs Explorer Enhancements**: Searchable sidebar with **Copy** and **Insert** buttons
-
 
 ### Improved  
 - Formatter pipeline: preprocess → beautify → postprocess  

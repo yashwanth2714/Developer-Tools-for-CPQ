@@ -11,7 +11,7 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
   - Quick code patterns for **control structures** (`if/elif`, loops, array handling)  
 
 - 🔍 **BML Docs Explorer (Sidebar)**  
-  - Searchable list of functions with **signatures + descriptions**  
+  - Searchable list of functions with **signatures + descriptions + examples**  
   - 📋 **Copy** or ➕ **Insert** snippets directly into the editor  
   - Organized by category for faster lookup  
 
@@ -33,23 +33,47 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
 
 ---
 
-## 📸 Demo (GIFs)  
+## 📽 Demo
 
-### 🔍 Sidebar Docs Explorer  
-Search, copy, and insert snippets with one click.  
-<!-- ![Docs Explorer](images/docs-explorer.gif)   -->
+### ✂️ Code Snippets
+Insert ready-to-use BML snippets for functions, arrays, dates, JSON, and more.  
+![Code Snippets](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/snippet.gif)
 
-### 🧹 Code Formatter  
-Keep your BML code clean, consistent, and properly indented.  
-<!-- ![Formatter](images/formatter.gif)   -->
+---
 
-### 🖱️ Hover Help  
-See function signatures and descriptions instantly.  
-<!-- ![Hover Help](images/hover.gif)   -->
+### 📄 Hover Help
+Get instant documentation and function signature while hovering.  
+![Hover Help](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/hover.gif)
 
-### 🎨 Themes  
-Switch between popular dark/light themes without extra installs.  
-<!-- ![Themes](images/themes.gif)   -->
+---
+
+### 🔮 Signature Help
+Inline function parameter hints while coding.  
+![Signature Help](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/signature.gif)
+
+---
+
+### 🧹 Code Formatter
+Clean and properly indented BML code with one command.  
+![Formatter](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/formatter.gif)
+
+---
+
+### 📚 Sidebar Docs Explorer
+Browse, search, copy, and insert BML snippets directly from the sidebar.  
+![Docs Explorer](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/sidebar.gif)
+
+---
+
+### 📂 Use in Plaintext Files
+Use BML snippets and features inside plain text files.  
+![Plaintext Usage](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/selection.gif)
+
+---
+
+### 🎨 Themes
+Switch between built-in dark/light themes for better readability.  
+![Themes](https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/main/images/themes.gif)
 
 ---
 
@@ -73,25 +97,16 @@ Switch between popular dark/light themes without extra installs.
 
 ---
 
-## 🎨 Themes Included  
-
-- Monokai Pro  
-- Solarized Dark / Light  
-- Dracula  
-- Nord  
-- GitHub Dark Dimmed / Light  
-- Ayu Mirage / Light  
-- Quiet Light  
-- Bluloco Light  
-- Notepad++ Inspired  
-
----
-
 ## 🛠️ Installation  
 
-1. Install from [VS Code Marketplace](https://marketplace.visualstudio.com/).  
-2. Reload VS Code.  
-3. Start coding faster in CPQ 🚀.  
+1. Open **Visual Studio Code**.  
+2. Click on the **Extensions** icon in the Activity Bar (or press `Ctrl+Shift+X`).  
+3. In the search box, type **Developer Tools for CPQ**.  
+4. Locate the extension in the results list.  
+5. Click **Install**.  
+6. Reload VS Code if prompted.  
+
+You’re ready to start using snippets, formatting, hover help, docs explorer, and themes 🚀. 
 
 ---
 

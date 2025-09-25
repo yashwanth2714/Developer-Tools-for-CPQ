@@ -1,8 +1,8 @@
 {
-    "name": "developer-tools-for-cpq",
+    "name": "oracle-cpq-bml-snippets",
     "displayName": "Developer Tools for CPQ",
     "description": "Boost your Oracle CPQ development with snippets, formatter, syntax highlighting, hover help, docs explorer, and built-in themes — all in one extension.",
-    "version": "0.0.39",
+    "version": "0.0.40",
     "publisher": "YashwanthKumar",
     "license": "MIT",
     "repository": {
@@ -94,7 +94,16 @@
         ],
         "configurationDefaults": {
             "[bml]": {
-                "editor.defaultFormatter": "YashwanthKumar.developer-tools-for-cpq"
+                "editor.defaultFormatter": "YashwanthKumar.oracle-cpq-bml-snippets"
+            },
+            "[plaintext]": {
+                "editor.defaultFormatter": "YashwanthKumar.oracle-cpq-bml-snippets"
+            },
+            "[c]": {
+                "editor.defaultFormatter": "YashwanthKumar.oracle-cpq-bml-snippets"
+            },
+            "[java]": {
+                "editor.defaultFormatter": "YashwanthKumar.oracle-cpq-bml-snippets"
             }
         },
         "themes": [

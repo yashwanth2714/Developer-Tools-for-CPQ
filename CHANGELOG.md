@@ -1,12 +1,16 @@
 # Changelog  
 All notable changes to **Developer Tools for CPQ** will be documented here.  
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).  
-
 ---
 
 ## [Unreleased]  
-- 🚧 Planned features  
+- 🚀 Buckle up—more cool features and surprises are just around the corner!
+
+---
+
+## [0.0.40] - 2025-09-25
+### Added  
+- Support for formatting, hover, and snippets in plain text, C, and Java files in addition to BML.
 
 ---
 

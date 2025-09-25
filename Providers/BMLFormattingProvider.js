@@ -3,7 +3,7 @@ const vscode = require("vscode");
 
 class BMLFormattingProvider {
     static register() {
-        return vscode.languages.registerDocumentFormattingEditProvider("bml", {
+        return vscode.languages.registerDocumentFormattingEditProvider(["bml", "plaintext", "c", "java"], {
             provideDocumentFormattingEdits(document) {
                 let text = document.getText();
 

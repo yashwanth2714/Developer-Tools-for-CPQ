@@ -40,13 +40,13 @@ function activate(context) {
 
     // Register HoverProvider
     context.subscriptions.push(
-        vscode.languages.registerHoverProvider("bml", new BMLHoverProvider(docs))
+        vscode.languages.registerHoverProvider(["bml", "plaintext", "c", "java"], new BMLHoverProvider(docs))
     );
 
     // Register SignatureHelpProvider
     context.subscriptions.push(
         vscode.languages.registerSignatureHelpProvider(
-            "bml",
+            ["bml", "plaintext", "c", "java"],
             new BMLSignatureHelpProvider(docs),
             "(", ","
         )

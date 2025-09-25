@@ -2,7 +2,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const { version } = require('../package.json');
-const outputPath = `build/oracle-cpq-bml-snippets-${version}.vsix`;
+const outputPath = `build/developer-tools-for-cpq-${version}.vsix`;
 
 const buildDir = path.join(__dirname, '..', 'build');
 if (!fs.existsSync(buildDir)) {

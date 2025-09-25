@@ -38,49 +38,49 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
 ### ✂️ Code Snippets
 Insert ready-to-use BML snippets for functions, arrays, dates, JSON, and more.
 
-<img src="https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/snippet.gif" width="800"/>
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/snippet.gif" width="800"/>
 
 ---
 
 ### 📄 Hover Help
 Get instant documentation and function signature while hovering. 
 
-<img src="https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/hover.gif" width="800"/>
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/hover.gif" width="800"/>
 
 ---
 
 ### 🔮 Signature Help
 Inline function parameter hints while coding.  
 
-<img src="https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/signature.gif" width="800"/>
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/signature.gif" width="800"/>
 
 ---
 
 ### 🧹 Code Formatter
 Clean and properly indented BML code with one command.  
 
-<img src="https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/formatter.gif" width="800"/>
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/formatter.gif" width="800"/>
 
 ---
 
 ### 📚 Sidebar Docs Explorer
 Browse, search, copy, and insert BML snippets directly from the sidebar.
 
-<img src="https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/sidebar.gif" width="800"/>
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/sidebar.gif" width="800"/>
 
 ---
 
 ### 📂 Use in Plaintext Files
 Use BML snippets and features inside plain text files.  
 
-<img src="https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/selection.gif" width="800"/>
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/selection.gif" width="800"/>
 
 ---
 
 ### 🎨 Themes
 Switch between built-in dark/light themes for better readability. 
- 
-<img src="https://raw.githubusercontent.com/yashwanth2714/Oracle-CPQ-BML-Snippets/master/images/themes.gif" width="800"/>
+
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/themes.gif" width="800"/>
 
 ---
 

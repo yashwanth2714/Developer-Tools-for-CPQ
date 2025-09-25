@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.0.36] - 2025-09-24  
+## [0.0.36 to 0.0.38] - 2025-09-24  
 ### Improved  
 - README file
 

@@ -20,17 +20,55 @@ class BMLFormattingProvider {
                 // elif (cond) → else if(cond)
                 text = text.replace(/\belif\s*\(/gi, "else if(");
 
-                // Replace AND/OR only inside conditions
-                text = text.replace(
-                    /(if|else if|while)\s*\(([^)]*)\)/gi,
-                    (match, keyword, condition) => {
-                        const replaced = condition
-                            .replace(/\bAND\b/gi, "&&")
-                            .replace(/\bOR\b/gi, "||")
-                            .replace(/<\s*>/g, "!="); // <> → !=
-                        return `${keyword}(${replaced})`;
+
+                // Replace AND/OR and <> only inside conditions (if, else if, while) with balanced parentheses
+                function replaceInConditions(str) {
+                    const keywords = ["if", "else if", "while"];
+                    let result = '';
+                    let i = 0;
+                    while (i < str.length) {
+                        let matched = false;
+                        for (const keyword of keywords) {
+                            if (str.slice(i).toLowerCase().startsWith(keyword)) {
+                                let j = i + keyword.length;
+                                // Skip whitespace
+                                while (j < str.length && /\s/.test(str[j])) j++;
+                                if (str[j] === '(') {
+                                    // Find matching parenthesis
+                                    let start = j;
+                                    let depth = 0;
+                                    let end = -1;
+                                    for (let k = j; k < str.length; k++) {
+                                        if (str[k] === '(') depth++;
+                                        else if (str[k] === ')') depth--;
+                                        if (depth === 0) {
+                                            end = k;
+                                            break;
+                                        }
+                                    }
+                                    if (end !== -1) {
+                                        // Replace inside the condition
+                                        let condition = str.slice(start + 1, end);
+                                        let replaced = condition
+                                            .replace(/<>/g, "__BML_NOT_EQUAL__")
+                                            .replace(/\bAND\b/gi, "&&")
+                                            .replace(/\bOR\b/gi, "||");
+                                        result += str.slice(i, start + 1) + replaced + ')';
+                                        i = end + 1;
+                                        matched = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (!matched) {
+                            result += str[i];
+                            i++;
+                        }
                     }
-                );
+                    return result;
+                }
+                text = replaceInConditions(text);
 
                 //
                 // 2. BEAUTIFY
@@ -65,8 +103,14 @@ class BMLFormattingProvider {
                 formatted = formatted.replace(/\&\&/g, "AND");
                 formatted = formatted.replace(/\|\|/g, "OR");
 
-                // Restore not equal
-                formatted = formatted.replace(/!=/g, "<>");
+                // Restore not equal (placeholder back to <>)
+                formatted = formatted.replace(/__BML_NOT_EQUAL__/g, "<>");
+
+                // Remove spaces between < and > only (e.g., < > to <>)
+                formatted = formatted.replace(/<\s*>/g, "<>");
+
+                // Remove spaces between <> and - when followed by a number (e.g., <> - 1 to <>-1)
+                formatted = formatted.replace(/<>\s+-\s*(\d+)/g, '<>-$1');
 
                 //
                 // 4. Replace document

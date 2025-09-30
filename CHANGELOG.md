@@ -8,6 +8,13 @@ All notable changes to **Developer Tools for CPQ** will be documented here.
 
 ---
 
+## [0.0.41] - 2025-09-26
+### Fixed
+- Improved BML formatter to correctly handle the `<>` operator inside conditions, even with nested or multiline parentheses.
+- Prevented js-beautify from splitting `<>` into `< >` and from adding unwanted spaces between `<>` and `-1` (e.g., `<> - 1` now formats as `<>-1`).
+
+---
+
 ## [0.0.40] - 2025-09-25
 ### Added  
 - Support for formatting, hover, and snippets in plain text, C, and Java files in addition to BML.

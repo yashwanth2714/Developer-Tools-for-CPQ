@@ -27,6 +27,10 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
   - Includes popular **dark and light themes** (Monokai, Nord, GitHub Dark Dimmed, Notepad++-like, etc.)  
   - Optimized for CPQ developers who spend all day in BML  
 
+- ✅ **Inline Code Quality Validation**  
+  - Provides SonarLint-like experience for Oracle CPQ BML language  
+  - Detects unused variables and other code quality issues directly in the editor
+
 - 🖍️ **Syntax highlighting** for `.bml` files (based on Java grammar)  
 
 - 📦 Works in `.bml`, `.txt`, `.c`, `.java` files (so you can draft anywhere)  

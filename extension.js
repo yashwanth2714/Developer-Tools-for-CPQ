@@ -6,6 +6,7 @@ const CPQDocsViewProvider = require("./Providers/CPQDocsViewProvider");
 const BMLFormattingProvider = require("./Providers/BMLFormattingProvider");
 const BMLHoverProvider = require("./Providers/BMLHoverProvider");
 const BMLSignatureHelpProvider = require("./Providers/BMLSignatureHelpProvider");
+const BMLDiagnosticsProvider = require("./Providers/BMLDiagnosticsProvider");
 
 // Load all snippets from your snippets JSON file
 function loadSnippets(context) {
@@ -28,6 +29,8 @@ function loadSnippets(context) {
 }
 
 function activate(context) {
+    BMLDiagnosticsProvider.register(context);
+    
     // Register CPQDocsViewProvider
     context.subscriptions.push(
         vscode.window.registerWebviewViewProvider("cpqDocs", new CPQDocsViewProvider(context.extensionPath))

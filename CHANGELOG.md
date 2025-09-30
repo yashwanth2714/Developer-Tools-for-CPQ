@@ -8,6 +8,12 @@ All notable changes to **Developer Tools for CPQ** will be documented here.
 
 ---
 
+## [0.0.42] - 2025-09-30
+### Added  
+- Detection of unused variables in BML files. The extension now highlights unused variables to help improve code quality and maintainability.
+
+---
+
 ## [0.0.41] - 2025-09-26
 ### Fixed
 - Improved BML formatter to correctly handle the `<>` operator inside conditions, even with nested or multiline parentheses.

@@ -8,6 +8,20 @@ All notable changes to **Developer Tools for CPQ** will be documented here.
 
 ---
 
+## [0.0.43] - 2025-10-04
+### Added
+- Unused variable detection in BML files: highlights variables that are declared but never used to help remove dead code and improve maintainability. (Severity: Information)
+- Empty-block detection: flags empty `{ ... }` blocks (including multi-line empty blocks) so you can remove or add logic where needed. (Severity: Information)
+- Missing-semicolon check: errors when statements that require a semicolon are missing one. (Severity: Error)
+- Nested-loop depth warning: warns when nested loop depth exceeds 2 levels to encourage refactoring for performance and readability. (Severity: Warning)
+- Variable naming convention checks: enforces BML naming rules (constants ALL_CAPS, camelCase for vars, array suffixes like `Arr|Array|List`, dictionary suffix `Dict|Dictionary`, record suffix `Records`, boolean prefixes `is|has`). (Severity: Warning)
+- One-statement-per-line check: errors when multiple statements are placed on the same line. (Severity: Error)
+- Print statements must be debug-guarded: hints when `print` appears without an `if (debug)` guard. (Severity: Hint)
+- Single-argument function parentheses rule: errors when functions that expect one argument (e.g., `not`, `isnull`, `upper`, `lower`) are used without parentheses. (Severity: Error)
+- Very-long-statement warning: warns when a single statement exceeds 120 characters to improve readability. (Severity: Warning)
+
+---
+
 ## [0.0.42] - 2025-09-30
 ### Added  
 - Detection of unused variables in BML files. The extension now highlights unused variables to help improve code quality and maintainability.

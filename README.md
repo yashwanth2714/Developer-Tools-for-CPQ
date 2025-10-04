@@ -1,6 +1,6 @@
 # Developer Tools for CPQ  
 
-A collection of productivity tools for Oracle CPQ developers — including **BML code snippets, formatter, syntax highlighting, documentation explorer, built-in themes, and inline hover help** — all in one extension.  
+A collection of productivity tools for Oracle CPQ developers — including **BML code snippets, formatter, syntax highlighting, documentation explorer, built-in themes, inline code quality validation, and inline hover help** — all in one extension.  
 
 ---
 
@@ -27,9 +27,18 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
   - Includes popular **dark and light themes** (Monokai, Nord, GitHub Dark Dimmed, Notepad++-like, etc.)  
   - Optimized for CPQ developers who spend all day in BML  
 
-- ✅ **Inline Code Quality Validation**  
-  - Provides SonarLint-like experience for Oracle CPQ BML language  
-  - Detects unused variables and other code quality issues directly in the editor
+ - ✅ **Inline Code Quality Validation**  
+    - Provides a SonarLint-like experience for Oracle CPQ BML language and surfaces common code-quality issues inline as diagnostics.  
+    - Detects and warns/errors on a range of issues including:  
+        - Unused variables (Information)  
+        - Empty `{ ... }` blocks (Information)  
+        - Missing semicolons at statement end (Error)  
+        - Excessive nested loop depth (>2) (Warning)  
+        - Variable naming convention violations (arrays/dicts/records/booleans) (Warning)  
+        - Multiple statements on a single line (Error)  
+        - `print` statements not wrapped in `if (debug)` guards (Hint)  
+        - Single-argument functions used without parentheses (Error)  
+        - Very long statements (>150 chars) (Warning)  
 
 - 🖍️ **Syntax highlighting** for `.bml` files (based on Java grammar)  
 

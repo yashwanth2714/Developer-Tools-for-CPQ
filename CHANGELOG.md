@@ -8,6 +8,15 @@ All notable changes to **Developer Tools for CPQ** will be documented here.
 
 ---
 
+## [0.0.44 to 0.0.48] - 2025-10-06
+### Fixed
+- Multiple statements on one line rule: now ignores semicolons inside string literals to prevent false positives. (Severity: Error)
+- Unused variable detection: now ignores variable names appearing inside strings (e.g., in BMQL queries or log messages), avoiding false “declared but never used” warnings. (Severity: Information)
+- Missing semicolon rule: updated to handle multi-line statements and string concatenations; only reports a missing semicolon at the actual end of a logical statement. (Severity: Error)
+- Warns when a single statement exceeds 200 characters instead of 120 to improve readability.
+
+---
+
 ## [0.0.43] - 2025-10-04
 ### Added
 - Unused variable detection in BML files: highlights variables that are declared but never used to help remove dead code and improve maintainability. (Severity: Information)

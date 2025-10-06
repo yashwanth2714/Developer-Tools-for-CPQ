@@ -101,34 +101,63 @@ class BMLDiagnosticsProvider {
         const declaredVars = [];
         codeLines.forEach(({ code, line, startOffset }) => {
             if (!code) return;
-            // Find variable declarations in this line
+            // Improved: Detect variable declarations ignoring = inside strings
+            let inString = false;
+            let escaped = false;
+            let cleanCode = "";
+
+            for (let i = 0; i < code.length; i++) {
+                const ch = code[i];
+                if (ch === '"' && !escaped) {
+                    inString = !inString;
+                } else if (ch === "\\" && inString && !escaped) {
+                    escaped = true;
+                    continue;
+                } else {
+                    escaped = false;
+                }
+
+                // Replace '=' inside strings with a safe placeholder
+                cleanCode += inString && ch === '=' ? '§' : ch;
+            }
+
+            // Now safely detect real variable declarations outside strings
             const varDeclRegex = /(^|[^\w.])([A-Za-z_]\w*)\s*=/g;
             let m;
-            while ((m = varDeclRegex.exec(code)) !== null) {
+            while ((m = varDeclRegex.exec(cleanCode)) !== null) {
                 const varName = m[2];
-                // Ignore object property assignments
-                if (m.index > 0 && code[m.index - 1] === '.') continue;
+                if (m.index > 0 && cleanCode[m.index - 1] === '.') continue;
                 declaredVars.push({ name: varName, line, col: m.index + (m[1] ? m[1].length : 0) });
             }
         });
 
 
-        // Rule 1: Unused Variables (line by line)
+        // Rule 1: Unused Variables (ignore strings safely)
         declaredVars.forEach(v => {
             let count = 0;
+
             codeLines.forEach(l => {
                 if (!l.code) return;
-                // Count whole word matches (use escaped word boundaries)
+
+                // Remove string literals completely before searching
+                const codeWithoutStrings = l.code.replace(/"(?:\\.|[^"\\])*"/g, "");
+
+                // Match variable usage outside of strings
                 const regex = new RegExp(`\\b${v.name}\\b`, "g");
-                count += (l.code.match(regex) || []).length;
+                count += (codeWithoutStrings.match(regex) || []).length;
             });
-            const alreadyWarned = diagnostics.some(d => d.range.start.line === v.line && d.range.start.character === v.col);
+
+            // Avoid duplicate warnings
+            const alreadyWarned = diagnostics.some(d =>
+                d.range.start.line === v.line && d.range.start.character === v.col
+            );
+
             if (count <= 1 && !alreadyWarned) {
-                // Ensure column is within valid range to avoid negative character errors
-                const lineText = lines[v.line] || '';
+                const lineText = lines[v.line] || "";
                 const col = Math.max(0, Math.min(v.col, lineText.length));
                 const start = new vscode.Position(v.line, col);
                 const end = new vscode.Position(v.line, Math.min(col + v.name.length, lineText.length));
+
                 diagnostics.push(new vscode.Diagnostic(
                     new vscode.Range(start, end),
                     `Variable "${v.name}" is declared but never used.`,
@@ -172,21 +201,107 @@ class BMLDiagnosticsProvider {
         }
 
 
-        // Rule 3: Missing Semicolons (comment + string safe)
+        // Rule 3: Missing Semicolons
+        let statement = "";
+        let statementStartLine = 0;
+        let insideString = false;
+        let escaped = false;
+        let openParens = 0;
+        let openBraces = 0;
+        let openBrackets = 0;
         insideBlockComment = false;
-        codeLines.forEach(({ code, line }, i) => {
-            const trimmed = code.trim();
+
+        codeLines.forEach(({ code, line }) => {
+            // Strip comments first
+            const { code: codeWithoutComments, insideBlock } = stripCommentsFromLine(code, insideBlockComment);
+            insideBlockComment = insideBlock;
+
+            const trimmed = codeWithoutComments.trim();
             if (!trimmed) return;
-            if (/[{}]$/.test(trimmed)) return;
-            if (/^(if|elif|else|for|while|switch|case)\b/i.test(trimmed)) return;
-            if (/;\s*$/.test(trimmed)) return;
-            const start = new vscode.Position(line, 0);
-            const end = new vscode.Position(line, lines[line].length);
-            diagnostics.push(new vscode.Diagnostic(
-                new vscode.Range(start, end),
-                "Missing semicolon at end of statement.",
-                vscode.DiagnosticSeverity.Error
-            ));
+
+            // Skip control structure headers (if/elif/else/for/while/switch/case)
+            if (/^(if|elif|else|for|while|switch|case)\b.*\{?\s*$/.test(trimmed)) {
+                // If statement ends with {, no semicolon needed here
+                // Accumulate multi-line conditions before the {
+                statement += (statement ? " " : "") + codeWithoutComments;
+                if (!statementStartLine) statementStartLine = line;
+
+                // Count parentheses for multi-line conditions
+                for (let i = 0; i < codeWithoutComments.length; i++) {
+                    const ch = codeWithoutComments[i];
+                    if (ch === '"' && !escaped) insideString = !insideString;
+                    else if (ch === "\\" && insideString) { escaped = !escaped; continue; }
+                    else escaped = false;
+
+                    if (!insideString) {
+                        if (ch === "(") openParens++;
+                        if (ch === ")") openParens = Math.max(0, openParens - 1);
+                    }
+                }
+
+                // If condition still open, continue to next line
+                if (openParens > 0 || trimmed.endsWith("&") || trimmed.endsWith("+") || trimmed.endsWith("|")) return;
+                statement = ""; // reset after header line processed
+                statementStartLine = 0;
+                return;
+            }
+
+            // Start accumulating statement
+            if (!statementStartLine) statementStartLine = line;
+            statement += (statement ? " " : "") + codeWithoutComments;
+
+            // Track string and escape state
+            for (let i = 0; i < codeWithoutComments.length; i++) {
+                const ch = codeWithoutComments[i];
+                if (ch === '"' && !escaped) insideString = !insideString;
+                else if (ch === "\\" && insideString) { escaped = !escaped; continue; }
+                else escaped = false;
+
+                if (!insideString) {
+                    if (ch === "(") openParens++;
+                    if (ch === ")") openParens = Math.max(0, openParens - 1);
+                    if (ch === "{") openBraces++;
+                    if (ch === "}") openBraces = Math.max(0, openBraces - 1);
+                    if (ch === "[") openBrackets++;
+                    if (ch === "]") openBrackets = Math.max(0, openBrackets - 1);
+                }
+            }
+
+            // Skip lines that are still open (multi-line string/parentheses/brackets/concatenation)
+            if (insideString || openParens > 0 || openBraces > 0 || openBrackets > 0) return;
+            if (/[+&|]$/.test(trimmed)) return; // multi-line concatenation
+
+            // Special handling: array/object initialization like string[]{ ... };
+            const statementNoStrings = statement.replace(/"(?:\\.|[^"\\])*"/g, "");
+            const arrayInitMatch = statementNoStrings.match(/\[\]\s*\{[\s\S]*\}\s*;$/);
+            if (arrayInitMatch) {
+                statement = "";
+                statementStartLine = 0;
+                return; // array/object ends properly with semicolon
+            }
+
+            // Skip lines ending with { or }, no semicolon needed
+            if (/[{}]$/.test(trimmed)) {
+                statement = "";
+                statementStartLine = 0;
+                return;
+            }
+
+            // Normal statement: check for semicolon outside strings
+            if (!/;\s*$/.test(statementNoStrings.trim())) {
+                diagnostics.push(new vscode.Diagnostic(
+                    new vscode.Range(
+                        new vscode.Position(statementStartLine, 0),
+                        new vscode.Position(line, code.length)
+                    ),
+                    "Missing semicolon at end of statement.",
+                    vscode.DiagnosticSeverity.Error
+                ));
+            }
+
+            // Reset buffer after statement processed
+            statement = "";
+            statementStartLine = 0;
         });
 
 
@@ -218,8 +333,8 @@ class BMLDiagnosticsProvider {
             if (/^[a-z]+$/.test(name)) return true;
             return /^[a-z]+(?:[A-Z][a-z0-9]*)+$/.test(name);
         };
-        const endsWithArraySuffix = name => /(List|Arr|Array)$/.test(name);
-        const endsWithDict = name => /(Dict|Dictionary)$/.test(name);
+        const endsWithArraySuffix = name => /(List|Arr|Array|_arr|_array|_list)$/.test(name);
+        const endsWithDict = name => /(Dict|Dictionary|_dict)$/.test(name);
         const endsWithRecords = name => /Records$/.test(name);
         const isBooleanName = name => /^(is|has)[a-zA-Z].*/.test(name) || name === 'debug';
         codeLines.forEach(({ code, line }) => {
@@ -248,13 +363,11 @@ class BMLDiagnosticsProvider {
                 if (looksLikeDict || endsWithDict(varName)) {
                     if (!endsWithDict(varName)) {
                         warning = `Dictionary variable "${varName}" should use the Dict/Dictionary suffix (e.g., sequenceNumDict).`;
-                    } else if (!isCamelCase(varName)) {
-                        warning = `Dictionary variable "${varName}" should use camelCase (e.g., sequenceNumDict).`;
                     }
                 }
                 if (!warning && looksLikeArray) {
                     if (!endsWithArraySuffix(varName)) {
-                        warning = `Array variable "${varName}" should have a suffix like Arr/Array/List.`;
+                        warning = `Array variable "${varName}" should have a suffix like List|Arr|Array|_arr|_array|_list.`;
                     }
                 }
                 if (!warning && looksLikeBooleanLiteral) {
@@ -285,10 +398,36 @@ class BMLDiagnosticsProvider {
 
         // Rule 6: One statement per line (never more than one ;)
         codeLines.forEach(({ code, line }) => {
-            const semiCount = (code.match(/;/g) || []).length;
+            if (!code) return;
+
+            let inString = false;
+            let escaped = false;
+            let semiCount = 0;
+
+            for (let i = 0; i < code.length; i++) {
+                const ch = code[i];
+                if (ch === '"' && !escaped) {
+                    inString = !inString;
+                } else if (ch === "\\" && inString && !escaped) {
+                    escaped = true;
+                    i++;
+                    continue;
+                } else {
+                    escaped = false;
+                }
+
+                // Count semicolon only if not inside string
+                if (ch === ";" && !inString) {
+                    semiCount++;
+                }
+            }
+
             if (semiCount > 1) {
                 diagnostics.push(new vscode.Diagnostic(
-                    new vscode.Range(new vscode.Position(line, 0), new vscode.Position(line, lines[line].length)),
+                    new vscode.Range(
+                        new vscode.Position(line, 0),
+                        new vscode.Position(line, lines[line].length)
+                    ),
                     "Multiple statements on one line are discouraged.",
                     vscode.DiagnosticSeverity.Error
                 ));
@@ -326,12 +465,12 @@ class BMLDiagnosticsProvider {
         }
 
 
-        // Rule 9: Extremely long statements (>150 chars)
+        // Rule 9: Extremely long statements (>200 chars)
         codeLines.forEach(({ code, line }) => {
-            if (code.length > 150) {
+            if (code.length > 200) {
                 diagnostics.push(new vscode.Diagnostic(
                     new vscode.Range(new vscode.Position(line, 0), new vscode.Position(line, lines[line].length)),
-                    "Line too long (>150 chars). Consider splitting across multiple lines.",
+                    "Line too long (>200 chars). Consider splitting across multiple lines.",
                     vscode.DiagnosticSeverity.Warning
                 ));
             }

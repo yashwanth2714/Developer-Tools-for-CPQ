@@ -39,6 +39,7 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
         - `print` statements not wrapped in `if (debug)` guards (Hint)  
         - Single-argument functions used without parentheses (Error)  
         - Very long statements (>200 chars) (Warning)  
+        - Highlights and marks code appearing after return or throwError statements (Warning)
 
 - 🖍️ **Syntax highlighting** for `.bml` files (based on Java grammar)  
 

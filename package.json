@@ -1,8 +1,8 @@
 {
     "name": "oracle-cpq-bml-snippets",
     "displayName": "Developer Tools for CPQ",
-    "description": "Boost your Oracle CPQ development with snippets, formatter, syntax highlighting, inline code quality validation, hover help, docs explorer, and built-in themes — all in one extension.",
-    "version": "0.0.48",
+    "description": "Boost your Oracle CPQ development with snippets, formatter, syntax highlighting, code quality validation, hover help, docs explorer — all in one extension.",
+    "version": "0.0.51",
     "publisher": "YashwanthKumar",
     "license": "MIT",
     "repository": {

@@ -8,6 +8,12 @@ All notable changes to **Developer Tools for CPQ** will be documented here.
 
 ---
 
+## [0.0.49 to 0.0.51] - 2025-10-06
+### Added
+- Added unreachable code detection — highlights and marks code appearing after return or throwError statements.
+
+---
+
 ## [0.0.44 to 0.0.48] - 2025-10-06
 ### Fixed
 - Multiple statements on one line rule: now ignores semicolons inside string literals to prevent false positives. (Severity: Error)

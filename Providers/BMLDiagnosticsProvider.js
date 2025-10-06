@@ -1,5 +1,12 @@
 const vscode = require("vscode");
 
+const unreachableDecorationType = vscode.window.createTextEditorDecorationType({
+    opacity: '0.6',
+    light: { color: '#999999' },
+    dark: { color: '#777777' },
+    fontStyle: 'italic'
+});
+
 /**
  * Strip comments safely from a line while respecting strings.
  * Returns { code: <line with comments removed>, insideBlock: <bool> }
@@ -453,7 +460,7 @@ class BMLDiagnosticsProvider {
 
         // Rule 8: Functions with single arg must use parentheses
         // e.g. not x   → should be not(x)
-        const singleArgFuncRegex = /\b(not|isnull|upper|lower)\s+[A-Za-z_]\w*/g;
+        const singleArgFuncRegex = /\b(isnull|upper|lower)\s+[A-Za-z_]\w*/g;
         while ((match = singleArgFuncRegex.exec(uncommentedText))) {
             const start = document.positionAt(match.index);
             const end = document.positionAt(match.index + match[0].length);
@@ -475,6 +482,148 @@ class BMLDiagnosticsProvider {
                 ));
             }
         });
+
+
+        // Rule 10: Unreachable Code After return / throwerror (with gray-out decoration)
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            editor.setDecorations(unreachableDecorationType, []); // clear previous decorations
+        }
+
+        let scopeStack = [{ unreachable: false }]; // root/global scope
+        let unreachableRanges = [];
+        let flaggedLines = new Set(); // avoid duplicate diagnostics
+        let inBlockComment = false;
+
+        for (const { code, line } of codeLines) {
+            const text = code;
+            if (typeof text !== "string") continue;
+
+            const trimmed = text.trim();
+            if (!inBlockComment && !trimmed) continue;
+
+            let i = 0;
+            const len = text.length;
+
+            while (i < len) {
+                // --- block comment handling
+                if (inBlockComment) {
+                    if (text[i] === '*' && text[i + 1] === '/') {
+                        inBlockComment = false;
+                        i += 2;
+                        continue;
+                    }
+                    i++;
+                    continue;
+                }
+
+                if (text[i] === '/' && text[i + 1] === '*') {
+                    inBlockComment = true;
+                    i += 2;
+                    continue;
+                }
+
+                // --- line comment
+                if (text[i] === '/' && text[i + 1] === '/') break;
+
+                // --- string or template literal
+                if (text[i] === '"' || text[i] === "'" || text[i] === '`') {
+                    const quote = text[i++];
+                    while (i < len) {
+                        if (text[i] === '\\') { i += 2; continue; }
+                        if (text[i] === quote) { i++; break; }
+                        i++;
+                    }
+                    continue;
+                }
+
+                // --- braces
+                if (text[i] === '{') {
+                    scopeStack.push({ unreachable: false });
+                    i++;
+                    continue;
+                }
+
+                if (text[i] === '}') {
+                    if (scopeStack.length > 1) scopeStack.pop();
+                    i++;
+                    continue;
+                }
+
+                // --- detect return/throwerror
+                if (/\w/.test(text[i])) {
+                    const startWord = i;
+                    while (i < len && /\w/.test(text[i])) i++;
+                    const word = text.slice(startWord, i);
+
+                    if (/^(return|throwerror)$/i.test(word)) {
+                        // mark current scope unreachable
+                        const cur = scopeStack[scopeStack.length - 1];
+                        cur.unreachable = true;
+
+                        // --- flag same-line code after semicolon if any
+                        const semicolonIdx = text.indexOf(';', i);
+                        if (semicolonIdx !== -1) {
+                            const afterSemicolon = text.slice(semicolonIdx + 1);
+                            if (/[^\s}]/.test(afterSemicolon)) {
+                                const startPos = new vscode.Position(line, semicolonIdx + 1);
+                                const endPos = new vscode.Position(line, len);
+                                const range = new vscode.Range(startPos, endPos);
+                                if (!flaggedLines.has(line)) {
+                                    diagnostics.push(new vscode.Diagnostic(
+                                        range,
+                                        "Unreachable code after return statement.",
+                                        vscode.DiagnosticSeverity.Warning
+                                    ));
+                                    unreachableRanges.push(range);
+                                    flaggedLines.add(line);
+                                }
+                            }
+                        }
+
+                        break; // stop scanning this line after return/throw
+                    }
+                    continue;
+                }
+
+                i++;
+            }
+
+            // --- flag unreachable lines (excluding harmless lines)
+            const curScope = scopeStack[scopeStack.length - 1];
+            if (curScope?.unreachable && !flaggedLines.has(line)) {
+                if (!/^\s*(}|else\b|elif\b|if\b|\/\/|\/\*|\*\/|\*)/.test(trimmed)) {
+                    let startCol = 0;
+
+                    // check if the line itself contains the return/throw that started the unreachable scope
+                    const match = trimmed.match(/^\s*(return|throwerror)\b/);
+                    if (match) {
+                        // move start after the semicolon or end of line
+                        const semicolonIdx = text.indexOf(';', match.index + match[0].length - match[0].trimStart().length);
+                        startCol = semicolonIdx !== -1 ? semicolonIdx + 1 : text.length;
+                    }
+
+                    if (startCol < text.length) {
+                        const start = new vscode.Position(line, startCol);
+                        const end = new vscode.Position(line, text.length);
+                        const range = new vscode.Range(start, end);
+
+                        diagnostics.push(new vscode.Diagnostic(
+                            range,
+                            "Unreachable code after return statement.",
+                            vscode.DiagnosticSeverity.Warning
+                        ));
+                        unreachableRanges.push(range);
+                        flaggedLines.add(line);
+                    }
+                }
+            }
+        }
+
+        // --- apply gray-out decoration
+        if (editor) {
+            editor.setDecorations(unreachableDecorationType, unreachableRanges);
+        }
 
 
         // Final push

@@ -8,7 +8,7 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
 
 - 🚀 **Snippets for BML functions**  
   - Covers core functions (`json`, `dictionary`, `date`, `string`, etc.)  
-  - Quick code patterns for **control structures** (`if/elif`, loops, array handling)  
+  - Quick code patterns for **control structures** (`if/elif`, loops)  
 
 - 🔍 **BML Docs Explorer (Sidebar)**  
   - Searchable list of functions with **signatures + descriptions + examples**  
@@ -21,11 +21,7 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
 
 - 🖱️ **Hover Help**  
   - Hover over a BML function → see **signature and description instantly**  
-  - Eliminates constant context-switching to Oracle docs  
-
-- 🎨 **Built-in Color Themes**  
-  - Includes popular **dark and light themes** (Monokai, Nord, GitHub Dark Dimmed, Notepad++-like, etc.)  
-  - Optimized for CPQ developers who spend all day in BML  
+  - Eliminates constant context-switching to Oracle docs   
 
  - ✅ **Inline Code Quality Validation**  
     - Provides a SonarLint-like experience for Oracle CPQ BML language and surfaces common code-quality issues inline as diagnostics.  
@@ -41,9 +37,13 @@ A collection of productivity tools for Oracle CPQ developers — including **BML
         - Very long statements (>200 chars) (Warning)  
         - Highlights and marks code appearing after return or throwError statements (Warning)
 
+- 🎨 **Built-in Color Themes**  
+  - Includes popular **dark and light themes** (Monokai, Nord, GitHub Dark Dimmed, Notepad++-like, etc.)  
+  - Optimized for CPQ developers who spend all day in BML 
+
 - 🖍️ **Syntax highlighting** for `.bml` files (based on Java grammar)  
 
-- 📦 Works in `.bml`, `.txt`, `.c`, `.java` files (so you can draft anywhere)  
+- 📦 Works in **`.bml`** (recommended), `.txt`, `.c`, `.java` files (so you can draft anywhere)  
 
 ---
 
@@ -56,17 +56,17 @@ Insert ready-to-use BML snippets for functions, arrays, dates, JSON, and more.
 
 ---
 
+### ✅ Inline Code Quality Validation
+Provides a SonarLint-like experience for Oracle CPQ BML language.
+
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/validation.gif" width="800"/>
+
+---
+
 ### 📄 Hover Help
 Get instant documentation and function signature while hovering. 
 
 <img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/hover.gif" width="800"/>
-
----
-
-### 🔮 Signature Help
-Inline function parameter hints while coding.  
-
-<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/signature.gif" width="800"/>
 
 ---
 
@@ -81,6 +81,13 @@ Clean and properly indented BML code with one command.
 Browse, search, copy, and insert BML snippets directly from the sidebar.
 
 <img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/sidebar.gif" width="800"/>
+
+---
+
+### 🔮 Signature Help
+Inline function parameter hints while coding.  
+
+<img src="https://raw.githubusercontent.com/yashwanth2714/Developer-Tools-for-CPQ/master/images/signature.gif" width="800"/>
 
 ---
 
@@ -100,8 +107,8 @@ Switch between built-in dark/light themes for better readability.
 
 ## 🚀 Usage  
 
-1. Open a `.bml` file.  
-2. Use snippets via autocomplete (`bml-json`, `bml-date-addmonths`, etc.).  
+1. Create a `.bml` file.  
+2. Use snippets via autocomplete (`bml-json`, `bml-urldata-get`, etc.).  
 3. Format your code with `Shift+Alt+F` (or right-click → Format Document).  
 4. Open the **CPQ Docs Explorer** sidebar (from Activity Bar) to search snippets.  
    - 📋 **Copy snippet** → copies to clipboard  
@@ -131,10 +138,8 @@ You’re ready to start using snippets, formatting, hover help, docs explorer, a
 
 ---
 
-## 🙌 Contributing  
+## 🙌 Contact
 
-Issues, feature requests, and PRs are welcome!  
+Have suggestions or found a bug? → [Email me](mailto:yashwanth.guntur@outlook.com) or open an [issue](https://github.com/yashwanth2714/Developer-Tools-for-CPQ/issues/).
 
 ---
-
-

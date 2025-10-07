@@ -8,6 +8,12 @@ All notable changes to **Developer Tools for CPQ** will be documented here.
 
 ---
 
+## [0.0.52] - 2025-10-07
+### Improved  
+- README file
+
+---
+
 ## [0.0.49 to 0.0.51] - 2025-10-06
 ### Added
 - Added unreachable code detection — highlights and marks code appearing after return or throwError statements.
